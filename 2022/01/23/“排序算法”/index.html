@@ -20,23 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="Tianqi&#39;s blog">
-<meta property="og:url" content="http://example.com/index.html">
+<meta name="description" content="冒泡排序 算法步骤    从第一个元素从前向后依次比较相邻两个元素，如果后者比前者大(小)则将其二者交换顺序 - 将最大元素置于数组末尾     重复1，对除已排序过元素进行类似方法排序    平均时间复杂度: O(n^2) 算法实现 123456789101112131415161718192021222324def bubbleSort(nums):    # 外层循环决定循环次数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序算法">
+<meta property="og:url" content="http://example.com/2022/01/23/%E2%80%9C%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E2%80%9D/index.html">
 <meta property="og:site_name" content="Tianqi&#39;s blog">
+<meta property="og:description" content="冒泡排序 算法步骤    从第一个元素从前向后依次比较相邻两个元素，如果后者比前者大(小)则将其二者交换顺序 - 将最大元素置于数组末尾     重复1，对除已排序过元素进行类似方法排序    平均时间复杂度: O(n^2) 算法实现 123456789101112131415161718192021222324def bubbleSort(nums):    # 外层循环决定循环次数">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-23T23:45:08.000Z">
+<meta property="article:modified_time" content="2022-01-26T02:00:02.098Z">
 <meta property="article:author" content="Tianqi Xie">
+<meta property="article:tag" content="排序">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2022/01/23/%E2%80%9C%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E2%80%9D/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/01/23/%E2%80%9C%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E2%80%9D/","path":"2022/01/23/“排序算法”/","title":"排序算法"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Tianqi's blog</title>
+<title>排序算法 | Tianqi's blog</title>
   
 
 
@@ -65,7 +70,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Tianqi's blog</h1>
+      <p class="site-title">Tianqi's blog</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -102,7 +107,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -115,6 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text"> 冒泡排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="nav-number">2.</span> <span class="nav-text"> 选择排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text"> 插入排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F"><span class="nav-number">4.</span> <span class="nav-text"> 希尔排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="nav-number">5.</span> <span class="nav-text"> 归并排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="nav-number">6.</span> <span class="nav-text"> 快速排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="nav-number">7.</span> <span class="nav-text"> 堆排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F"><span class="nav-number">8.</span> <span class="nav-text"> 计数排序</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -166,253 +172,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/25/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tianqi Xie">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tianqi's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/25/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">二叉树遍历算法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-01-25 15:03:31" itemprop="dateCreated datePublished" datetime="2022-01-25T15:03:31-08:00">2022-01-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-01-26 23:41:48" itemprop="dateModified" datetime="2022-01-26T23:41:48-08:00">2022-01-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>二叉树的前中后序遍历算法(递归和非递归实现) - Python</p>
-<h3 id="二叉树"><a class="markdownIt-Anchor" href="#二叉树"></a> 二叉树</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, x=<span class="literal">None</span>, left=<span class="literal">None</span>, right=<span class="literal">None</span></span>):</span></span><br><span class="line">        self.val = x</span><br><span class="line">        self.left = left</span><br><span class="line">        self.right = right</span><br></pre></td></tr></table></figure>
-<h3 id="二叉树的前序遍历"><a class="markdownIt-Anchor" href="#二叉树的前序遍历"></a> 二叉树的前序遍历</h3>
-<p>描述: 按照 <font color='red'>根节点 -&gt; 左孩子节点 -&gt; 右孩子节点</font> 的顺序遍历二叉树</p>
-<h4 id="递归算法"><a class="markdownIt-Anchor" href="#递归算法"></a> 递归算法</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">preorderTraversal</span>(<span class="params">node</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    根 -&gt; 左 -&gt; 右</span></span><br><span class="line"><span class="string">    : type node: TreeNode</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> node: <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        res.append(node.val)</span><br><span class="line">        preorderTraversal(node.left)</span><br><span class="line">        preorderTraversal(node.right)</span><br></pre></td></tr></table></figure>
-<h4 id="非递归算法"><a class="markdownIt-Anchor" href="#非递归算法"></a> 非递归算法</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">preorderTraversal</span>(<span class="params">root:TreeNode</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    根 -&gt; 左 -&gt; 右</span></span><br><span class="line"><span class="string">    : type node: TreeNode</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">	<span class="comment"># 用一个栈来存储经过的节点</span></span><br><span class="line">	stack = []</span><br><span class="line">	<span class="comment"># 初始化一个当前指针</span></span><br><span class="line">	cur = root</span><br><span class="line">	<span class="comment"># 定义一个结果数组</span></span><br><span class="line">	res = []</span><br><span class="line">	<span class="keyword">while</span>(cur <span class="keyword">or</span> stack):</span><br><span class="line">		<span class="comment"># 当前节点有值 -&gt; 添加到结果数组</span></span><br><span class="line">		<span class="keyword">if</span> cur:</span><br><span class="line">			res.append(cur.val)</span><br><span class="line">			stack.append(cur)</span><br><span class="line">			cur = cur.left</span><br><span class="line">		<span class="comment"># 当前节点没有值 -&gt; 将当前节点指向父节点的右孩子</span></span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			node = stack.pop()</span><br><span class="line">			cur = node.right</span><br><span class="line">	<span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-<h3 id="二叉树的中序遍历"><a class="markdownIt-Anchor" href="#二叉树的中序遍历"></a> 二叉树的中序遍历</h3>
-<p>描述: 按照 <font color='red'>左孩子节点 -&gt; 根节点 -&gt; 右孩子节点</font> 的顺序遍历二叉树</p>
-<h4 id="递归算法-2"><a class="markdownIt-Anchor" href="#递归算法-2"></a> 递归算法</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">inorderTraversal</span>(<span class="params">node</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    左 -&gt; 根 -&gt; 右</span></span><br><span class="line"><span class="string">    : type node: TreeNode</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> node: <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        preorderTraversal(node.left)</span><br><span class="line">        res.append(node.val)</span><br><span class="line">        preorderTraversal(node.right)</span><br></pre></td></tr></table></figure>
-<h4 id="非递归算法-2"><a class="markdownIt-Anchor" href="#非递归算法-2"></a> 非递归算法</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">inorderTraversal</span>(<span class="params">root:TreeNode</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    左 -&gt; 根 -&gt; 右</span></span><br><span class="line"><span class="string">    : type node: TreeNode</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">	<span class="comment"># 使用一个栈来存储经过的节点</span></span><br><span class="line">	stack = []</span><br><span class="line">	<span class="comment"># 设定一个当前指针</span></span><br><span class="line">	cur = root</span><br><span class="line">    <span class="comment"># 结果数组</span></span><br><span class="line">    res = []</span><br><span class="line">	<span class="keyword">while</span>(cur <span class="keyword">or</span> stack):</span><br><span class="line">		<span class="comment"># 有左孩子 -&gt; 节点入栈, 指针指向左孩子</span></span><br><span class="line">		<span class="keyword">if</span> cur:</span><br><span class="line">			stack.append(cur)</span><br><span class="line">			cur = cur.left</span><br><span class="line">		<span class="comment"># 没有左孩子 -&gt; 节点输出, 指针指向节点的右孩子</span></span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			node = stack.pop()</span><br><span class="line">			res.append(node.val)</span><br><span class="line">			cur = node.right</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-<h3 id="二叉树的后序遍历"><a class="markdownIt-Anchor" href="#二叉树的后序遍历"></a> 二叉树的后序遍历</h3>
-<p>描述: 按照 <font color='red'>左孩子节点 -&gt; 右孩子节点 -&gt; 根节点</font> 的顺序遍历二叉树</p>
-<h4 id="递归算法-3"><a class="markdownIt-Anchor" href="#递归算法-3"></a> 递归算法</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">postorderTraversal</span>(<span class="params">node</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    左 -&gt; 右 -&gt; 根</span></span><br><span class="line"><span class="string">    : type node: TreeNode</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> node: <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        preorderTraversal(node.left)</span><br><span class="line">        preorderTraversal(node.right)</span><br><span class="line">        res.append(node.val)</span><br></pre></td></tr></table></figure>
-<h4 id="非递归算法-3"><a class="markdownIt-Anchor" href="#非递归算法-3"></a> 非递归算法</h4>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/23/mac%E6%90%AD%E5%BB%BAhexo-%E5%9F%BA%E7%A1%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tianqi Xie">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tianqi's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/23/mac%E6%90%AD%E5%BB%BAhexo-%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">mac搭建hexo(基础)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-01-23 17:50:01" itemprop="dateCreated datePublished" datetime="2022-01-23T17:50:01-08:00">2022-01-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-01-25 18:00:05" itemprop="dateModified" datetime="2022-01-25T18:00:05-08:00">2022-01-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>心路历程：很久之前搭建过博客，写了几篇之后没有维持下去，这次写博客希望能够通过博客记录一下对知识的学习或者回顾的过程，将其记录下来，可能会有不一样的理解或者更加深刻的印象</p>
-<h3 id="一-安装homebrew"><a class="markdownIt-Anchor" href="#一-安装homebrew"></a> 一: 安装homebrew</h3>
-<p>homebrew是mac上非常方便的软件包管理工具，本次node.js就是基于homebrew安装的, 这里附加homebrew的<a target="_blank" rel="noopener" href="https://brew.sh/">安装地址(官网)</a><br />
-<strong>安装homebrew</strong>(下载速度过慢的朋友可以寻找镜像资源安装)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="二安装nodejs"><a class="markdownIt-Anchor" href="#二安装nodejs"></a> 二：安装node.js</h3>
-<p>简介:<br />
-NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署上的很多问题，常见的使用场景有以下几种：</p>
-<ul>
-<li>允许用户从NPM服务器下载别人编写的第三方包到本地使用。</li>
-<li>允许用户从NPM服务器下载并安装别人编写的命令行程序到本地使用。</li>
-<li>允许用户将自己编写的包或命令行程序上传到NPM服务器供别人使用。</li>
-</ul>
-<p>使用homebrew的install即可</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install npm</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="三安装hexo"><a class="markdownIt-Anchor" href="#三安装hexo"></a> 三：安装hexo</h3>
-<p>按照<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">官网</a>安装配置即可</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="四博客初始化"><a class="markdownIt-Anchor" href="#四博客初始化"></a> 四：博客初始化</h3>
-<p>首先进入到你要创建博客文件夹的地方执行初始化命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;博客文件夹名称&gt;</span><br></pre></td></tr></table></figure>
-<br>
-进入文件夹并下载相关依赖
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> blog &amp;&amp; npm install</span><br></pre></td></tr></table></figure>
-<ul>
-<li>一般项目初始化的时候会生成 <strong background='gray'>package.json package-lock.json</strong> 等文件</li>
-<li>npm 项目上下文中的  <strong background='gray'>npm install</strong>  将根据  <strong background='gray'>package.json</strong>  规范将软件包(dependencies)下载到项目的  <strong background='gray'>node_modules</strong>  文件夹中，从而升级软件包的版本（并重新生成  <strong background='gray'>package-lock.json</strong>  ）</li>
-<li>具体细节可参考<a target="_blank" rel="noopener" href='https://www.html.cn/qa/html5/11814.html'>其他博客</a></li>
-</ul>
-<br>
-生成静态文件
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 或者 hexo g(缩写)</span></span><br></pre></td></tr></table></figure>
-<br>
-启动本地服务器
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br><span class="line"><span class="comment"># 或者hexo s -p 端口 -i ip</span></span><br></pre></td></tr></table></figure>
-<p>进入对应服务ip能够得到默认hello world页面即为正常</p>
-<h3 id="五设置主题"><a class="markdownIt-Anchor" href="#五设置主题"></a> 五：设置主题</h3>
-<p>步骤:</p>
-<ol>
-<li>进入官网点击themes找到自己心仪的主题</li>
-<li>通过github链接将其下载到 <strong>hexo init</strong> 产生的themes文件夹中</li>
-<li>修改 <font color=red>_config.yml</font> 文件如下部分 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Extensions</span><br><span class="line">## Plugins: https://hexo.io/plugins/</span><br><span class="line">## Themes: https://hexo.io/themes/</span><br><span class="line">theme: 主题名称(themes对应文件夹名称: 例如下载next则将其设置为next)</span><br></pre></td></tr></table></figure>
-</li>
-<li>清楚缓存并应用该配置 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo s --debug</span><br></pre></td></tr></table></figure>
-</li>
-<li>完成设置后访问服务应出现next主题的页面</li>
-</ol>
-<h3 id="六-创建文章"><a class="markdownIt-Anchor" href="#六-创建文章"></a> 六: 创建文章</h3>
-<ol>
-<li>新建文章 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">&#x27;文章名称&#x27;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>编写对应md文件(markdown)</li>
-<li>本地部署 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 合理运用</span></span><br><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/23/%E2%80%9C%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E2%80%9D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -425,9 +195,9 @@ NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署�
       <meta itemprop="name" content="Tianqi's blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/23/%E2%80%9C%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E2%80%9D/" class="post-title-link" itemprop="url">排序算法</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          排序算法
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -466,7 +236,7 @@ NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署�
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
+        <hr>
 <h3 id="冒泡排序"><a class="markdownIt-Anchor" href="#冒泡排序"></a> 冒泡排序</h3>
 <p>算法步骤</p>
 <ul>
@@ -647,7 +417,6 @@ NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署�
 <p>平均时间复杂度: O(n+k) k为数组中的跨度(最大最小数之间的差距)</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">countingSort</span>(<span class="params">arr</span>):</span></span><br><span class="line">	<span class="comment"># 定义需要额外空间数组的大小范围</span></span><br><span class="line">	max_value, min_value = <span class="built_in">max</span>(arr), <span class="built_in">min</span>(arr)</span><br><span class="line">	length = max_value - min_value + <span class="number">1</span></span><br><span class="line">	bucket = [<span class="number">0</span>] * length</span><br><span class="line">	<span class="comment"># 对原数组重新填充数据</span></span><br><span class="line">	index = <span class="number">0</span></span><br><span class="line">	<span class="comment"># 统计原数组中每个数据出现的次数</span></span><br><span class="line">	<span class="keyword">for</span> value <span class="keyword">in</span> arr:</span><br><span class="line">		bucket[value-min_value] += <span class="number">1</span></span><br><span class="line">	<span class="comment"># 填充目标数组</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(bucket)):</span><br><span class="line">		<span class="keyword">while</span>(bucket[i]&gt;<span class="number">0</span>):</span><br><span class="line">			arr[index] = i + min_value</span><br><span class="line">			index = index + <span class="number">1</span></span><br><span class="line">			bucket[i] -= <span class="number">1</span></span><br><span class="line">	<span class="comment"># 返回原数组</span></span><br><span class="line">	<span class="keyword">return</span> arr</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># 测试用例</span></span><br><span class="line">    test_list = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序前的数组为: &quot;</span>, test_list)</span><br><span class="line">    <span class="comment"># 调用函数</span></span><br><span class="line">    test_list = countingSort(test_list)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序后的数组为: &quot;</span>, test_list)</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 排序前的数组为:  [1, 5, 6, 8, 2]</span></span><br><span class="line">    <span class="comment"># 排序后的数组为:  [1, 2, 5, 6, 8]</span></span><br></pre></td></tr></table></figure>
 
-      
     </div>
 
     
@@ -655,88 +424,28 @@ NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署�
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="post-tags">
+              <a href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag"># 排序</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/23/hello-world/" rel="prev" title="Hello World">
+                  <i class="fa fa-chevron-left"></i> Hello World
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/01/23/mac%E6%90%AD%E5%BB%BAhexo-%E5%9F%BA%E7%A1%80/" rel="next" title="mac搭建hexo(基础)">
+                  mac搭建hexo(基础) <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
   </article>
 </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/23/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tianqi Xie">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tianqi's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/23/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-01-23 11:41:58" itemprop="dateCreated datePublished" datetime="2022-01-23T11:41:58-08:00">2022-01-23</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2>
-<h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 
