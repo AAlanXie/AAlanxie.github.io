@@ -127,18 +127,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -167,6 +167,1168 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/18/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tianqi Xie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tianqi's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/18/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98/" class="post-title-link" itemprop="url">数据库经典面试题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-18 15:18:54" itemprop="dateCreated datePublished" datetime="2022-02-18T15:18:54-08:00">2022-02-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-21 20:00:51" itemprop="dateModified" datetime="2022-02-21T20:00:51-08:00">2022-02-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="事物"><a class="markdownIt-Anchor" href="#事物"></a> 事物</h3>
+<h4 id="什么是事物"><a class="markdownIt-Anchor" href="#什么是事物"></a> 什么是事物</h4>
+<ul>
+<li>事物是并发控制的基本单位。是一个操作系列，这些操作要么都执行，要么都不执行，是一个不可分割的工作单位。是数据库中维护数据一致性的单位，每个事物结束之后都能保持数据的一致性。</li>
+</ul>
+<h4 id="事物的四个基本特征acid"><a class="markdownIt-Anchor" href="#事物的四个基本特征acid"></a> 事物的四个基本特征(ACID)</h4>
+<ul>
+<li>A: Atomicity -&gt; 原子性
+<ul>
+<li>事物是数据库的逻辑单位不能分割，其中的操作要么都做，要么都不做</li>
+<li>实现原理
+<ul>
+<li>undo log(回滚日志), 会执行相反操作，例如insert 就执行 delete</li>
+<li>如果事物执行失败了或调用rollback, 导事物需要回滚, 可以利用undo log之中的信息将数据回滚到修改之前的样子</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>C: Consistency -&gt; 一致性
+<ul>
+<li>事物执行的结果是使数据库从一个一致性状态变换到另一个一致性状态</li>
+<li>实现原理
+<ul>
+<li>保证原子性、持久性和隔离性，如果这些特性无法保证，事务的一致性也无法保证</li>
+<li>数据库本身提供保障，例如不允许向整形列插入字符串值、字符串长度不能超过列的限制等</li>
+<li>应用层面进行保障，例如如果转账操作只扣除转账者的余额，而没有增加接收者的余额，无论数据库实现的多么完美，也无法保证状态的一致</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>I: Isolation -&gt; 隔离性
+<ul>
+<li>一个事物的执行不能被其他的事物干扰</li>
+<li>实现原理
+<ul>
+<li>(一个事务)写操作对(另一个事务)写操作的影响：锁机制保证隔离性</li>
+<li>(一个事务)写操作对(另一个事务)读操作的影响：MVCC保证隔离性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>D: Durability -&gt; 持久性
+<ul>
+<li>一个事物一旦提交，其对数据库产生的改变应该是永久性的，不能回滚</li>
+<li>实现原理
+<ul>
+<li>redo log(重做日志)</li>
+<li>由于mysql的引擎中有buffer pool机制, 其中包含了磁盘部分页的映射, 作为访问数据库的缓冲。当写入数据时候会优先写入buffer pool，定期刷入到磁盘当中，如果还没来得及刷入磁盘就宕机了，那么内存中的数据会丢失。所以每次写入buffer pool之前会有redo log首先记录更改，然后写入buffer pool, 这样宕机之后会用redo log进行内存恢复。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="乐观锁和悲观锁"><a class="markdownIt-Anchor" href="#乐观锁和悲观锁"></a> 乐观锁和悲观锁</h3>
+<ul>
+<li>当我们要对一个数据库中的一条数据进行修改的时候，为了避免同时被其他人修改，最好的办法就是直接对该数据进行加锁以防止并发</li>
+<li>乐观锁
+<ul>
+<li>概念: 乐观并发控制相信事务之间的数据竞争(data race)的概率是比较小的，因此尽可能直接做下去，直到提交的时候才去锁定，所以不会产生任何锁和死锁</li>
+</ul>
+</li>
+<li>悲观锁
+<ul>
+<li>概念: 一种对数据的修改抱有悲观态度的并发控制方式。我们一般认为数据被并发修改的概率比较大，所以需要在修改之前先加锁。</li>
+<li>实现方式
+<ul>
+<li>在对记录进行修改前，先尝试为该记录加上排他锁（exclusive locking）。</li>
+<li>如果加锁失败，说明该记录正在被修改，那么当前查询可能要等待或者抛出异常。具体响应方式由开发者根据实际需要决定。</li>
+<li>如果成功加锁，那么就可以对记录做修改，事务完成后就会解锁了。</li>
+<li>其间如果有其他事务对该记录做加锁的操作，都要等待当前事务解锁或直接抛出异常。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>如何选择乐观锁和悲观锁
+<ul>
+<li>乐观锁并未真正的加锁，效率高，一旦粒度掌握不好，更新失败的几率就会比较高，容易发生业务失败</li>
+<li>悲观锁依赖数据库加锁，效率低，但是失败的效率也比较低</li>
+<li>随着 高并发， 高性能，高可用 的提出，悲观锁已经用的越来越少了</li>
+</ul>
+</li>
+</ul>
+<h3 id="关系型数据库和非关系型数据库"><a class="markdownIt-Anchor" href="#关系型数据库和非关系型数据库"></a> 关系型数据库和非关系型数据库</h3>
+<ul>
+<li>关系型数据库 RDBMS -&gt; relational database management system
+<ul>
+<li>relational: table表</li>
+<li>概念:
+<ul>
+<li>关系型数据库是采用关系模型来组织数据的数据库。 关系模型: 表</li>
+</ul>
+</li>
+<li>代表:
+<ul>
+<li>mysql, sql server, postgresql, oracle etc.</li>
+</ul>
+</li>
+<li>优点:
+<ul>
+<li>容易理解: 使用表格</li>
+<li>使用方便: 使用sql进行操作</li>
+<li>易于维护: ACID降低了数据冗余和数据不一致的概率</li>
+</ul>
+</li>
+<li>瓶颈:
+<ul>
+<li>海量数据的读写效率</li>
+<li>高拓展性与可用性</li>
+</ul>
+</li>
+<li>应用: 一致性非常高的场景， 例如银行系统</li>
+</ul>
+</li>
+<li>非关系型数据库 NOSQL -&gt; not only sql
+<ul>
+<li>概念:
+<ul>
+<li>非关系型的，分布式的，一般不保证ACID的数据存储系统。以键值来存储，结构不稳定，每一个元祖都可以有不一样的字段。</li>
+</ul>
+</li>
+<li>代表
+<ul>
+<li>Redis, MongoDB, etc</li>
+</ul>
+</li>
+<li>分类
+<ul>
+<li>面向高并发读写的key-value数据库 -&gt; redis</li>
+<li>面向海量数据访问的面向文档的数据库 -&gt; MongoDB</li>
+<li>面向可拓展的分布式数据库</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>由于Nosql约束少，所以也不能够像sql那样提供where字段属性的查询。因此适合存储较为简单的数据。有一些不能够持久化数据，所以需要和关系型数据库结合</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="范式"><a class="markdownIt-Anchor" href="#范式"></a> 范式</h3>
+<h4 id="第一范式"><a class="markdownIt-Anchor" href="#第一范式"></a> 第一范式</h4>
+<ul>
+<li>数据库表中的字段都是单一属性的，不能再分</li>
+</ul>
+<h4 id="第二范式"><a class="markdownIt-Anchor" href="#第二范式"></a> 第二范式</h4>
+<ul>
+<li>数据库表中不存在非关键字段对任一候选字段的部分函数依赖，即所有非关键字段都完全依赖任一一组候选关键字</li>
+</ul>
+<h4 id="第三范式"><a class="markdownIt-Anchor" href="#第三范式"></a> 第三范式</h4>
+<ul>
+<li>在第二范式的基础上，不存在非关键字段对任一候选关键字段的传递函数</li>
+</ul>
+<h3 id="隔离级别"><a class="markdownIt-Anchor" href="#隔离级别"></a> 隔离级别</h3>
+<ul>
+<li>Read Uncommitted
+<ul>
+<li>读未提交即一个事物可以读取另外一个事物未提交的数据</li>
+<li>例如: 老板给员工发工资，员工工资为1w，老板手滑点了2w，钱已经打入程序员的户口，但是事物还未提交。这时候员工去查看工资发现多了1w，老板及时发现了不对，点回滚，将数字改成了1w再提交</li>
+<li>分析: 实际工资1w，员工能看到2w(未提交前的数据)。这就是脏读</li>
+</ul>
+</li>
+<li>Read Committed
+<ul>
+<li>一个事物要等到另外一个事物提交后才能读取数据</li>
+<li>程序员去消费，买单的时候先进行检测(程序员事物开始), 发现里面有1w, 在这个时候他妻子把钱都转出去了, 当系统开始扣费的时候再检测发现没钱了。</li>
+<li>分析: 若有事物对数据进行更新时，读操作需要等待更新事物提交之后才能读取数据, 解决了脏读取问题。但是一个事物范围内两个相同的查询返回了不同的结果，这是不可重复读</li>
+</ul>
+</li>
+<li>Repeatable Read
+<ul>
+<li>重复读: 在开始读取数据之前，不再允许修改操作</li>
+<li>程序员消费买单时候系统检测卡里有1w, 这时候妻子不能转出金额了，就可以扣款了。</li>
+<li>分析: 重复读可以解决不可重复读问题。但是这里重复读解决的是update的问题，insert也可能出现问题, 就是幻读问题</li>
+<li>程序员开始消费，消费了2000元，妻子查看了消费记录(妻子事物开启), 发现只有2000元。这时候程序员花了10000买了个电脑，妻子打印消费记录发现是1.2w元。</li>
+</ul>
+</li>
+<li>Serializable
+<ul>
+<li>序列化: 事物串行化顺序执行，避免了脏读，不可重复读，幻读等问题。但是效率低下，耗费数据库性能，一般不使用。</li>
+</ul>
+</li>
+</ul>
+<h3 id="mysql"><a class="markdownIt-Anchor" href="#mysql"></a> Mysql</h3>
+<h4 id="索引"><a class="markdownIt-Anchor" href="#索引"></a> 索引</h4>
+<ul>
+<li>什么是索引
+<ul>
+<li>对数据库表中一个或多个列的值进行排序的结构，是帮助MYSQL高效获取数据的数据结构</li>
+<li>作用: 避免全表扫描</li>
+</ul>
+</li>
+<li>索引的数据结构
+<ul>
+<li>B-TREE
+<ul>
+<li>M阶符合的要求
+<ul>
+<li>平衡二叉树最多两个子树，而 B 树每个节点都可以有多个子树，M 阶 B 树表示每个节点最多有M个子树。</li>
+<li>平衡二叉树每个节点只有一个数据和两个指向孩子的指针，而 B 树每个中间节点有 k-1 个关键字（可以理解为数据）和 k 个子树（ k 介于阶数 M 和 M/2 之间，M/2 向上取整）。</li>
+<li>所有叶子节点均在同一层、叶子节点除了包含关键字和关键字记录的指针外也有指向其子节点的指针，只不过其指针地址都为 null 。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>B+_TREE
+<ul>
+<li>B+_Tree 是 B_Tree的更新(B_tree的叶子节点和非叶子节点都保留索引和数据，B+_Tree只有叶子节点保留实际数据，非叶子节点只保留索引)</li>
+</ul>
+</li>
+<li>B+_Tree有什么优点
+<ul>
+<li>非叶子节点不会有指向记录的指针，这样一个块中可以容纳更多的索引项
+<ul>
+<li>
+<ol>
+<li>可以降低树的高度</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>一个内部节点可以定位更多的叶子节点</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>叶子节点之间通过指针进行连接，范围扫描非常简单</li>
+</ul>
+</li>
+<li>为什么使用B+树，不用hash呢(hash可以一次性定位)
+<ul>
+<li>hash无法进行范围查找, 如 &gt;= …</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>基本的索引类型(基于mysql的InnoDB引擎)
+<ul>
+<li>主键索引
+<ul>
+<li>基于主键来创建B+数结构</li>
+</ul>
+</li>
+<li>二级索引
+<ul>
+<li>主键索引和二级索引都是维护自己的B+树结构，但是二级索引叶子节点存储的值是主键值</li>
+<li>步骤: 二级索引找到主键值 -&gt; 主键索引找到真实数据 -&gt; 两次B+树查找过程</li>
+</ul>
+</li>
+<li>覆盖索引</li>
+<li>联合索引
+<ul>
+<li>多个列进行索引</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>索引的缺点
+<ul>
+<li>磁盘占用</li>
+<li>维护索引对更新操作带来的耗时</li>
+</ul>
+</li>
+</ul>
+<h4 id="drop-delete-truncate"><a class="markdownIt-Anchor" href="#drop-delete-truncate"></a> drop, delete, truncate</h4>
+<ul>
+<li>区别
+<ul>
+<li>drop一般用于删除掉表和其所有数据(元数据和数据)</li>
+<li>delete一般用于删除表的部分数据(删除表中的某几条数据)</li>
+<li>truncate一般用于删除表中的所有数据但是不删除表结构(删除数据，不删除元数据)</li>
+</ul>
+</li>
+</ul>
+<h4 id="分库和分表"><a class="markdownIt-Anchor" href="#分库和分表"></a> 分库和分表</h4>
+<ul>
+<li>mysql的执行效率是基于服务器的处理能力，所以不能通过水平的增加服务器来进行性能的提升，所以当数据量快速增长的时候就会出现一定量的性能问题，这时候有两种解决方案
+<ul>
+<li>提升硬件能力，比如增加存储容量，cpu等，方案成本较高，瓶颈在mysql本身</li>
+<li>分库分表，将大量的数据打散分散到不同的数据库之中，使得单一数据库的数据量变小来环节单一数据库的性能问题</li>
+</ul>
+</li>
+<li>分库分表的类型
+<ul>
+<li>垂直分库
+<ul>
+<li>可以将卖家库分为商品库和店铺库，每个库存放一些信息，放于不同的服务器上，从而加速查询</li>
+<li>提升
+<ul>
+<li>解决业务层面的耦合，业务清晰</li>
+<li>能对不同业务的数据进行分级管理、维护、监控和扩展等</li>
+<li>高并发场景下，垂直分库一定程度上提升IO、数据库连接和降低单机硬件资源的瓶颈</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>垂直分表
+<ul>
+<li>表中某些字段使用频率较低，例如描述类，占用空间较大，访问时间长。这时候可以考虑将一些类似这样的字段单独放入一张表之中，将访问频率高的字段放入另一张表中。</li>
+<li>提升
+<ul>
+<li>为了避免IO争抢并减少锁表的几率，查看详情的用户与商品信息浏览互不影响。</li>
+<li>充分发挥热门数据的操作效率，商品信息的操作的高效率不会被商品描述的低效率拖累。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>水平分库
+<ul>
+<li>把一个库中的数据分到多个不同的库，每个库只有这个库的部分数据，这些库可以分步在不同的服务器，从而实现负载均衡，提升性能。</li>
+</ul>
+</li>
+<li>水平分表
+<ul>
+<li>将一个表的数据分到同一个库的多张表中，每个表中的数据只有这个表的部分数据，能够小幅度提升性能</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="redis"><a class="markdownIt-Anchor" href="#redis"></a> Redis</h3>
+<h4 id="redis介绍"><a class="markdownIt-Anchor" href="#redis介绍"></a> redis介绍</h4>
+<ul>
+<li>redis介绍
+<ul>
+<li>redis是高性能的key-value数据库</li>
+</ul>
+</li>
+<li>与其他的key-value数据库相比有如下三个特点
+<ul>
+<li>redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载使用
+<ul>
+<li>全量模式 -&gt; snapshot模式</li>
+<li>增量模式 -&gt; AOF日志模式</li>
+</ul>
+</li>
+<li>redis不仅仅简单支持key-value啥类型数据，还支持list,set,zset,hash,string等数据结构存储</li>
+<li>redis支持数据的备份, 即master-slave模式的数据备份</li>
+</ul>
+</li>
+</ul>
+<h4 id="为什么redis非常快"><a class="markdownIt-Anchor" href="#为什么redis非常快"></a> 为什么redis非常快</h4>
+<ul>
+<li>性能高的原因
+<ul>
+<li>内存存储: redis使用内存存储，没有磁盘IO上的开销</li>
+<li>单线程实现: redis使用单个线程处理请求，避免了多个线程切换和锁资源争用的开销</li>
+<li>非阻塞IO: redis使用多路复用的技术，在poll, epoll和kqueue选择最优的IO实现</li>
+<li>优化的数据结构: redis有诸多可以直接应用的优化数据结构的实现，应用层可以直接使用原生的数据结果提升性能
+<ul>
+<li>redis支持的数据结构
+<ul>
+<li>字符串: string</li>
+<li>列表: list</li>
+<li>有序集合: zset</li>
+<li>哈希表: hash</li>
+<li>集合: set</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="为什么redis有了持久化机制还要用mysql呢"><a class="markdownIt-Anchor" href="#为什么redis有了持久化机制还要用mysql呢"></a> 为什么redis有了持久化机制，还要用mysql呢？</h4>
+<ul>
+<li>不是一个关系型数据库(sql对于表的复杂查询，分析还是非常有帮助的)</li>
+<li>将所有数据存储在内存中，虽然有持久化机制但是宕机之后恢复还是比较慢的</li>
+</ul>
+<h4 id="redis集群方案"><a class="markdownIt-Anchor" href="#redis集群方案"></a> redis集群方案</h4>
+<ul>
+<li>CAP理论: consistency 一致性(用户看到相同数据), availability 可用性(某些节点故障, 所有请求都能被响应), partition tolerance 分区容错性(网络通信出现问题时, 暂时隔离开的子系统也可以继续运行)</li>
+<li>redis cluster: 去中心化</li>
+<li>codis: 分布式的redis解决方案，对上层应用来说，连接到codis和redis server无明显区别</li>
+<li>twemproxy</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tianqi Xie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tianqi's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98/" class="post-title-link" itemprop="url">计算机网络经典面试题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-09 12:36:04" itemprop="dateCreated datePublished" datetime="2022-02-09T12:36:04-08:00">2022-02-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-10 23:03:07" itemprop="dateModified" datetime="2022-02-10T23:03:07-08:00">2022-02-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="osi模型以及tcpip模型"><a class="markdownIt-Anchor" href="#osi模型以及tcpip模型"></a> OSI模型以及TCP/IP模型</h3>
+<ul>
+<li>OIS模型: 物理层 - 数据链路层 - 网络层 - 传输层 - 会话层 - 表示层 - 应用层</li>
+<li>TCP/IP模型: 网络访问层 - 网络层 - 传输层 - 应用层</li>
+</ul>
+<h3 id="dns"><a class="markdownIt-Anchor" href="#dns"></a> DNS</h3>
+<ul>
+<li>定义: 域名系统， 域名和IP相互映射的一个分布式数据库（集群式的）</li>
+<li>分类: 根服务器 顶级域名服务器 权限域名服务器 本地域名服务器</li>
+<li>工作流程
+<ul>
+<li>主机向本地域名服务器的查询一般是递归查询，本地域名服务器向根域名服务器的查询一般是迭代查询</li>
+<li>递归查询: 本机向本地域名服务器发送请求，本地域名服务器去请求根域名服务器而不是本机去请求根域名服务器
+<ul>
+<li>请求: 本机 -&gt; 本地域名服务器 -&gt; 根域名服务器</li>
+<li>返回: 根域名服务器 -&gt; 本地域名服务器 -&gt; 本机</li>
+</ul>
+</li>
+<li>迭代查询: 本地域名服务器向根域名服务器发送请求后，根域名服务器不知道则让本机去联系顶级域名服务器
+<ul>
+<li>请求: 本地域名服务器 -&gt; 根域名服务器 -&gt; 顶级域名服务器</li>
+<li>返回: 顶级域名服务器 -&gt; 本地域名服务器</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="tcp与udp"><a class="markdownIt-Anchor" href="#tcp与udp"></a> TCP与UDP</h3>
+<ul>
+<li>区别
+<ul>
+<li>TCP面向连接, UDP无连接</li>
+<li>TCP是可靠协议, UDP不可靠</li>
+<li>TCP传输字节流, UDP传输数据报</li>
+<li>TCP传输效率慢, UDP传输快</li>
+<li>TCP首部字节20-60, UDP首部字节8</li>
+</ul>
+</li>
+<li>应用场景
+<ul>
+<li>TCP: HTTP, FTP, SMTP</li>
+<li>UDP: 包总量较小(DNS), 视频音频等多媒体及时通信, 广播等</li>
+</ul>
+</li>
+<li>TCP如何保证可靠传输
+<ul>
+<li>校验和, 序列号, 超时重传, 流量控制, 拥塞避免等</li>
+<li>校验和: 发送端和接收端分别计算校验和，不一致则说明有问题</li>
+<li>序列号: TCP会对每一个发送的字节编号，接收方接收到数据后会对发送方发送确认应答(ACK)，并且ACK报文中会带有确认编号，告诉发送方下一次发送数据的编号</li>
+<li>超时重传: 若发送方发送数据一段时间后没有收到ACK，发送方会重新发送数据</li>
+<li>流量控制: 发送方发送数据太快会造成接收端来不及接受出现丢包。发送方会根据ACK报文中体现的接收方窗口大小来控制发送速度</li>
+<li>拥塞控制: 出现拥塞会出现丢包，如果继续重传拥塞会更加严重。慢开始 -&gt; 拥塞避免 -&gt; 快重传 -&gt; 快恢复</li>
+</ul>
+</li>
+<li>TCP三次握手，四次挥手
+<ul>
+<li>三次握手
+<ul>
+<li>客户端 -&gt; 服务端: SYN=1 seq=x 客户端进入SYN-SENT阶段</li>
+<li>服务端 -&gt; 客户端: SYN=1 ACK=1 seq=y ack=x+1 服务端进入SYN-RCVD阶段</li>
+<li>客户端 -&gt; 服务端: ACK=1 seq=x+1 ack=y+1 两边都进入ESTABLISHED阶段</li>
+</ul>
+</li>
+<li>四次挥手
+<ul>
+<li>客户端 -&gt; 服务端: FIN=1 seq=u 客户端进入FIN-WAIT-1阶段</li>
+<li>服务端 -&gt; 客户端: ACK=1 seq=v ack=u+1 服务端进入CLOSE-WAIT阶段 客户端进入FIN-WAIT-2阶段</li>
+<li>服务端 -&gt; 客户端: FIN=1 ACK=1 seq=w ack=u+1 客户端进入LAST-ACK阶段</li>
+<li>客户端 -&gt; 服务端: ACK=1 seq=u+1 ack=w+1 客户端进入TIME-WAIT阶段 服务端CLOSED</li>
+<li>客户端TIME-WAIT阶段2MSL后进入CLOSED阶段
+<ul>
+<li>为什么是2MSL(报文最长寿命)
+<ul>
+<li>考虑丢包问题，如果四次挥手的报文丢失了，服务端没有收到ACK会重发第三次挥手的报文，如果不等待直接关闭，报文就又丢失，会造成服务端无法正常关闭</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>TCP建立连接后，客户端故障怎么办
+<ul>
+<li>会有TCP保活机制，发送保活探测报文，如果发送固定次数没有回应则会关闭TCP连接</li>
+</ul>
+</li>
+</ul>
+<h3 id="http与https"><a class="markdownIt-Anchor" href="#http与https"></a> HTTP与HTTPS</h3>
+<ul>
+<li>区别
+<ul>
+<li>端口不同: HTTP -&gt; 40 HTTPS -&gt; 443</li>
+<li>安全性: HTTP无加密，安全性较差, HTTPS有加密机制，安全性较高</li>
+<li>资源消耗: HTTP较少, HTTPS较多</li>
+<li>证书: HTTP不需要, HTTPS需要</li>
+<li>协议: HTTP运行在TCP上, HTTPS运行在SSL上(SSL运行在TCP上)</li>
+</ul>
+</li>
+<li>对称加密与非对称加密
+<ul>
+<li>对称加密是指加密和解密使用同一密钥
+<ul>
+<li>优点: 运算速度快</li>
+<li>缺点: 如何安全的将密钥传输给另外一方</li>
+</ul>
+</li>
+<li>非对称加密是指加密和解密使用不同的密钥
+<ul>
+<li>一把公钥一把私钥，公钥加密的信息需要私钥才能进行解密</li>
+<li>优点: 可以安全的将密钥传输</li>
+<li>缺点: 速度慢</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>HTTPS加密过程
+<ul>
+<li>服务端生成一对非对称密钥，公钥发送给客户端。</li>
+<li>客户端生成对称密钥，用服务端发来的公钥进行加密，加密后发给服务端</li>
+<li>服务端使用私钥进行解密</li>
+<li>中间会有证书的作用</li>
+</ul>
+</li>
+<li>常用的HTTP状态码
+<ul>
+<li>1xx: 信息性状态码</li>
+<li>2xx: 成功状态码</li>
+<li>3xx: 重定向状态码</li>
+<li>4xx: 客户端错误状态码</li>
+<li>5xx: 服务器错误状态码</li>
+</ul>
+</li>
+<li>常用的HTTP方法
+<ul>
+<li>GET: 获取资源</li>
+<li>POST: 传输实体主题</li>
+<li>PUT: 上传文件</li>
+<li>DELETE: 删除文件</li>
+<li>可以将PUT, DELETE, POST, GET视为客户端对服务器端的增删改查</li>
+</ul>
+</li>
+<li>GET和POST的区别
+<ul>
+<li>GET用于获取资源, POST用于传输实体</li>
+<li>GET的参数放在URL中, POST的参数存储在实体主体中</li>
+<li>GET方法因为参数在URL中, 安全性相对较低</li>
+<li>GET方法有幂等性(连续发送多次请求收到结果相同), POST方法不具备幂等性</li>
+</ul>
+</li>
+<li>浏览器输入URL到显示主页的过程
+<ul>
+<li>对输入的URL进行DNS解析(请求本机 -&gt; 本地域名服务器 …), 将域名转换为ip地址</li>
+<li>和目的服务器简历TCP连接</li>
+<li>向目的服务器发送HTTP请求</li>
+<li>服务器处理请求并返回HTTP报文</li>
+<li>浏览器解析并渲染页面</li>
+</ul>
+</li>
+</ul>
+<h3 id="session-cookie-token的主要区别"><a class="markdownIt-Anchor" href="#session-cookie-token的主要区别"></a> Session, Cookie, Token的主要区别</h3>
+<ul>
+<li>Cookie
+<ul>
+<li>是保存在客户端的一个小数据块，包含了用户信息。客户端向服务器发起请求的时候服务器会给客户端发送一个cookie, 当下次请求服务端时, 会携带cookie来确定身份</li>
+</ul>
+</li>
+<li>Session
+<ul>
+<li>Session是通过Cookie实现的, Session存在服务端。当客户端第一次访问服务端时，服务端会给客户端配置一个sessionid, 并将sessionid放到cookie中。当再次访问的时候会取出cookie中的sessionid, 根据sessionid获取会话中存储的信息。</li>
+</ul>
+</li>
+<li>Token
+<ul>
+<li>客户端在浏览器第一次访问服务端时，服务端生成的一串字符串作为Token发给客户端浏览器，下次浏览器在访问服务端时携带token即可无需验证用户名和密码</li>
+</ul>
+</li>
+<li>禁用cookie之后session还能用么
+<ul>
+<li>sessionid一般是通过cookie传递。如果cookie被禁用, 可以通过URL传递sessionid。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/09/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tianqi Xie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tianqi's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/09/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98/" class="post-title-link" itemprop="url">操作系统经典面试题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-09 11:03:00" itemprop="dateCreated datePublished" datetime="2022-02-09T11:03:00-08:00">2022-02-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-20 22:54:08" itemprop="dateModified" datetime="2022-02-20T22:54:08-08:00">2022-02-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="进程-线程-协程"><a class="markdownIt-Anchor" href="#进程-线程-协程"></a> 进程, 线程, 协程</h3>
+<h4 id="进程与线程的区别"><a class="markdownIt-Anchor" href="#进程与线程的区别"></a> 进程与线程的区别</h4>
+<ul>
+<li>进程是资源调度的基本单位</li>
+<li>线程是程序执行的基本单位</li>
+</ul>
+<h4 id="协程与线程的区别"><a class="markdownIt-Anchor" href="#协程与线程的区别"></a> 协程与线程的区别</h4>
+<ul>
+<li>协程又叫微线程</li>
+<li>线程与进程都是同步机制，协程是异步机制</li>
+<li>协程是抢占式的，线程是非抢占式的。协程需要用户释放使用权切换到其他协程，同一时间只有一个协程拥有使用权，相当于单线程</li>
+</ul>
+<h4 id="进程和线程的切换流程"><a class="markdownIt-Anchor" href="#进程和线程的切换流程"></a> 进程和线程的切换流程</h4>
+<ul>
+<li>进程
+<ul>
+<li>
+<ol>
+<li>切换页表使用新的地址空间，处理器中所有已经缓存的内存地址都作废</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>切换内核栈和硬件上下文</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>线程的切换第一步是不需要做的，因为线程是共享所在进程的虚拟地址空间的</li>
+</ul>
+<h4 id="进程间的通讯"><a class="markdownIt-Anchor" href="#进程间的通讯"></a> 进程间的通讯</h4>
+<ul>
+<li>管道: 速度慢，容量有限</li>
+<li>信号:</li>
+<li>信号量: 不能传递复杂消息，只能用来同步</li>
+<li>消息队列: 容量收到系统限制</li>
+<li>共享内存: 能够容易控制容量，速度快，但需要保持同步</li>
+<li>socket: 任何进程间都能通讯，但是速度慢</li>
+</ul>
+<h4 id="进程间的同步方式"><a class="markdownIt-Anchor" href="#进程间的同步方式"></a> 进程间的同步方式</h4>
+<ul>
+<li>临界区: 通过对多线程的串行化来访问公共资源或一段代码，速度快，适合控制数据访问</li>
+<li>互斥量: 协调对一个共享资源的单独访问</li>
+<li>信号量: 控制具有有限数量用户资源</li>
+<li>事件: 用来通知线程一些事件的发生，从而启动后继任务</li>
+</ul>
+<h4 id="进程的调度策略"><a class="markdownIt-Anchor" href="#进程的调度策略"></a> 进程的调度策略</h4>
+<ul>
+<li>先来先服务: 谁先来谁先调度</li>
+<li>短作业优先: 按估计运行时间最短的顺序进行调度</li>
+<li>最短剩余时间: 按照剩余时间的顺序进行调度</li>
+<li>时间片轮转: 每个进程执行一个时间片，执行完成后放到就绪队列的末尾</li>
+<li>优先级调度: 为每一个进程设置优先级, 防止优先级低的进程永远等不到调度，可以随着时间的推移增加等待进程的优先级</li>
+</ul>
+<h4 id="进程状态"><a class="markdownIt-Anchor" href="#进程状态"></a> 进程状态</h4>
+<ul>
+<li>就绪: 进程已处于准备运行的状态，即进程获得了除CPU之外的一切所需资源, 一旦得到CPU即可运行。</li>
+<li>运行: 运行状态就是进程正在CPU上运行</li>
+<li>等待: 进程正在等待某一事件而暂停运行，比如等待某资源为可用或等待I/O完成</li>
+<li>有的地方可以加上创建和终止</li>
+</ul>
+<h4 id="线程的分类"><a class="markdownIt-Anchor" href="#线程的分类"></a> 线程的分类</h4>
+<ul>
+<li>内核级线程: 创建，撤销，切换都由内核实现</li>
+<li>用户级线程: 不依赖操作系统核心，由线程库来完成创建和管理</li>
+</ul>
+<h4 id="线程安全"><a class="markdownIt-Anchor" href="#线程安全"></a> 线程安全</h4>
+<ul>
+<li>什么是线程安全
+<ul>
+<li>指某个函数在多线程执行的环境中，能够正确的处理执行者之前的公用变量，是的程序能够正常的完成</li>
+</ul>
+</li>
+<li>如何解决
+<ul>
+<li>加锁呗</li>
+<li>
+<ol>
+<li>同步代码块</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>同步方法</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>加锁</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="堆和栈"><a class="markdownIt-Anchor" href="#堆和栈"></a> 堆和栈</h3>
+<ul>
+<li>栈
+<ul>
+<li>由操作系统自动分配释放 ，用于存放函数的参数值、局部变量</li>
+</ul>
+</li>
+<li>堆
+<ul>
+<li>堆由开发人员分配和释放， 若开发人员不释放，程序结束时由 OS 回收，分配方式类似于链表</li>
+</ul>
+</li>
+<li>区别
+<ul>
+<li>管理方式不同: 栈由操作系统自动分配释放， 堆的申请和释放由程序员控制，容易内存泄漏</li>
+<li>空间大小不同: 每个进程拥有的栈大小要远远小于堆大小</li>
+<li>分配效率不同: 栈由操作系统自动分配, 会在硬件层级对栈提供支持, 分配专门的寄存器存放栈的地址，效率较高。堆是c++提供的库函数进行申请和管理，实现较为复杂，效率比较低</li>
+</ul>
+</li>
+</ul>
+<h3 id="锁"><a class="markdownIt-Anchor" href="#锁"></a> 锁</h3>
+<h3 id="死锁"><a class="markdownIt-Anchor" href="#死锁"></a> 死锁</h3>
+<h4 id="死锁的概念以及产生的条件"><a class="markdownIt-Anchor" href="#死锁的概念以及产生的条件"></a> 死锁的概念以及产生的条件</h4>
+<ul>
+<li>概念
+<ul>
+<li>在两个或多个并发的进程中，每个进程持有某种资源而又等待其他进程释放它或他们保持着的资源，在没有改变这种状态之前都不能向前推进的状态</li>
+</ul>
+</li>
+<li>产生的条件
+<ul>
+<li>互斥: 一个资源一次只能被一个进程使用</li>
+<li>请求与保持: 一个进程因为请求资源阻塞的时候，对已经获得的资源保持不放</li>
+<li>不可剥夺: 进程获得的资源，没有使用完之前不能强行剥夺</li>
+<li>循环等待: 若干进程形成头尾相接的环形等待资源关系</li>
+</ul>
+</li>
+</ul>
+<h4 id="如何处理死锁"><a class="markdownIt-Anchor" href="#如何处理死锁"></a> 如何处理死锁</h4>
+<ul>
+<li>不处理</li>
+<li>检测死锁并恢复</li>
+<li>资源动态分配以避免死锁</li>
+<li>破除四个死锁的必要条件之一来防止死锁</li>
+</ul>
+<h3 id="分页与分段"><a class="markdownIt-Anchor" href="#分页与分段"></a> 分页与分段</h3>
+<h4 id="分页"><a class="markdownIt-Anchor" href="#分页"></a> 分页</h4>
+<ul>
+<li>分页
+<ul>
+<li>把内存空间分成大小相同的固定的块。因为程序数据存储在不同的页面中，需要一个页表来记录映射关系，实现从页号到物理块号的映射</li>
+<li>两次访问内存: 1. 从内存访问页表 2: 根据第一次的物理地址访问内存取出数据</li>
+</ul>
+</li>
+</ul>
+<h4 id="什么是交换空间"><a class="markdownIt-Anchor" href="#什么是交换空间"></a> 什么是交换空间</h4>
+<ul>
+<li>当内存资源不足的时候，linux把某些页的内容移到硬盘上的一块空间上，释放内存空间。硬盘上的就叫做交换空间。物理内存和交换空间的总容量就是虚拟内存的可用容量</li>
+<li>用途
+<ul>
+<li>物理内存不足的时候可以将不常用的页交换出去</li>
+<li>程序启动的时候内存页被初始化，之后不再需要</li>
+</ul>
+</li>
+</ul>
+<h4 id="页面替换算法"><a class="markdownIt-Anchor" href="#页面替换算法"></a> 页面替换算法</h4>
+<p>运行过程中要访问的页面不在内存中，需要将其调入内存中</p>
+<ul>
+<li>最佳算法
+<ul>
+<li>所选择的页将是最长时间不再被访问(理想)</li>
+</ul>
+</li>
+<li>先进先出
+<ul>
+<li>换出的页是最先进入的页面</li>
+</ul>
+</li>
+<li>LRU
+<ul>
+<li>将最近最久未使用的页面换出</li>
+</ul>
+</li>
+<li>时钟算法</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/04/OSI-vs-TCP-IP-%E6%A8%A1%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tianqi Xie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tianqi's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/04/OSI-vs-TCP-IP-%E6%A8%A1%E5%9E%8B/" class="post-title-link" itemprop="url">OSI vs TCP/IP 模型</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-04 10:57:57" itemprop="dateCreated datePublished" datetime="2022-02-04T10:57:57-08:00">2022-02-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-09 11:02:25" itemprop="dateModified" datetime="2022-02-09T11:02:25-08:00">2022-02-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="osi模型简介"><a class="markdownIt-Anchor" href="#osi模型简介"></a> OSI模型简介</h3>
+<ul>
+<li>定义: OSI模型(Open Systems Interconnection Model)是用来描述网络工作原理的概念框架</li>
+</ul>
+<h4 id="第一层-物理层physical-layer"><a class="markdownIt-Anchor" href="#第一层-物理层physical-layer"></a> 第一层: 物理层(Physical layer)</h4>
+<ul>
+<li>物理层考虑的是将底层非结构化的数据比特流(bits)以电信号的方式从发送方传输到接收方。在物理层，人们可能会发现一些&quot;物理&quot;资源，例如网络集线器，电缆，中继器，网络适配器等</li>
+<li>物理层用到的协议包括：蓝牙，通用串行总线等</li>
+<li>常用的设备：光纤，集线器，串口，并口</li>
+</ul>
+<h4 id="第二层-数据链路层datalink-layer"><a class="markdownIt-Anchor" href="#第二层-数据链路层datalink-layer"></a> 第二层: 数据链路层(DataLink layer)</h4>
+<ul>
+<li>作为发送端: 数据链路层考虑的是将数据流转换成为信号, 通过底层硬件发送</li>
+<li>作为接收端: 数据链路层考虑的接收来自硬件的信号数据，将其集成为能够识别的帧格式，并发送给上层</li>
+<li>作用
+<ul>
+<li>从网络层获取数据将其包装成帧，在硬件上诸位发送。从物理层获取信号并组装成帧发送给网络层</li>
+<li>提供硬件寻址机制</li>
+<li>保证数据帧的同步传输</li>
+<li>检测传输中会发生的错误，并恢复成为实际数据位</li>
+<li>流量控制使得两台机器能够相同速度交换数据</li>
+</ul>
+</li>
+<li>数据链路层用到的协议包括: 以太网，异步传输模式，WIFI</li>
+<li>常见的设备: 网卡，交换机，桥接器</li>
+</ul>
+<h4 id="第三层-网络层network-layer"><a class="markdownIt-Anchor" href="#第三层-网络层network-layer"></a> 第三层: 网络层(Network layer)</h4>
+<ul>
+<li>把传输层产生的报文段或用户数据封装成组或者包进行发送, 选择合适的网间路由和交换节点, 保证数据及时传送</li>
+<li>功能
+<ul>
+<li>寻址: 依靠IP地址进行通信(类似数据链路层的MAC地址)</li>
+<li>路由: 在同一个网络中的内部通信并不需要网络层设备，依靠数据链路层就可以完成互相通信</li>
+</ul>
+</li>
+<li>网络层用到的协议包括: IP, ICMP, RIP等</li>
+<li>常见的设备: 路由器, 三层交换机</li>
+</ul>
+<h4 id="第四层-传输层transport-layer"><a class="markdownIt-Anchor" href="#第四层-传输层transport-layer"></a> 第四层: 传输层(Transport layer)</h4>
+<ul>
+<li>传输层对一个会话或连接提供可靠的传输服务</li>
+<li>功能
+<ul>
+<li>复用: 将应用程序接受报文后封装在传输层的段中再交给网络层发送</li>
+<li>分用: 当从网络层收到数据后，必须将数据正确的传递给某个应用程序(能够对不同进程的数据加以区分)</li>
+<li>寻址: 定位应用程序</li>
+<li>流量控制/拥塞控制等</li>
+</ul>
+</li>
+<li>传输层用到的协议包括: TCP, UDP等</li>
+</ul>
+<h4 id="第五层-会话层session-layer"><a class="markdownIt-Anchor" href="#第五层-会话层session-layer"></a> 第五层: 会话层(Session layer)</h4>
+<ul>
+<li>会话负责会话检查点和恢复</li>
+<li>功能
+<ul>
+<li>为会话实体创造连接</li>
+<li>为两个会话用户提供有组织的，同步的数据传输</li>
+<li>连接释放</li>
+</ul>
+</li>
+<li>会话层用到的协议包括: PPTP, RPC, SOCKS等</li>
+</ul>
+<h4 id="第六层-表示层presentation-layer"><a class="markdownIt-Anchor" href="#第六层-表示层presentation-layer"></a> 第六层: 表示层(Presentation layer)</h4>
+<ul>
+<li>表示层负责为不同终端的上层用于提供数据和信息正确的语法表示变换方法</li>
+<li>功能
+<ul>
+<li>数据语法转换</li>
+<li>语法表示</li>
+<li>连接管理</li>
+<li>数据处理: 加密解密, 压缩解压, 编码解码等</li>
+</ul>
+</li>
+<li>表示层用到的协议包括: HTTP/HTTPS, FTP/FTPS, SSH等</li>
+</ul>
+<h4 id="第七层-应用层application-layer"><a class="markdownIt-Anchor" href="#第七层-应用层application-layer"></a> 第七层: 应用层(Application layer)</h4>
+<ul>
+<li>应用层直接和应用程序接口结合，并提供常见的网络应用服务</li>
+<li>应用层用到的协议包括: SMTP, DNS, POP3等</li>
+</ul>
+<hr>
+<h3 id="tcpip模型简介"><a class="markdownIt-Anchor" href="#tcpip模型简介"></a> TCP/IP模型简介</h3>
+<ul>
+<li>第一层: 网络访问层(Network Access layer)
+<ul>
+<li>包含了OSI模型中的 数据链路层 - 物理层(二合一)</li>
+</ul>
+</li>
+<li>第二层: 网络层(Network layer)</li>
+<li>第三层: 传输层(Transport layer)</li>
+<li>第四层: 应用层(Application layer)
+<ul>
+<li>包括了OSI模型中的 会话层 - 表示层 - 应用层(三合一)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="osi模型-vs-tcp模型"><a class="markdownIt-Anchor" href="#osi模型-vs-tcp模型"></a> OSI模型 vs TCP模型</h3>
+<ul>
+<li>不同
+<ul>
+<li>OSI七层, TCP/IP四层</li>
+<li>OSI模型是概念性的模型，主要用于描述，讨论和理解网络功能。TCP/IP模型适用于解决实际问题</li>
+<li>OSI模型是通用的，独立于协议的，但大多数协议都遵守它。TCP/IP模型是基于internet开发的标准协议</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -207,7 +1369,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-01-26 23:41:48" itemprop="dateModified" datetime="2022-01-26T23:41:48-08:00">2022-01-26</time>
+      <time title="修改时间：2022-02-04 22:55:34" itemprop="dateModified" datetime="2022-02-04T22:55:34-08:00">2022-02-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -444,7 +1606,7 @@ NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-01-25 18:00:02" itemprop="dateModified" datetime="2022-01-25T18:00:02-08:00">2022-01-25</time>
+      <time title="修改时间：2022-01-27 11:04:03" itemprop="dateModified" datetime="2022-01-27T11:04:03-08:00">2022-01-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -587,7 +1749,7 @@ NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署�
 </li>
 </ul>
 <p>平均时间复杂度: O(nlogn)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">def swap(arr, i, j):</span><br><span class="line">	<span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">	数组对应位置</span></span><br><span class="line"><span class="string">	&quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">	arr[i], arr[j] = arr[j], arr[i]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def partition(arr, left, right):</span><br><span class="line">	<span class="comment"># 初始化基准，将第一个元素设置成为基准</span></span><br><span class="line">	pivot = left</span><br><span class="line">	index = pivot + 1</span><br><span class="line">	i = index</span><br><span class="line">	<span class="comment"># 对比每一个元素，如果小于第一个元素将其放在index之前，反之放到后面</span></span><br><span class="line">	<span class="keyword">while</span>(i &lt;= right):</span><br><span class="line">		<span class="keyword">if</span> arr[i] &lt;= arr[pivot]:</span><br><span class="line">			swap(arr, i, index)</span><br><span class="line">			index = index + 1</span><br><span class="line">		i = i + 1</span><br><span class="line">	swap(arr, index-1, pivot)</span><br><span class="line">	<span class="comment"># 返回排序好的index位置</span></span><br><span class="line">	<span class="built_in">return</span> index - 1</span><br><span class="line"></span><br><span class="line">def quickSort(arr, left=None, right=None):</span><br><span class="line">	left = 0 <span class="keyword">if</span> not left <span class="keyword">else</span> left</span><br><span class="line">	right = len(arr)-1 <span class="keyword">if</span> not right <span class="keyword">else</span> right</span><br><span class="line">	<span class="keyword">if</span> left &lt; right:</span><br><span class="line">		<span class="comment"># 找到基准位置</span></span><br><span class="line">		index = partition(arr, left, right)</span><br><span class="line">		<span class="comment"># 递归进行快排</span></span><br><span class="line">		quickSort(arr, left, index-1)</span><br><span class="line">		quickSort(arr, index+1, right)</span><br><span class="line">	<span class="comment"># 返回数组</span></span><br><span class="line">	<span class="built_in">return</span> arr</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># 测试用例</span></span><br><span class="line">    test_list = [1, 5, 6, 8, 2]</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序前的数组为: &quot;</span>, test_list)</span><br><span class="line">    <span class="comment"># 调用函数</span></span><br><span class="line">    arr = quickSort(test_list)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序后的数组为: &quot;</span>, test_list)</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 排序前的数组为:  [1, 5, 6, 8, 2]</span></span><br><span class="line">    <span class="comment"># 排序后的数组为:  [1, 2, 5, 6, 8]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">swap</span>(<span class="params">arr, i, j</span>):</span></span><br><span class="line">	<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">	数组对应位置</span></span><br><span class="line"><span class="string">	&quot;&quot;&quot;</span></span><br><span class="line">	arr[i], arr[j] = arr[j], arr[i]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">partition</span>(<span class="params">arr, left, right</span>):</span></span><br><span class="line">	<span class="comment"># 初始化基准，将第一个元素设置成为基准</span></span><br><span class="line">	pivot = left</span><br><span class="line">	index = pivot + <span class="number">1</span></span><br><span class="line">	i = index</span><br><span class="line">	<span class="comment"># 对比每一个元素，如果小于第一个元素将其放在index之前，反之放到后面</span></span><br><span class="line">	<span class="keyword">while</span>(i &lt;= right):</span><br><span class="line">		<span class="keyword">if</span> arr[i] &lt;= arr[pivot]:</span><br><span class="line">			swap(arr, i, index)</span><br><span class="line">			index = index + <span class="number">1</span></span><br><span class="line">		i = i + <span class="number">1</span></span><br><span class="line">	swap(arr, index-<span class="number">1</span>, pivot)</span><br><span class="line">	<span class="comment"># 返回排序好的index位置</span></span><br><span class="line">	<span class="keyword">return</span> index - <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quickSort</span>(<span class="params">arr, left=<span class="literal">None</span>, right=<span class="literal">None</span></span>):</span></span><br><span class="line">	left = <span class="number">0</span> <span class="keyword">if</span> <span class="keyword">not</span> left <span class="keyword">else</span> left</span><br><span class="line">	right = <span class="built_in">len</span>(arr)-<span class="number">1</span> <span class="keyword">if</span> <span class="keyword">not</span> right <span class="keyword">else</span> right</span><br><span class="line">	<span class="keyword">if</span> left &lt; right:</span><br><span class="line">		<span class="comment"># 找到基准位置</span></span><br><span class="line">		index = partition(arr, left, right)</span><br><span class="line">		<span class="comment"># 递归进行快排</span></span><br><span class="line">		quickSort(arr, left, index-<span class="number">1</span>)</span><br><span class="line">		quickSort(arr, index+<span class="number">1</span>, right)</span><br><span class="line">	<span class="comment"># 返回数组</span></span><br><span class="line">	<span class="keyword">return</span> arr</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># 测试用例</span></span><br><span class="line">    test_list = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序前的数组为: &quot;</span>, test_list)</span><br><span class="line">    <span class="comment"># 调用函数</span></span><br><span class="line">    arr = quickSort(test_list)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序后的数组为: &quot;</span>, test_list)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 排序前的数组为:  [1, 5, 6, 8, 2]</span></span><br><span class="line">    <span class="comment"># 排序后的数组为:  [1, 2, 5, 6, 8]</span></span><br></pre></td></tr></table></figure>
 <hr>
 <h3 id="堆排序"><a class="markdownIt-Anchor" href="#堆排序"></a> 堆排序</h3>
 <p>简介</p>
@@ -619,7 +1781,7 @@ NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署�
 </li>
 </ul>
 <p>平均时间复杂度: O(nlogn)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">buildMaxHeap</span>(<span class="params">arr</span>):</span></span><br><span class="line">	<span class="comment"># 构建堆, 堆是用数组存储的二叉树型结构</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(arr)//<span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">		heapify(arr, i)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">swap</span>(<span class="params">arr, i, j</span>):</span></span><br><span class="line">	<span class="comment"># 将数组中的两个元素调换位置</span></span><br><span class="line">	arr[i], arr[j] = arr[j], arr[i]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">heapify</span>(<span class="params">arr, i</span>):</span></span><br><span class="line">	<span class="comment"># 对数组节点进行最大堆构建</span></span><br><span class="line">	left = <span class="number">2</span> * i + <span class="number">1</span></span><br><span class="line">	right = <span class="number">2</span> * i + <span class="number">2</span></span><br><span class="line">	index = i</span><br><span class="line">	<span class="keyword">if</span> left &lt; arrLen <span class="keyword">and</span> arr[left] &gt; arr[index]:</span><br><span class="line">		index = left</span><br><span class="line">	<span class="keyword">if</span> right &lt; arrLen <span class="keyword">and</span> arr[right] &gt; arr[index]:</span><br><span class="line">		index = right</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> index != i:</span><br><span class="line">		swap(arr, index, i)</span><br><span class="line">		heapify(arr, index)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">heapSort</span>(<span class="params">arr</span>):</span></span><br><span class="line">	<span class="comment"># 进行堆排序</span></span><br><span class="line">	<span class="keyword">global</span> arrLen</span><br><span class="line">	arrLen = <span class="built_in">len</span>(arr)</span><br><span class="line">	buildMaxHeap(arr)</span><br><span class="line">	<span class="comment"># 将顶部元素置于末尾后将顶部重新排序</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(arr)-<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>):</span><br><span class="line">		swap(arr, <span class="number">0</span>, i)</span><br><span class="line">		arrLen -= <span class="number">1</span></span><br><span class="line">		heapify(arr, <span class="number">0</span>)</span><br><span class="line">	<span class="keyword">return</span> arr</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># 测试用例</span></span><br><span class="line">    test_list = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序前的数组为: &quot;</span>, test_list)</span><br><span class="line">    <span class="comment"># 调用函数</span></span><br><span class="line">    heapSort(test_list)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序后的数组为: &quot;</span>, test_list)</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 排序前的数组为:  [1, 5, 6, 8, 2]</span></span><br><span class="line">    <span class="comment"># 排序后的数组为:  [1, 2, 5, 6, 8]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">buildMaxHeap</span>(<span class="params">arr</span>):</span></span><br><span class="line">	<span class="comment"># 构建堆, 堆是用数组存储的二叉树型结构</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(arr)//<span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">		heapify(arr, i)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">swap</span>(<span class="params">arr, i, j</span>):</span></span><br><span class="line">	<span class="comment"># 将数组中的两个元素调换位置</span></span><br><span class="line">	arr[i], arr[j] = arr[j], arr[i]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">heapify</span>(<span class="params">arr, i</span>):</span></span><br><span class="line">	<span class="comment"># 对数组节点进行最大堆构建</span></span><br><span class="line">	left = <span class="number">2</span> * i + <span class="number">1</span></span><br><span class="line">	right = <span class="number">2</span> * i + <span class="number">2</span></span><br><span class="line">	index = i</span><br><span class="line">	<span class="keyword">if</span> left &lt; arrLen <span class="keyword">and</span> arr[left] &gt; arr[index]:</span><br><span class="line">		index = left</span><br><span class="line">	<span class="keyword">if</span> right &lt; arrLen <span class="keyword">and</span> arr[right] &gt; arr[index]:</span><br><span class="line">		index = right</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> index != i:</span><br><span class="line">		swap(arr, index, i)</span><br><span class="line">		heapify(arr, index)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">heapSort</span>(<span class="params">arr</span>):</span></span><br><span class="line">	<span class="comment"># 进行堆排序</span></span><br><span class="line">	<span class="keyword">global</span> arrLen</span><br><span class="line">	arrLen = <span class="built_in">len</span>(arr)</span><br><span class="line">	buildMaxHeap(arr)</span><br><span class="line">	<span class="comment"># 将顶部元素置于末尾后将顶部重新排序</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(arr)-<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>):</span><br><span class="line">		swap(arr, <span class="number">0</span>, i)</span><br><span class="line">		arrLen -= <span class="number">1</span></span><br><span class="line">		heapify(arr, <span class="number">0</span>)</span><br><span class="line">	<span class="keyword">return</span> arr</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># 测试用例</span></span><br><span class="line">    test_list = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序前的数组为: &quot;</span>, test_list)</span><br><span class="line">    <span class="comment"># 调用函数</span></span><br><span class="line">    heapSort(test_list)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序后的数组为: &quot;</span>, test_list)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 排序前的数组为:  [1, 5, 6, 8, 2]</span></span><br><span class="line">    <span class="comment"># 排序后的数组为:  [1, 2, 5, 6, 8]</span></span><br></pre></td></tr></table></figure>
 <h3 id="计数排序"><a class="markdownIt-Anchor" href="#计数排序"></a> 计数排序</h3>
 <p>简介</p>
 <ul>
@@ -645,7 +1807,7 @@ NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署�
 </li>
 </ul>
 <p>平均时间复杂度: O(n+k) k为数组中的跨度(最大最小数之间的差距)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">countingSort</span>(<span class="params">arr</span>):</span></span><br><span class="line">	<span class="comment"># 定义需要额外空间数组的大小范围</span></span><br><span class="line">	max_value, min_value = <span class="built_in">max</span>(arr), <span class="built_in">min</span>(arr)</span><br><span class="line">	length = max_value - min_value + <span class="number">1</span></span><br><span class="line">	bucket = [<span class="number">0</span>] * length</span><br><span class="line">	<span class="comment"># 对原数组重新填充数据</span></span><br><span class="line">	index = <span class="number">0</span></span><br><span class="line">	<span class="comment"># 统计原数组中每个数据出现的次数</span></span><br><span class="line">	<span class="keyword">for</span> value <span class="keyword">in</span> arr:</span><br><span class="line">		bucket[value-min_value] += <span class="number">1</span></span><br><span class="line">	<span class="comment"># 填充目标数组</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(bucket)):</span><br><span class="line">		<span class="keyword">while</span>(bucket[i]&gt;<span class="number">0</span>):</span><br><span class="line">			arr[index] = i + min_value</span><br><span class="line">			index = index + <span class="number">1</span></span><br><span class="line">			bucket[i] -= <span class="number">1</span></span><br><span class="line">	<span class="comment"># 返回原数组</span></span><br><span class="line">	<span class="keyword">return</span> arr</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># 测试用例</span></span><br><span class="line">    test_list = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序前的数组为: &quot;</span>, test_list)</span><br><span class="line">    <span class="comment"># 调用函数</span></span><br><span class="line">    test_list = countingSort(test_list)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序后的数组为: &quot;</span>, test_list)</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 排序前的数组为:  [1, 5, 6, 8, 2]</span></span><br><span class="line">    <span class="comment"># 排序后的数组为:  [1, 2, 5, 6, 8]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">countingSort</span>(<span class="params">arr</span>):</span></span><br><span class="line">	<span class="comment"># 定义需要额外空间数组的大小范围</span></span><br><span class="line">	max_value, min_value = <span class="built_in">max</span>(arr), <span class="built_in">min</span>(arr)</span><br><span class="line">	length = max_value - min_value + <span class="number">1</span></span><br><span class="line">	bucket = [<span class="number">0</span>] * length</span><br><span class="line">	<span class="comment"># 对原数组重新填充数据</span></span><br><span class="line">	index = <span class="number">0</span></span><br><span class="line">	<span class="comment"># 统计原数组中每个数据出现的次数</span></span><br><span class="line">	<span class="keyword">for</span> value <span class="keyword">in</span> arr:</span><br><span class="line">		bucket[value-min_value] += <span class="number">1</span></span><br><span class="line">	<span class="comment"># 填充目标数组</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(bucket)):</span><br><span class="line">		<span class="keyword">while</span>(bucket[i]&gt;<span class="number">0</span>):</span><br><span class="line">			arr[index] = i + min_value</span><br><span class="line">			index = index + <span class="number">1</span></span><br><span class="line">			bucket[i] -= <span class="number">1</span></span><br><span class="line">	<span class="comment"># 返回原数组</span></span><br><span class="line">	<span class="keyword">return</span> arr</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># 测试用例</span></span><br><span class="line">    test_list = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序前的数组为: &quot;</span>, test_list)</span><br><span class="line">    <span class="comment"># 调用函数</span></span><br><span class="line">    test_list = countingSort(test_list)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序后的数组为: &quot;</span>, test_list)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 排序前的数组为:  [1, 5, 6, 8, 2]</span></span><br><span class="line">    <span class="comment"># 排序后的数组为:  [1, 2, 5, 6, 8]</span></span><br></pre></td></tr></table></figure>
 
       
     </div>

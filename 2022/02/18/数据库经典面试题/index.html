@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="事物  什么是事物  事物是并发控制的基本单位。是一个操作系列，这些操作要么都执行，要么都不执行，是一个不可分割的工作单位。是数据库中维护数据一致性的单位，每个事物结束之后都能保持数据的一致性。   事物的四个基本特征(ACID)  A: Atomicity -&gt; 原子性  事物是数据库的逻辑单位不能分割，其中的操作要么都做，要么都不做 实现原理  undo log(回滚日志), 会执行相">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库经典面试题">
+<meta property="og:url" content="http://example.com/2022/02/18/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="Tianqi&#39;s blog">
+<meta property="og:description" content="事物  什么是事物  事物是并发控制的基本单位。是一个操作系列，这些操作要么都执行，要么都不执行，是一个不可分割的工作单位。是数据库中维护数据一致性的单位，每个事物结束之后都能保持数据的一致性。   事物的四个基本特征(ACID)  A: Atomicity -&gt; 原子性  事物是数据库的逻辑单位不能分割，其中的操作要么都做，要么都不做 实现原理  undo log(回滚日志), 会执行相">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-18T23:18:54.000Z">
+<meta property="article:modified_time" content="2022-02-22T04:00:51.968Z">
+<meta property="article:author" content="Tianqi Xie">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/02/18/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/02/18/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98/","path":"2022/02/18/数据库经典面试题/","title":"数据库经典面试题"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>数据库经典面试题 | Tianqi's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Tianqi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E7%89%A9"><span class="nav-number">1.</span> <span class="nav-text"> 事物</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%8B%E7%89%A9"><span class="nav-number">1.1.</span> <span class="nav-text"> 什么是事物</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E7%89%A9%E7%9A%84%E5%9B%9B%E4%B8%AA%E5%9F%BA%E6%9C%AC%E7%89%B9%E5%BE%81acid"><span class="nav-number">1.2.</span> <span class="nav-text"> 事物的四个基本特征(ACID)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81"><span class="nav-number">2.</span> <span class="nav-text"> 乐观锁和悲观锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">3.</span> <span class="nav-text"> 关系型数据库和非关系型数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8C%83%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text"> 范式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E8%8C%83%E5%BC%8F"><span class="nav-number">4.1.</span> <span class="nav-text"> 第一范式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E8%8C%83%E5%BC%8F"><span class="nav-number">4.2.</span> <span class="nav-text"> 第二范式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E8%8C%83%E5%BC%8F"><span class="nav-number">4.3.</span> <span class="nav-text"> 第三范式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="nav-number">5.</span> <span class="nav-text"> 隔离级别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql"><span class="nav-number">6.</span> <span class="nav-text"> Mysql</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95"><span class="nav-number">6.1.</span> <span class="nav-text"> 索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#drop-delete-truncate"><span class="nav-number">6.2.</span> <span class="nav-text"> drop, delete, truncate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E5%BA%93%E5%92%8C%E5%88%86%E8%A1%A8"><span class="nav-number">6.3.</span> <span class="nav-text"> 分库和分表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis"><span class="nav-number">7.</span> <span class="nav-text"> Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#redis%E4%BB%8B%E7%BB%8D"><span class="nav-number">7.1.</span> <span class="nav-text"> redis介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88redis%E9%9D%9E%E5%B8%B8%E5%BF%AB"><span class="nav-number">7.2.</span> <span class="nav-text"> 为什么redis非常快</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88redis%E6%9C%89%E4%BA%86%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6%E8%BF%98%E8%A6%81%E7%94%A8mysql%E5%91%A2"><span class="nav-number">7.3.</span> <span class="nav-text"> 为什么redis有了持久化机制，还要用mysql呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#redis%E9%9B%86%E7%BE%A4%E6%96%B9%E6%A1%88"><span class="nav-number">7.4.</span> <span class="nav-text"> redis集群方案</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tianqi Xie</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/18/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tianqi Xie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tianqi's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据库经典面试题
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-18 15:18:54" itemprop="dateCreated datePublished" datetime="2022-02-18T15:18:54-08:00">2022-02-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-21 20:00:51" itemprop="dateModified" datetime="2022-02-21T20:00:51-08:00">2022-02-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="事物"><a class="markdownIt-Anchor" href="#事物"></a> 事物</h3>
+<h4 id="什么是事物"><a class="markdownIt-Anchor" href="#什么是事物"></a> 什么是事物</h4>
+<ul>
+<li>事物是并发控制的基本单位。是一个操作系列，这些操作要么都执行，要么都不执行，是一个不可分割的工作单位。是数据库中维护数据一致性的单位，每个事物结束之后都能保持数据的一致性。</li>
+</ul>
+<h4 id="事物的四个基本特征acid"><a class="markdownIt-Anchor" href="#事物的四个基本特征acid"></a> 事物的四个基本特征(ACID)</h4>
+<ul>
+<li>A: Atomicity -&gt; 原子性
+<ul>
+<li>事物是数据库的逻辑单位不能分割，其中的操作要么都做，要么都不做</li>
+<li>实现原理
+<ul>
+<li>undo log(回滚日志), 会执行相反操作，例如insert 就执行 delete</li>
+<li>如果事物执行失败了或调用rollback, 导事物需要回滚, 可以利用undo log之中的信息将数据回滚到修改之前的样子</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>C: Consistency -&gt; 一致性
+<ul>
+<li>事物执行的结果是使数据库从一个一致性状态变换到另一个一致性状态</li>
+<li>实现原理
+<ul>
+<li>保证原子性、持久性和隔离性，如果这些特性无法保证，事务的一致性也无法保证</li>
+<li>数据库本身提供保障，例如不允许向整形列插入字符串值、字符串长度不能超过列的限制等</li>
+<li>应用层面进行保障，例如如果转账操作只扣除转账者的余额，而没有增加接收者的余额，无论数据库实现的多么完美，也无法保证状态的一致</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>I: Isolation -&gt; 隔离性
+<ul>
+<li>一个事物的执行不能被其他的事物干扰</li>
+<li>实现原理
+<ul>
+<li>(一个事务)写操作对(另一个事务)写操作的影响：锁机制保证隔离性</li>
+<li>(一个事务)写操作对(另一个事务)读操作的影响：MVCC保证隔离性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>D: Durability -&gt; 持久性
+<ul>
+<li>一个事物一旦提交，其对数据库产生的改变应该是永久性的，不能回滚</li>
+<li>实现原理
+<ul>
+<li>redo log(重做日志)</li>
+<li>由于mysql的引擎中有buffer pool机制, 其中包含了磁盘部分页的映射, 作为访问数据库的缓冲。当写入数据时候会优先写入buffer pool，定期刷入到磁盘当中，如果还没来得及刷入磁盘就宕机了，那么内存中的数据会丢失。所以每次写入buffer pool之前会有redo log首先记录更改，然后写入buffer pool, 这样宕机之后会用redo log进行内存恢复。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="乐观锁和悲观锁"><a class="markdownIt-Anchor" href="#乐观锁和悲观锁"></a> 乐观锁和悲观锁</h3>
+<ul>
+<li>当我们要对一个数据库中的一条数据进行修改的时候，为了避免同时被其他人修改，最好的办法就是直接对该数据进行加锁以防止并发</li>
+<li>乐观锁
+<ul>
+<li>概念: 乐观并发控制相信事务之间的数据竞争(data race)的概率是比较小的，因此尽可能直接做下去，直到提交的时候才去锁定，所以不会产生任何锁和死锁</li>
+</ul>
+</li>
+<li>悲观锁
+<ul>
+<li>概念: 一种对数据的修改抱有悲观态度的并发控制方式。我们一般认为数据被并发修改的概率比较大，所以需要在修改之前先加锁。</li>
+<li>实现方式
+<ul>
+<li>在对记录进行修改前，先尝试为该记录加上排他锁（exclusive locking）。</li>
+<li>如果加锁失败，说明该记录正在被修改，那么当前查询可能要等待或者抛出异常。具体响应方式由开发者根据实际需要决定。</li>
+<li>如果成功加锁，那么就可以对记录做修改，事务完成后就会解锁了。</li>
+<li>其间如果有其他事务对该记录做加锁的操作，都要等待当前事务解锁或直接抛出异常。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>如何选择乐观锁和悲观锁
+<ul>
+<li>乐观锁并未真正的加锁，效率高，一旦粒度掌握不好，更新失败的几率就会比较高，容易发生业务失败</li>
+<li>悲观锁依赖数据库加锁，效率低，但是失败的效率也比较低</li>
+<li>随着 高并发， 高性能，高可用 的提出，悲观锁已经用的越来越少了</li>
+</ul>
+</li>
+</ul>
+<h3 id="关系型数据库和非关系型数据库"><a class="markdownIt-Anchor" href="#关系型数据库和非关系型数据库"></a> 关系型数据库和非关系型数据库</h3>
+<ul>
+<li>关系型数据库 RDBMS -&gt; relational database management system
+<ul>
+<li>relational: table表</li>
+<li>概念:
+<ul>
+<li>关系型数据库是采用关系模型来组织数据的数据库。 关系模型: 表</li>
+</ul>
+</li>
+<li>代表:
+<ul>
+<li>mysql, sql server, postgresql, oracle etc.</li>
+</ul>
+</li>
+<li>优点:
+<ul>
+<li>容易理解: 使用表格</li>
+<li>使用方便: 使用sql进行操作</li>
+<li>易于维护: ACID降低了数据冗余和数据不一致的概率</li>
+</ul>
+</li>
+<li>瓶颈:
+<ul>
+<li>海量数据的读写效率</li>
+<li>高拓展性与可用性</li>
+</ul>
+</li>
+<li>应用: 一致性非常高的场景， 例如银行系统</li>
+</ul>
+</li>
+<li>非关系型数据库 NOSQL -&gt; not only sql
+<ul>
+<li>概念:
+<ul>
+<li>非关系型的，分布式的，一般不保证ACID的数据存储系统。以键值来存储，结构不稳定，每一个元祖都可以有不一样的字段。</li>
+</ul>
+</li>
+<li>代表
+<ul>
+<li>Redis, MongoDB, etc</li>
+</ul>
+</li>
+<li>分类
+<ul>
+<li>面向高并发读写的key-value数据库 -&gt; redis</li>
+<li>面向海量数据访问的面向文档的数据库 -&gt; MongoDB</li>
+<li>面向可拓展的分布式数据库</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>由于Nosql约束少，所以也不能够像sql那样提供where字段属性的查询。因此适合存储较为简单的数据。有一些不能够持久化数据，所以需要和关系型数据库结合</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="范式"><a class="markdownIt-Anchor" href="#范式"></a> 范式</h3>
+<h4 id="第一范式"><a class="markdownIt-Anchor" href="#第一范式"></a> 第一范式</h4>
+<ul>
+<li>数据库表中的字段都是单一属性的，不能再分</li>
+</ul>
+<h4 id="第二范式"><a class="markdownIt-Anchor" href="#第二范式"></a> 第二范式</h4>
+<ul>
+<li>数据库表中不存在非关键字段对任一候选字段的部分函数依赖，即所有非关键字段都完全依赖任一一组候选关键字</li>
+</ul>
+<h4 id="第三范式"><a class="markdownIt-Anchor" href="#第三范式"></a> 第三范式</h4>
+<ul>
+<li>在第二范式的基础上，不存在非关键字段对任一候选关键字段的传递函数</li>
+</ul>
+<h3 id="隔离级别"><a class="markdownIt-Anchor" href="#隔离级别"></a> 隔离级别</h3>
+<ul>
+<li>Read Uncommitted
+<ul>
+<li>读未提交即一个事物可以读取另外一个事物未提交的数据</li>
+<li>例如: 老板给员工发工资，员工工资为1w，老板手滑点了2w，钱已经打入程序员的户口，但是事物还未提交。这时候员工去查看工资发现多了1w，老板及时发现了不对，点回滚，将数字改成了1w再提交</li>
+<li>分析: 实际工资1w，员工能看到2w(未提交前的数据)。这就是脏读</li>
+</ul>
+</li>
+<li>Read Committed
+<ul>
+<li>一个事物要等到另外一个事物提交后才能读取数据</li>
+<li>程序员去消费，买单的时候先进行检测(程序员事物开始), 发现里面有1w, 在这个时候他妻子把钱都转出去了, 当系统开始扣费的时候再检测发现没钱了。</li>
+<li>分析: 若有事物对数据进行更新时，读操作需要等待更新事物提交之后才能读取数据, 解决了脏读取问题。但是一个事物范围内两个相同的查询返回了不同的结果，这是不可重复读</li>
+</ul>
+</li>
+<li>Repeatable Read
+<ul>
+<li>重复读: 在开始读取数据之前，不再允许修改操作</li>
+<li>程序员消费买单时候系统检测卡里有1w, 这时候妻子不能转出金额了，就可以扣款了。</li>
+<li>分析: 重复读可以解决不可重复读问题。但是这里重复读解决的是update的问题，insert也可能出现问题, 就是幻读问题</li>
+<li>程序员开始消费，消费了2000元，妻子查看了消费记录(妻子事物开启), 发现只有2000元。这时候程序员花了10000买了个电脑，妻子打印消费记录发现是1.2w元。</li>
+</ul>
+</li>
+<li>Serializable
+<ul>
+<li>序列化: 事物串行化顺序执行，避免了脏读，不可重复读，幻读等问题。但是效率低下，耗费数据库性能，一般不使用。</li>
+</ul>
+</li>
+</ul>
+<h3 id="mysql"><a class="markdownIt-Anchor" href="#mysql"></a> Mysql</h3>
+<h4 id="索引"><a class="markdownIt-Anchor" href="#索引"></a> 索引</h4>
+<ul>
+<li>什么是索引
+<ul>
+<li>对数据库表中一个或多个列的值进行排序的结构，是帮助MYSQL高效获取数据的数据结构</li>
+<li>作用: 避免全表扫描</li>
+</ul>
+</li>
+<li>索引的数据结构
+<ul>
+<li>B-TREE
+<ul>
+<li>M阶符合的要求
+<ul>
+<li>平衡二叉树最多两个子树，而 B 树每个节点都可以有多个子树，M 阶 B 树表示每个节点最多有M个子树。</li>
+<li>平衡二叉树每个节点只有一个数据和两个指向孩子的指针，而 B 树每个中间节点有 k-1 个关键字（可以理解为数据）和 k 个子树（ k 介于阶数 M 和 M/2 之间，M/2 向上取整）。</li>
+<li>所有叶子节点均在同一层、叶子节点除了包含关键字和关键字记录的指针外也有指向其子节点的指针，只不过其指针地址都为 null 。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>B+_TREE
+<ul>
+<li>B+_Tree 是 B_Tree的更新(B_tree的叶子节点和非叶子节点都保留索引和数据，B+_Tree只有叶子节点保留实际数据，非叶子节点只保留索引)</li>
+</ul>
+</li>
+<li>B+_Tree有什么优点
+<ul>
+<li>非叶子节点不会有指向记录的指针，这样一个块中可以容纳更多的索引项
+<ul>
+<li>
+<ol>
+<li>可以降低树的高度</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>一个内部节点可以定位更多的叶子节点</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>叶子节点之间通过指针进行连接，范围扫描非常简单</li>
+</ul>
+</li>
+<li>为什么使用B+树，不用hash呢(hash可以一次性定位)
+<ul>
+<li>hash无法进行范围查找, 如 &gt;= …</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>基本的索引类型(基于mysql的InnoDB引擎)
+<ul>
+<li>主键索引
+<ul>
+<li>基于主键来创建B+数结构</li>
+</ul>
+</li>
+<li>二级索引
+<ul>
+<li>主键索引和二级索引都是维护自己的B+树结构，但是二级索引叶子节点存储的值是主键值</li>
+<li>步骤: 二级索引找到主键值 -&gt; 主键索引找到真实数据 -&gt; 两次B+树查找过程</li>
+</ul>
+</li>
+<li>覆盖索引</li>
+<li>联合索引
+<ul>
+<li>多个列进行索引</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>索引的缺点
+<ul>
+<li>磁盘占用</li>
+<li>维护索引对更新操作带来的耗时</li>
+</ul>
+</li>
+</ul>
+<h4 id="drop-delete-truncate"><a class="markdownIt-Anchor" href="#drop-delete-truncate"></a> drop, delete, truncate</h4>
+<ul>
+<li>区别
+<ul>
+<li>drop一般用于删除掉表和其所有数据(元数据和数据)</li>
+<li>delete一般用于删除表的部分数据(删除表中的某几条数据)</li>
+<li>truncate一般用于删除表中的所有数据但是不删除表结构(删除数据，不删除元数据)</li>
+</ul>
+</li>
+</ul>
+<h4 id="分库和分表"><a class="markdownIt-Anchor" href="#分库和分表"></a> 分库和分表</h4>
+<ul>
+<li>mysql的执行效率是基于服务器的处理能力，所以不能通过水平的增加服务器来进行性能的提升，所以当数据量快速增长的时候就会出现一定量的性能问题，这时候有两种解决方案
+<ul>
+<li>提升硬件能力，比如增加存储容量，cpu等，方案成本较高，瓶颈在mysql本身</li>
+<li>分库分表，将大量的数据打散分散到不同的数据库之中，使得单一数据库的数据量变小来环节单一数据库的性能问题</li>
+</ul>
+</li>
+<li>分库分表的类型
+<ul>
+<li>垂直分库
+<ul>
+<li>可以将卖家库分为商品库和店铺库，每个库存放一些信息，放于不同的服务器上，从而加速查询</li>
+<li>提升
+<ul>
+<li>解决业务层面的耦合，业务清晰</li>
+<li>能对不同业务的数据进行分级管理、维护、监控和扩展等</li>
+<li>高并发场景下，垂直分库一定程度上提升IO、数据库连接和降低单机硬件资源的瓶颈</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>垂直分表
+<ul>
+<li>表中某些字段使用频率较低，例如描述类，占用空间较大，访问时间长。这时候可以考虑将一些类似这样的字段单独放入一张表之中，将访问频率高的字段放入另一张表中。</li>
+<li>提升
+<ul>
+<li>为了避免IO争抢并减少锁表的几率，查看详情的用户与商品信息浏览互不影响。</li>
+<li>充分发挥热门数据的操作效率，商品信息的操作的高效率不会被商品描述的低效率拖累。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>水平分库
+<ul>
+<li>把一个库中的数据分到多个不同的库，每个库只有这个库的部分数据，这些库可以分步在不同的服务器，从而实现负载均衡，提升性能。</li>
+</ul>
+</li>
+<li>水平分表
+<ul>
+<li>将一个表的数据分到同一个库的多张表中，每个表中的数据只有这个表的部分数据，能够小幅度提升性能</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="redis"><a class="markdownIt-Anchor" href="#redis"></a> Redis</h3>
+<h4 id="redis介绍"><a class="markdownIt-Anchor" href="#redis介绍"></a> redis介绍</h4>
+<ul>
+<li>redis介绍
+<ul>
+<li>redis是高性能的key-value数据库</li>
+</ul>
+</li>
+<li>与其他的key-value数据库相比有如下三个特点
+<ul>
+<li>redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载使用
+<ul>
+<li>全量模式 -&gt; snapshot模式</li>
+<li>增量模式 -&gt; AOF日志模式</li>
+</ul>
+</li>
+<li>redis不仅仅简单支持key-value啥类型数据，还支持list,set,zset,hash,string等数据结构存储</li>
+<li>redis支持数据的备份, 即master-slave模式的数据备份</li>
+</ul>
+</li>
+</ul>
+<h4 id="为什么redis非常快"><a class="markdownIt-Anchor" href="#为什么redis非常快"></a> 为什么redis非常快</h4>
+<ul>
+<li>性能高的原因
+<ul>
+<li>内存存储: redis使用内存存储，没有磁盘IO上的开销</li>
+<li>单线程实现: redis使用单个线程处理请求，避免了多个线程切换和锁资源争用的开销</li>
+<li>非阻塞IO: redis使用多路复用的技术，在poll, epoll和kqueue选择最优的IO实现</li>
+<li>优化的数据结构: redis有诸多可以直接应用的优化数据结构的实现，应用层可以直接使用原生的数据结果提升性能
+<ul>
+<li>redis支持的数据结构
+<ul>
+<li>字符串: string</li>
+<li>列表: list</li>
+<li>有序集合: zset</li>
+<li>哈希表: hash</li>
+<li>集合: set</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="为什么redis有了持久化机制还要用mysql呢"><a class="markdownIt-Anchor" href="#为什么redis有了持久化机制还要用mysql呢"></a> 为什么redis有了持久化机制，还要用mysql呢？</h4>
+<ul>
+<li>不是一个关系型数据库(sql对于表的复杂查询，分析还是非常有帮助的)</li>
+<li>将所有数据存储在内存中，虽然有持久化机制但是宕机之后恢复还是比较慢的</li>
+</ul>
+<h4 id="redis集群方案"><a class="markdownIt-Anchor" href="#redis集群方案"></a> redis集群方案</h4>
+<ul>
+<li>CAP理论: consistency 一致性(用户看到相同数据), availability 可用性(某些节点故障, 所有请求都能被响应), partition tolerance 分区容错性(网络通信出现问题时, 暂时隔离开的子系统也可以继续运行)</li>
+<li>redis cluster: 去中心化</li>
+<li>codis: 分布式的redis解决方案，对上层应用来说，连接到codis和redis server无明显区别</li>
+<li>twemproxy</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="prev" title="计算机网络经典面试题">
+                  <i class="fa fa-chevron-left"></i> 计算机网络经典面试题
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tianqi Xie</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

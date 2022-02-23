@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="OSI模型以及TCP&#x2F;IP模型  OIS模型: 物理层 - 数据链路层 - 网络层 - 传输层 - 会话层 - 表示层 - 应用层 TCP&#x2F;IP模型: 网络访问层 - 网络层 - 传输层 - 应用层   DNS  定义: 域名系统， 域名和IP相互映射的一个分布式数据库（集群式的） 分类: 根服务器 顶级域名服务器 权限域名服务器 本地域名服务器 工作流程  主机向本地域名服务器的查询一般是递归">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络经典面试题">
+<meta property="og:url" content="http://example.com/2022/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="Tianqi&#39;s blog">
+<meta property="og:description" content="OSI模型以及TCP&#x2F;IP模型  OIS模型: 物理层 - 数据链路层 - 网络层 - 传输层 - 会话层 - 表示层 - 应用层 TCP&#x2F;IP模型: 网络访问层 - 网络层 - 传输层 - 应用层   DNS  定义: 域名系统， 域名和IP相互映射的一个分布式数据库（集群式的） 分类: 根服务器 顶级域名服务器 权限域名服务器 本地域名服务器 工作流程  主机向本地域名服务器的查询一般是递归">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-09T20:36:04.000Z">
+<meta property="article:modified_time" content="2022-02-11T07:03:07.992Z">
+<meta property="article:author" content="Tianqi Xie">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98/","path":"2022/02/09/计算机网络经典面试题/","title":"计算机网络经典面试题"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>计算机网络经典面试题 | Tianqi's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Tianqi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#osi%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8Atcpip%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text"> OSI模型以及TCP&#x2F;IP模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dns"><span class="nav-number">2.</span> <span class="nav-text"> DNS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tcp%E4%B8%8Eudp"><span class="nav-number">3.</span> <span class="nav-text"> TCP与UDP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http%E4%B8%8Ehttps"><span class="nav-number">4.</span> <span class="nav-text"> HTTP与HTTPS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#session-cookie-token%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB"><span class="nav-number">5.</span> <span class="nav-text"> Session, Cookie, Token的主要区别</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tianqi Xie</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tianqi Xie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tianqi's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机网络经典面试题
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-09 12:36:04" itemprop="dateCreated datePublished" datetime="2022-02-09T12:36:04-08:00">2022-02-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-10 23:03:07" itemprop="dateModified" datetime="2022-02-10T23:03:07-08:00">2022-02-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="osi模型以及tcpip模型"><a class="markdownIt-Anchor" href="#osi模型以及tcpip模型"></a> OSI模型以及TCP/IP模型</h3>
+<ul>
+<li>OIS模型: 物理层 - 数据链路层 - 网络层 - 传输层 - 会话层 - 表示层 - 应用层</li>
+<li>TCP/IP模型: 网络访问层 - 网络层 - 传输层 - 应用层</li>
+</ul>
+<h3 id="dns"><a class="markdownIt-Anchor" href="#dns"></a> DNS</h3>
+<ul>
+<li>定义: 域名系统， 域名和IP相互映射的一个分布式数据库（集群式的）</li>
+<li>分类: 根服务器 顶级域名服务器 权限域名服务器 本地域名服务器</li>
+<li>工作流程
+<ul>
+<li>主机向本地域名服务器的查询一般是递归查询，本地域名服务器向根域名服务器的查询一般是迭代查询</li>
+<li>递归查询: 本机向本地域名服务器发送请求，本地域名服务器去请求根域名服务器而不是本机去请求根域名服务器
+<ul>
+<li>请求: 本机 -&gt; 本地域名服务器 -&gt; 根域名服务器</li>
+<li>返回: 根域名服务器 -&gt; 本地域名服务器 -&gt; 本机</li>
+</ul>
+</li>
+<li>迭代查询: 本地域名服务器向根域名服务器发送请求后，根域名服务器不知道则让本机去联系顶级域名服务器
+<ul>
+<li>请求: 本地域名服务器 -&gt; 根域名服务器 -&gt; 顶级域名服务器</li>
+<li>返回: 顶级域名服务器 -&gt; 本地域名服务器</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="tcp与udp"><a class="markdownIt-Anchor" href="#tcp与udp"></a> TCP与UDP</h3>
+<ul>
+<li>区别
+<ul>
+<li>TCP面向连接, UDP无连接</li>
+<li>TCP是可靠协议, UDP不可靠</li>
+<li>TCP传输字节流, UDP传输数据报</li>
+<li>TCP传输效率慢, UDP传输快</li>
+<li>TCP首部字节20-60, UDP首部字节8</li>
+</ul>
+</li>
+<li>应用场景
+<ul>
+<li>TCP: HTTP, FTP, SMTP</li>
+<li>UDP: 包总量较小(DNS), 视频音频等多媒体及时通信, 广播等</li>
+</ul>
+</li>
+<li>TCP如何保证可靠传输
+<ul>
+<li>校验和, 序列号, 超时重传, 流量控制, 拥塞避免等</li>
+<li>校验和: 发送端和接收端分别计算校验和，不一致则说明有问题</li>
+<li>序列号: TCP会对每一个发送的字节编号，接收方接收到数据后会对发送方发送确认应答(ACK)，并且ACK报文中会带有确认编号，告诉发送方下一次发送数据的编号</li>
+<li>超时重传: 若发送方发送数据一段时间后没有收到ACK，发送方会重新发送数据</li>
+<li>流量控制: 发送方发送数据太快会造成接收端来不及接受出现丢包。发送方会根据ACK报文中体现的接收方窗口大小来控制发送速度</li>
+<li>拥塞控制: 出现拥塞会出现丢包，如果继续重传拥塞会更加严重。慢开始 -&gt; 拥塞避免 -&gt; 快重传 -&gt; 快恢复</li>
+</ul>
+</li>
+<li>TCP三次握手，四次挥手
+<ul>
+<li>三次握手
+<ul>
+<li>客户端 -&gt; 服务端: SYN=1 seq=x 客户端进入SYN-SENT阶段</li>
+<li>服务端 -&gt; 客户端: SYN=1 ACK=1 seq=y ack=x+1 服务端进入SYN-RCVD阶段</li>
+<li>客户端 -&gt; 服务端: ACK=1 seq=x+1 ack=y+1 两边都进入ESTABLISHED阶段</li>
+</ul>
+</li>
+<li>四次挥手
+<ul>
+<li>客户端 -&gt; 服务端: FIN=1 seq=u 客户端进入FIN-WAIT-1阶段</li>
+<li>服务端 -&gt; 客户端: ACK=1 seq=v ack=u+1 服务端进入CLOSE-WAIT阶段 客户端进入FIN-WAIT-2阶段</li>
+<li>服务端 -&gt; 客户端: FIN=1 ACK=1 seq=w ack=u+1 客户端进入LAST-ACK阶段</li>
+<li>客户端 -&gt; 服务端: ACK=1 seq=u+1 ack=w+1 客户端进入TIME-WAIT阶段 服务端CLOSED</li>
+<li>客户端TIME-WAIT阶段2MSL后进入CLOSED阶段
+<ul>
+<li>为什么是2MSL(报文最长寿命)
+<ul>
+<li>考虑丢包问题，如果四次挥手的报文丢失了，服务端没有收到ACK会重发第三次挥手的报文，如果不等待直接关闭，报文就又丢失，会造成服务端无法正常关闭</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>TCP建立连接后，客户端故障怎么办
+<ul>
+<li>会有TCP保活机制，发送保活探测报文，如果发送固定次数没有回应则会关闭TCP连接</li>
+</ul>
+</li>
+</ul>
+<h3 id="http与https"><a class="markdownIt-Anchor" href="#http与https"></a> HTTP与HTTPS</h3>
+<ul>
+<li>区别
+<ul>
+<li>端口不同: HTTP -&gt; 40 HTTPS -&gt; 443</li>
+<li>安全性: HTTP无加密，安全性较差, HTTPS有加密机制，安全性较高</li>
+<li>资源消耗: HTTP较少, HTTPS较多</li>
+<li>证书: HTTP不需要, HTTPS需要</li>
+<li>协议: HTTP运行在TCP上, HTTPS运行在SSL上(SSL运行在TCP上)</li>
+</ul>
+</li>
+<li>对称加密与非对称加密
+<ul>
+<li>对称加密是指加密和解密使用同一密钥
+<ul>
+<li>优点: 运算速度快</li>
+<li>缺点: 如何安全的将密钥传输给另外一方</li>
+</ul>
+</li>
+<li>非对称加密是指加密和解密使用不同的密钥
+<ul>
+<li>一把公钥一把私钥，公钥加密的信息需要私钥才能进行解密</li>
+<li>优点: 可以安全的将密钥传输</li>
+<li>缺点: 速度慢</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>HTTPS加密过程
+<ul>
+<li>服务端生成一对非对称密钥，公钥发送给客户端。</li>
+<li>客户端生成对称密钥，用服务端发来的公钥进行加密，加密后发给服务端</li>
+<li>服务端使用私钥进行解密</li>
+<li>中间会有证书的作用</li>
+</ul>
+</li>
+<li>常用的HTTP状态码
+<ul>
+<li>1xx: 信息性状态码</li>
+<li>2xx: 成功状态码</li>
+<li>3xx: 重定向状态码</li>
+<li>4xx: 客户端错误状态码</li>
+<li>5xx: 服务器错误状态码</li>
+</ul>
+</li>
+<li>常用的HTTP方法
+<ul>
+<li>GET: 获取资源</li>
+<li>POST: 传输实体主题</li>
+<li>PUT: 上传文件</li>
+<li>DELETE: 删除文件</li>
+<li>可以将PUT, DELETE, POST, GET视为客户端对服务器端的增删改查</li>
+</ul>
+</li>
+<li>GET和POST的区别
+<ul>
+<li>GET用于获取资源, POST用于传输实体</li>
+<li>GET的参数放在URL中, POST的参数存储在实体主体中</li>
+<li>GET方法因为参数在URL中, 安全性相对较低</li>
+<li>GET方法有幂等性(连续发送多次请求收到结果相同), POST方法不具备幂等性</li>
+</ul>
+</li>
+<li>浏览器输入URL到显示主页的过程
+<ul>
+<li>对输入的URL进行DNS解析(请求本机 -&gt; 本地域名服务器 …), 将域名转换为ip地址</li>
+<li>和目的服务器简历TCP连接</li>
+<li>向目的服务器发送HTTP请求</li>
+<li>服务器处理请求并返回HTTP报文</li>
+<li>浏览器解析并渲染页面</li>
+</ul>
+</li>
+</ul>
+<h3 id="session-cookie-token的主要区别"><a class="markdownIt-Anchor" href="#session-cookie-token的主要区别"></a> Session, Cookie, Token的主要区别</h3>
+<ul>
+<li>Cookie
+<ul>
+<li>是保存在客户端的一个小数据块，包含了用户信息。客户端向服务器发起请求的时候服务器会给客户端发送一个cookie, 当下次请求服务端时, 会携带cookie来确定身份</li>
+</ul>
+</li>
+<li>Session
+<ul>
+<li>Session是通过Cookie实现的, Session存在服务端。当客户端第一次访问服务端时，服务端会给客户端配置一个sessionid, 并将sessionid放到cookie中。当再次访问的时候会取出cookie中的sessionid, 根据sessionid获取会话中存储的信息。</li>
+</ul>
+</li>
+<li>Token
+<ul>
+<li>客户端在浏览器第一次访问服务端时，服务端生成的一串字符串作为Token发给客户端浏览器，下次浏览器在访问服务端时携带token即可无需验证用户名和密码</li>
+</ul>
+</li>
+<li>禁用cookie之后session还能用么
+<ul>
+<li>sessionid一般是通过cookie传递。如果cookie被禁用, 可以通过URL传递sessionid。</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"># 计算机网络</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/02/09/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="prev" title="操作系统经典面试题">
+                  <i class="fa fa-chevron-left"></i> 操作系统经典面试题
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/02/18/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="next" title="数据库经典面试题">
+                  数据库经典面试题 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tianqi Xie</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="OSI模型简介  定义: OSI模型(Open Systems Interconnection Model)是用来描述网络工作原理的概念框架   第一层: 物理层(Physical layer)  物理层考虑的是将底层非结构化的数据比特流(bits)以电信号的方式从发送方传输到接收方。在物理层，人们可能会发现一些&quot;物理&quot;资源，例如网络集线器，电缆，中继器，网络适配器等 物理层">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OSI vs TCP&#x2F;IP 模型">
+<meta property="og:url" content="http://example.com/2022/02/04/OSI-vs-TCP-IP-%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:site_name" content="Tianqi&#39;s blog">
+<meta property="og:description" content="OSI模型简介  定义: OSI模型(Open Systems Interconnection Model)是用来描述网络工作原理的概念框架   第一层: 物理层(Physical layer)  物理层考虑的是将底层非结构化的数据比特流(bits)以电信号的方式从发送方传输到接收方。在物理层，人们可能会发现一些&quot;物理&quot;资源，例如网络集线器，电缆，中继器，网络适配器等 物理层">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-04T18:57:57.000Z">
+<meta property="article:modified_time" content="2022-02-09T19:02:25.114Z">
+<meta property="article:author" content="Tianqi Xie">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/02/04/OSI-vs-TCP-IP-%E6%A8%A1%E5%9E%8B/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/02/04/OSI-vs-TCP-IP-%E6%A8%A1%E5%9E%8B/","path":"2022/02/04/OSI-vs-TCP-IP-模型/","title":"OSI vs TCP/IP 模型"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>OSI vs TCP/IP 模型 | Tianqi's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Tianqi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#osi%E6%A8%A1%E5%9E%8B%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text"> OSI模型简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E5%B1%82-%E7%89%A9%E7%90%86%E5%B1%82physical-layer"><span class="nav-number">1.1.</span> <span class="nav-text"> 第一层: 物理层(Physical layer)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E5%B1%82-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82datalink-layer"><span class="nav-number">1.2.</span> <span class="nav-text"> 第二层: 数据链路层(DataLink layer)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E5%B1%82-%E7%BD%91%E7%BB%9C%E5%B1%82network-layer"><span class="nav-number">1.3.</span> <span class="nav-text"> 第三层: 网络层(Network layer)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E5%B1%82-%E4%BC%A0%E8%BE%93%E5%B1%82transport-layer"><span class="nav-number">1.4.</span> <span class="nav-text"> 第四层: 传输层(Transport layer)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E5%B1%82-%E4%BC%9A%E8%AF%9D%E5%B1%82session-layer"><span class="nav-number">1.5.</span> <span class="nav-text"> 第五层: 会话层(Session layer)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E5%B1%82-%E8%A1%A8%E7%A4%BA%E5%B1%82presentation-layer"><span class="nav-number">1.6.</span> <span class="nav-text"> 第六层: 表示层(Presentation layer)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E5%B1%82-%E5%BA%94%E7%94%A8%E5%B1%82application-layer"><span class="nav-number">1.7.</span> <span class="nav-text"> 第七层: 应用层(Application layer)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tcpip%E6%A8%A1%E5%9E%8B%E7%AE%80%E4%BB%8B"><span class="nav-number">2.</span> <span class="nav-text"> TCP&#x2F;IP模型简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#osi%E6%A8%A1%E5%9E%8B-vs-tcp%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text"> OSI模型 vs TCP模型</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tianqi Xie</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/04/OSI-vs-TCP-IP-%E6%A8%A1%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tianqi Xie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tianqi's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          OSI vs TCP/IP 模型
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-04 10:57:57" itemprop="dateCreated datePublished" datetime="2022-02-04T10:57:57-08:00">2022-02-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-09 11:02:25" itemprop="dateModified" datetime="2022-02-09T11:02:25-08:00">2022-02-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="osi模型简介"><a class="markdownIt-Anchor" href="#osi模型简介"></a> OSI模型简介</h3>
+<ul>
+<li>定义: OSI模型(Open Systems Interconnection Model)是用来描述网络工作原理的概念框架</li>
+</ul>
+<h4 id="第一层-物理层physical-layer"><a class="markdownIt-Anchor" href="#第一层-物理层physical-layer"></a> 第一层: 物理层(Physical layer)</h4>
+<ul>
+<li>物理层考虑的是将底层非结构化的数据比特流(bits)以电信号的方式从发送方传输到接收方。在物理层，人们可能会发现一些&quot;物理&quot;资源，例如网络集线器，电缆，中继器，网络适配器等</li>
+<li>物理层用到的协议包括：蓝牙，通用串行总线等</li>
+<li>常用的设备：光纤，集线器，串口，并口</li>
+</ul>
+<h4 id="第二层-数据链路层datalink-layer"><a class="markdownIt-Anchor" href="#第二层-数据链路层datalink-layer"></a> 第二层: 数据链路层(DataLink layer)</h4>
+<ul>
+<li>作为发送端: 数据链路层考虑的是将数据流转换成为信号, 通过底层硬件发送</li>
+<li>作为接收端: 数据链路层考虑的接收来自硬件的信号数据，将其集成为能够识别的帧格式，并发送给上层</li>
+<li>作用
+<ul>
+<li>从网络层获取数据将其包装成帧，在硬件上诸位发送。从物理层获取信号并组装成帧发送给网络层</li>
+<li>提供硬件寻址机制</li>
+<li>保证数据帧的同步传输</li>
+<li>检测传输中会发生的错误，并恢复成为实际数据位</li>
+<li>流量控制使得两台机器能够相同速度交换数据</li>
+</ul>
+</li>
+<li>数据链路层用到的协议包括: 以太网，异步传输模式，WIFI</li>
+<li>常见的设备: 网卡，交换机，桥接器</li>
+</ul>
+<h4 id="第三层-网络层network-layer"><a class="markdownIt-Anchor" href="#第三层-网络层network-layer"></a> 第三层: 网络层(Network layer)</h4>
+<ul>
+<li>把传输层产生的报文段或用户数据封装成组或者包进行发送, 选择合适的网间路由和交换节点, 保证数据及时传送</li>
+<li>功能
+<ul>
+<li>寻址: 依靠IP地址进行通信(类似数据链路层的MAC地址)</li>
+<li>路由: 在同一个网络中的内部通信并不需要网络层设备，依靠数据链路层就可以完成互相通信</li>
+</ul>
+</li>
+<li>网络层用到的协议包括: IP, ICMP, RIP等</li>
+<li>常见的设备: 路由器, 三层交换机</li>
+</ul>
+<h4 id="第四层-传输层transport-layer"><a class="markdownIt-Anchor" href="#第四层-传输层transport-layer"></a> 第四层: 传输层(Transport layer)</h4>
+<ul>
+<li>传输层对一个会话或连接提供可靠的传输服务</li>
+<li>功能
+<ul>
+<li>复用: 将应用程序接受报文后封装在传输层的段中再交给网络层发送</li>
+<li>分用: 当从网络层收到数据后，必须将数据正确的传递给某个应用程序(能够对不同进程的数据加以区分)</li>
+<li>寻址: 定位应用程序</li>
+<li>流量控制/拥塞控制等</li>
+</ul>
+</li>
+<li>传输层用到的协议包括: TCP, UDP等</li>
+</ul>
+<h4 id="第五层-会话层session-layer"><a class="markdownIt-Anchor" href="#第五层-会话层session-layer"></a> 第五层: 会话层(Session layer)</h4>
+<ul>
+<li>会话负责会话检查点和恢复</li>
+<li>功能
+<ul>
+<li>为会话实体创造连接</li>
+<li>为两个会话用户提供有组织的，同步的数据传输</li>
+<li>连接释放</li>
+</ul>
+</li>
+<li>会话层用到的协议包括: PPTP, RPC, SOCKS等</li>
+</ul>
+<h4 id="第六层-表示层presentation-layer"><a class="markdownIt-Anchor" href="#第六层-表示层presentation-layer"></a> 第六层: 表示层(Presentation layer)</h4>
+<ul>
+<li>表示层负责为不同终端的上层用于提供数据和信息正确的语法表示变换方法</li>
+<li>功能
+<ul>
+<li>数据语法转换</li>
+<li>语法表示</li>
+<li>连接管理</li>
+<li>数据处理: 加密解密, 压缩解压, 编码解码等</li>
+</ul>
+</li>
+<li>表示层用到的协议包括: HTTP/HTTPS, FTP/FTPS, SSH等</li>
+</ul>
+<h4 id="第七层-应用层application-layer"><a class="markdownIt-Anchor" href="#第七层-应用层application-layer"></a> 第七层: 应用层(Application layer)</h4>
+<ul>
+<li>应用层直接和应用程序接口结合，并提供常见的网络应用服务</li>
+<li>应用层用到的协议包括: SMTP, DNS, POP3等</li>
+</ul>
+<hr>
+<h3 id="tcpip模型简介"><a class="markdownIt-Anchor" href="#tcpip模型简介"></a> TCP/IP模型简介</h3>
+<ul>
+<li>第一层: 网络访问层(Network Access layer)
+<ul>
+<li>包含了OSI模型中的 数据链路层 - 物理层(二合一)</li>
+</ul>
+</li>
+<li>第二层: 网络层(Network layer)</li>
+<li>第三层: 传输层(Transport layer)</li>
+<li>第四层: 应用层(Application layer)
+<ul>
+<li>包括了OSI模型中的 会话层 - 表示层 - 应用层(三合一)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="osi模型-vs-tcp模型"><a class="markdownIt-Anchor" href="#osi模型-vs-tcp模型"></a> OSI模型 vs TCP模型</h3>
+<ul>
+<li>不同
+<ul>
+<li>OSI七层, TCP/IP四层</li>
+<li>OSI模型是概念性的模型，主要用于描述，讨论和理解网络功能。TCP/IP模型适用于解决实际问题</li>
+<li>OSI模型是通用的，独立于协议的，但大多数协议都遵守它。TCP/IP模型是基于internet开发的标准协议</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"># 计算机网络</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/25/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/" rel="prev" title="二叉树遍历算法">
+                  <i class="fa fa-chevron-left"></i> 二叉树遍历算法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/02/09/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="next" title="操作系统经典面试题">
+                  操作系统经典面试题 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tianqi Xie</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
