@@ -127,18 +127,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -167,6 +167,1276 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/02/leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tianqi Xie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tianqi's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/06/02/leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">leetcode题目总结</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-06-02 10:53:28" itemprop="dateCreated datePublished" datetime="2022-06-02T10:53:28-07:00">2022-06-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-06-10 10:12:16" itemprop="dateModified" datetime="2022-06-10T10:12:16-07:00">2022-06-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="1-100"><a class="markdownIt-Anchor" href="#1-100"></a> 1 - 100</h3>
+<h4 id="1-two-sum"><a class="markdownIt-Anchor" href="#1-two-sum"></a> 1. two sum</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.</li>
+</ul>
+</li>
+<li>Solutions
+<ul>
+<li>one: brute search -&gt; O(n^2)</li>
+<li>two: sort -&gt; two pointers -&gt; O(nlogn)</li>
+<li>three: hashmap -&gt; O(n) space O(n)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="2-add-two-numbers"><a class="markdownIt-Anchor" href="#2-add-two-numbers"></a> 2. Add two numbers</h4>
+<ul>
+<li>Description:
+<ul>
+<li>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit.</li>
+</ul>
+</li>
+<li>Solutions
+<ul>
+<li>one: two pointers</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="3-longest-substring-without-repeating-characters"><a class="markdownIt-Anchor" href="#3-longest-substring-without-repeating-characters"></a> 3. Longest Substring Without Repeating Characters</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given a string s, find the length of the longest substring without repeating characters.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: slide window -&gt; could use hashmap to store the prefix strings</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="4-given-two-sorted-arrays-nums1-and-nums2-of-size-m-and-n-respectively-return-the-median-of-the-two-sorted-arrays"><a class="markdownIt-Anchor" href="#4-given-two-sorted-arrays-nums1-and-nums2-of-size-m-and-n-respectively-return-the-median-of-the-two-sorted-arrays"></a> 4. Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: merge sort these two sorted arrays and find the median number -&gt; O(m + n) not satisfiy the requirement</li>
+<li>two: use binary search to find the kth element in two sorted arrays -&gt; consider the parity of total length of these two arrays</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="5-longest-palindromic-substring"><a class="markdownIt-Anchor" href="#5-longest-palindromic-substring"></a> 5. Longest Palindromic Substring</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given a string s, return the longest palindromic substring in s</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: dynamic algorithm
+<ul>
+<li>F(i, j) -&gt; F(i+1, j-1) + compare(a[i], a[j]) and j &gt; i.</li>
+<li>i -&gt; i + 1: bottom to top</li>
+<li>j -&gt; j - 1: left to right</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="6-zigzag-conversion"><a class="markdownIt-Anchor" href="#6-zigzag-conversion"></a> 6. Zigzag Conversion</h4>
+<ul>
+<li>Description:
+<ul>
+<li>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: define a res 2D Array to receive the result, what we can do is decide the direction we should move and add the element into res Array</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="7-reverse-integer"><a class="markdownIt-Anchor" href="#7-reverse-integer"></a> 7. Reverse Integer</h4>
+<h4 id="8-string-to-integer"><a class="markdownIt-Anchor" href="#8-string-to-integer"></a> 8. String to integer</h4>
+<h4 id="9-palindrome-number"><a class="markdownIt-Anchor" href="#9-palindrome-number"></a> 9. Palindrome Number</h4>
+<hr>
+<h4 id="10-regular-expression-matching"><a class="markdownIt-Anchor" href="#10-regular-expression-matching"></a> 10. Regular Expression Matching</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given an input string s and a pattern p, implement regular expression matching with support for ‘.’ and ‘*’ where:
+<ul>
+<li>‘.’ Matches any single character.​​​​</li>
+<li>‘*’ Matches zero or more of the preceding element.</li>
+</ul>
+</li>
+<li>The matching should cover the entire input string (not partial)</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: Dynamic Algorithm
+<ul>
+<li>dp(i, j) means if s[0:i] and p[0:j] could match or not</li>
+<li>if j == ‘.’ =&gt; we need to know if dp[i-1][j-1] is True or not</li>
+<li>if j == letter =&gt; we need to know dp[i-1][j-1] and compare s[i] and p[j]</li>
+<li>if j == ‘*’
+<ul>
+<li>dp[i-1][j] and (s[i] == p[j-1] or p[j-1] == ‘.’)</li>
+<li>dp[i][j-2] or dp[i][j-1]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="11-container-with-most-water"><a class="markdownIt-Anchor" href="#11-container-with-most-water"></a> 11. Container With Most Water</h4>
+<ul>
+<li>Description:
+<ul>
+<li>You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).</li>
+<li>Find two lines that together with the x-axis form a container, such that the container contains the most water.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: two pointers
+<ul>
+<li>left, right = 0, len(height) - 1</li>
+<li>if height[left] &lt; height[right] =&gt; we can move the left pointer until we find another height which is higher(lower wall has no chance to exceed the area of the container) than height[left]</li>
+<li>if height[left] &gt; height[right] =&gt; the same, move the right pointer</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="12-integer-to-roman"><a class="markdownIt-Anchor" href="#12-integer-to-roman"></a> 12. Integer to Roman</h4>
+<h4 id="13-roman-to-integer"><a class="markdownIt-Anchor" href="#13-roman-to-integer"></a> 13. Roman to Integer</h4>
+<h4 id="14-longest-common-prefix"><a class="markdownIt-Anchor" href="#14-longest-common-prefix"></a> 14. Longest Common Prefix</h4>
+<hr>
+<h4 id="15-3sum"><a class="markdownIt-Anchor" href="#15-3sum"></a> 15. 3Sum</h4>
+<h4 id="16-3sum-closest"><a class="markdownIt-Anchor" href="#16-3sum-closest"></a> 16. 3Sum Closest</h4>
+<h4 id="18-4sum"><a class="markdownIt-Anchor" href="#18-4sum"></a> 18. 4Sum</h4>
+<ul>
+<li>for this kind of sum questions =&gt; we use two pointers to solve this</li>
+</ul>
+<hr>
+<h4 id="17-letter-combinations-of-a-phone-number"><a class="markdownIt-Anchor" href="#17-letter-combinations-of-a-phone-number"></a> 17. Letter Combinations of a Phone Number</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. Return the answer in any order.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: we can define a hashmap to reocrd the corresponding letters for each button and use simple backtrack algorithm to solve this question</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="19-remove-nth-node-from-end-of-list"><a class="markdownIt-Anchor" href="#19-remove-nth-node-from-end-of-list"></a> 19. Remove Nth Node From End of List</h4>
+<ul>
+<li>linked list operation =&gt; simple</li>
+</ul>
+<h4 id="20-valid-parentheses"><a class="markdownIt-Anchor" href="#20-valid-parentheses"></a> 20. Valid Parentheses</h4>
+<ul>
+<li>use stack to solve</li>
+</ul>
+<h4 id="21-merge-two-sorted-lists"><a class="markdownIt-Anchor" href="#21-merge-two-sorted-lists"></a> 21. Merge Two Sorted Lists</h4>
+<hr>
+<h4 id="22-generate-parentheses"><a class="markdownIt-Anchor" href="#22-generate-parentheses"></a> 22. Generate Parentheses</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>use recursion to solve this kind of quesiton(find all combinations of something)
+<ul>
+<li>use leftParentheseNumber to record the number of (</li>
+<li>n - leftParentheseNumber means the number of ( could be used</li>
+<li>string represent the current string</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="23-merge-k-sorted-lists"><a class="markdownIt-Anchor" href="#23-merge-k-sorted-lists"></a> 23. Merge k Sorted Lists</h4>
+<ul>
+<li>Description:
+<ul>
+<li>You are given an array of k linked-lists lists, each linked-list is sorted in ascending order, Merge all the linked-lists into one sorted linked-list and return it.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: there are k linked listed -&gt; we have to find the smallest one each time we move the pointer
+<ul>
+<li>use heap to find the minimum number and index, then move the pointer of kth list</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="24-swap-nodes-in-pairs"><a class="markdownIt-Anchor" href="#24-swap-nodes-in-pairs"></a> 24. Swap Nodes in Pairs</h4>
+<h4 id="25-reverse-nodes-in-k-group"><a class="markdownIt-Anchor" href="#25-reverse-nodes-in-k-group"></a> 25. Reverse Nodes in k-Group</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given the head of a linked list, reverse the nodes of the list k at a time, and return the modified list. k is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of k then left-out nodes, in the end, should remain as it is.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: write all these nodes into an array, change postion in array is way better than change postion in linked list</li>
+<li>two: for k numbers of nodes, follow the change rules(for the loop)
+<ul>
+<li>cur.next = nex.next</li>
+<li>nex.next = pre.next</li>
+<li>pre.next = nex</li>
+<li>nex = cur.next</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="26-remove-duplicates-from-sorted-array"><a class="markdownIt-Anchor" href="#26-remove-duplicates-from-sorted-array"></a> 26. Remove Duplicates from Sorted Array</h4>
+<h4 id="27-remove-element"><a class="markdownIt-Anchor" href="#27-remove-element"></a> 27. Remove Element</h4>
+<h4 id="28-28-implement-strstr"><a class="markdownIt-Anchor" href="#28-28-implement-strstr"></a> 28. 28. Implement strStr()</h4>
+<h4 id="29-divide-two-integers"><a class="markdownIt-Anchor" href="#29-divide-two-integers"></a> 29. Divide Two Integers</h4>
+<hr>
+<h4 id="30-substring-with-concatenation-of-all-words"><a class="markdownIt-Anchor" href="#30-substring-with-concatenation-of-all-words"></a> 30. Substring with Concatenation of All Words</h4>
+<ul>
+<li>Description:
+<ul>
+<li>You are given a string s and an array of strings words of the same length. Return all starting indices of substring(s) in s that is a concatenation of each word in words exactly once, in any order, and without any intervening characters.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: just use hashmap to store the words information and match them in string(simple)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="31-next-permutation"><a class="markdownIt-Anchor" href="#31-next-permutation"></a> 31. Next Permutation</h4>
+<ul>
+<li>Description:
+<ul>
+<li>A permutation of an array of integers is an arrangement of its members into a sequence or linear order.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one:
+<ul>
+<li>check from the end of the array while increasing, mark the pivot point while the left number is lower than right</li>
+<li>start checking from the end of the array again, find the “smallest number” which is greater than pivot number</li>
+<li>exchange the smallest number and pivot number and resort the array from pivot point</li>
+<li>if not find the pivot number, reverse the whole array</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="32-longest-valid-parentheses"><a class="markdownIt-Anchor" href="#32-longest-valid-parentheses"></a> 32. Longest Valid Parentheses</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given a string containing just the characters ‘(’ and ‘)’, find the length of the longest valid (well-formed) parentheses substring.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>step one: use stack to record all the valid parenthese pairs and put the length of it into stack (use ‘(’ and ‘)’ to sepreate these valid substrings)</li>
+<li>step two: traverse the whole stack and combine adjacent numbers into one -&gt; find the biggest length</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="33-search-in-rotated-sorted-array"><a class="markdownIt-Anchor" href="#33-search-in-rotated-sorted-array"></a> 33. Search in Rotated Sorted Array</h4>
+<ul>
+<li>Description:
+<ul>
+<li>There is an integer array nums sorted in ascending order (with distinct values).</li>
+<li>Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k (1 &lt;= k &lt; nums.length) such that the resulting array is [nums[k], nums[k+1], …, nums[n-1], nums[0], nums[1], …, nums[k-1]] (0-indexed). For example, [0,1,2,4,5,6,7] might be rotated at pivot index 3 and become [4,5,6,7,0,1,2].</li>
+<li>Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.</li>
+<li>You must write an algorithm with O(log n) runtime complexity.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>the runtime complexity should be limited at O(logn), so we have to use binary search to solve this question, there are following situations
+<ul>
+<li>move right
+<ul>
+<li>[1, 2, 3, 4, 0] -&gt; target &gt; mid &gt; left</li>
+<li>[4, 0, 1, 2, 3] -&gt; mid &lt; target &lt; right</li>
+<li>[2, 3, 4, 0, 1] -&gt; target &lt; left &lt; mid</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="34-find-first-and-last-position-of-element-in-sorted-array"><a class="markdownIt-Anchor" href="#34-find-first-and-last-position-of-element-in-sorted-array"></a> 34. Find First and Last Position of Element in Sorted Array</h4>
+<h4 id="35-search-insert-position"><a class="markdownIt-Anchor" href="#35-search-insert-position"></a> 35. Search Insert Position</h4>
+<h4 id="36-valid-sudoku"><a class="markdownIt-Anchor" href="#36-valid-sudoku"></a> 36. Valid Sudoku</h4>
+<hr>
+<h4 id="37-sudoku-solver"><a class="markdownIt-Anchor" href="#37-sudoku-solver"></a> 37. Sudoku Solver</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Write a program to solve a Sudoku puzzle by filling the empty cells</li>
+<li>A sudoku solution must satisfy all of the following rules:
+<ul>
+<li>Each of the digits 1-9 must occur exactly once in each row.</li>
+<li>Each of the digits 1-9 must occur exactly once in each column.</li>
+<li>Each of the digits 1-9 must occur exactly once in each of the 9 3x3 sub-boxes of the grid.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Solutions
+<ul>
+<li>this is a hard question, when we first saw it, we could be stucked by the complicated situations, but through carefully consideration on this subject, we can definatelly solve this by using recursion</li>
+<li>one:
+<ul>
+<li>for each position, we should define a set to record available numbers</li>
+<li>define a addElement function</li>
+<li>define a deleteElement function</li>
+<li>define a validNumber function</li>
+<li>write recursion to traverse all the possible solutions for the given Sudoku</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="38-count-and-say"><a class="markdownIt-Anchor" href="#38-count-and-say"></a> 38. Count and Say</h4>
+<h4 id="39-combination-sum"><a class="markdownIt-Anchor" href="#39-combination-sum"></a> 39. Combination Sum</h4>
+<h4 id="40-combination-sum-ii"><a class="markdownIt-Anchor" href="#40-combination-sum-ii"></a> 40. Combination Sum II</h4>
+<hr>
+<h4 id="41-first-missing-positive"><a class="markdownIt-Anchor" href="#41-first-missing-positive"></a> 41. First Missing Positive</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given an unsorted integer array nums, return the smallest missing positive integer.</li>
+<li>You must implement an algorithm that runs in O(n) time and uses constant extra space.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: the solution of this question is really interesting
+<ul>
+<li>because we have limited to constant extra space, so we have to figure out a way without hashset and hashmap</li>
+<li>use index to record the smallest unshowed number !!!(there are only n numbers in the array, so the maxium return should be n + 1) -&gt; turn all 0 and &lt;= 0 to n + 1, and marked the ranged numbers to -1 by setting up the corresponed index position</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="42-trapping-rain-water"><a class="markdownIt-Anchor" href="#42-trapping-rain-water"></a> 42. Trapping Rain Water</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: use two pointers, if left &gt; right means you can move right to left until find a higher height(cause left &gt; right, we can make sure that the higher height could be found)</li>
+</ul>
+</li>
+</ul>
+<br>
+<h4 id="43-multiply-strings"><a class="markdownIt-Anchor" href="#43-multiply-strings"></a> 43. Multiply Strings</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given an input string (s) and a pattern §, implement wildcard pattern matching with support for ‘?’ and ‘*’ where:
+<ul>
+<li>‘?’ Matches any single character.</li>
+<li>‘*’ Matches any sequence of characters (including the empty sequence).</li>
+</ul>
+</li>
+<li>The matching should cover the entire input string (not partial).</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: for this kind of match problems, we definately use dynamic algorithms to solve it</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="45-jump-game-ii"><a class="markdownIt-Anchor" href="#45-jump-game-ii"></a> 45. Jump Game II</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given an array of non-negative integers nums, you are initially positioned at the first index of the array.</li>
+<li>Each element in the array represents your maximum jump length at that position.</li>
+<li>Your goal is to reach the last index in the minimum number of jumps.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: O(n) -&gt; we can define
+<ul>
+<li>cur: the range of this loop</li>
+<li>nex: the range of next loop</li>
+<li>step: the step we will use</li>
+<li>index: current position</li>
+<li>if index &lt;= cur: nothing else: cur = nex, step + 1</li>
+</ul>
+</li>
+<li>two: dynamic algorithm
+<ul>
+<li>dp[i+j] = min(dp[i]+1, dp[i+j])</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="46-permutations"><a class="markdownIt-Anchor" href="#46-permutations"></a> 46. Permutations</h4>
+<h4 id="47-permutations-ii"><a class="markdownIt-Anchor" href="#47-permutations-ii"></a> 47. Permutations II</h4>
+<ul>
+<li>Descirption
+<ul>
+<li>Given an array nums of distinct integers, return all the permutations. You can return the answer in any order</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>Recursion</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="48-rotate-image"><a class="markdownIt-Anchor" href="#48-rotate-image"></a> 48. Rotate Image</h4>
+<ul>
+<li>Description
+<ul>
+<li>You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).</li>
+<li>You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>use variable to record the number of each positon and change them</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="49-group-anagrams"><a class="markdownIt-Anchor" href="#49-group-anagrams"></a> 49. Group Anagrams</h4>
+<h4 id="50-powx-n"><a class="markdownIt-Anchor" href="#50-powx-n"></a> 50. Pow(x, n)</h4>
+<hr>
+<h4 id="51-n-queens"><a class="markdownIt-Anchor" href="#51-n-queens"></a> 51. N-Queens</h4>
+<ul>
+<li>Description:
+<ul>
+<li>The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.</li>
+<li>Given an integer n, return all distinct solutions to the n-queens puzzle. You may return the answer in any order.</li>
+<li>Each solution contains a distinct board configuration of the n-queens’ placement, where ‘Q’ and ‘.’ both indicate a queen and an empty space, respectively.</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/13/leetcode/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tianqi Xie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tianqi's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/05/13/leetcode/" class="post-title-link" itemprop="url">leetcode</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-13 19:59:09" itemprop="dateCreated datePublished" datetime="2022-05-13T19:59:09-07:00">2022-05-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-06-04 19:45:27" itemprop="dateModified" datetime="2022-06-04T19:45:27-07:00">2022-06-04</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="bfsbreadth-first-search"><a class="markdownIt-Anchor" href="#bfsbreadth-first-search"></a> BFS(breadth-first search)</h3>
+<ul>
+<li>Introduction
+<ul>
+<li>Breadth-first search (BFS) is an algorithm used for tree traversal on graphs or tree data structures. BFS can be easily implemented using recursion and data structures like dictionaries and lists.</li>
+</ul>
+</li>
+<li>Implement
+<ul>
+<li>Pick any node, visit the adjacent unvisited vertex, mark it as visited, display it, and insert it in a queue.</li>
+<li>If there are no remaining adjacent vertices left, remove the first vertex from the queue.</li>
+<li>Repeat step 1 and step 2 until the queue is empty or the desired node is found.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">graph = &#123;</span><br><span class="line">  <span class="string">&#x27;A&#x27;</span> : [<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;C&#x27;</span>],</span><br><span class="line">  <span class="string">&#x27;B&#x27;</span> : [<span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>],</span><br><span class="line">  <span class="string">&#x27;C&#x27;</span> : [<span class="string">&#x27;F&#x27;</span>],</span><br><span class="line">  <span class="string">&#x27;D&#x27;</span> : [],</span><br><span class="line">  <span class="string">&#x27;E&#x27;</span> : [<span class="string">&#x27;F&#x27;</span>],</span><br><span class="line">  <span class="string">&#x27;F&#x27;</span> : []</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">visited = [] <span class="comment"># List to keep track of visited nodes.</span></span><br><span class="line">queue = []     <span class="comment">#Initialize a queue</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bfs</span>(<span class="params">visited, graph, node</span>):</span></span><br><span class="line">  visited.append(node)</span><br><span class="line">  queue.append(node)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> queue:</span><br><span class="line">    s = queue.pop(<span class="number">0</span>) </span><br><span class="line">    <span class="built_in">print</span> (s, end = <span class="string">&quot; &quot;</span>) </span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> neighbour <span class="keyword">in</span> graph[s]:</span><br><span class="line">      <span class="keyword">if</span> neighbour <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">        visited.append(neighbour)</span><br><span class="line">        queue.append(neighbour)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Driver Code</span></span><br><span class="line">bfs(visited, graph, <span class="string">&#x27;A&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="dfsdepth-first-search"><a class="markdownIt-Anchor" href="#dfsdepth-first-search"></a> DFS(depth-first search)</h3>
+<ul>
+<li>Introduction
+<ul>
+<li>The Depth-First Search is a recursive algorithm that uses the concept of backtracking.</li>
+</ul>
+</li>
+<li>Implementation
+<ul>
+<li>We will start by putting any one of the graph’s vertex on top of the stack.</li>
+<li>After that take the top item of the stack and add it to the visited list of the vertex.</li>
+<li>Next, create a list of that adjacent node of the vertex. Add the ones which aren’t in the visited list of vertexes to the top of the stack.</li>
+<li>Lastly, keep repeating steps 2 and 3 until the stack is empty.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Using a Python dictionary to act as an adjacency list</span></span><br><span class="line">graph = &#123;</span><br><span class="line">  <span class="string">&#x27;5&#x27;</span> : [<span class="string">&#x27;3&#x27;</span>,<span class="string">&#x27;7&#x27;</span>],</span><br><span class="line">  <span class="string">&#x27;3&#x27;</span> : [<span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;4&#x27;</span>],</span><br><span class="line">  <span class="string">&#x27;7&#x27;</span> : [<span class="string">&#x27;8&#x27;</span>],</span><br><span class="line">  <span class="string">&#x27;2&#x27;</span> : [],</span><br><span class="line">  <span class="string">&#x27;4&#x27;</span> : [<span class="string">&#x27;8&#x27;</span>],</span><br><span class="line">  <span class="string">&#x27;8&#x27;</span> : []</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">visited = <span class="built_in">set</span>() <span class="comment"># Set to keep track of visited nodes of graph.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span>(<span class="params">visited, graph, node</span>):</span>  <span class="comment">#function for dfs </span></span><br><span class="line">    <span class="keyword">if</span> node <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">        <span class="built_in">print</span> (node)</span><br><span class="line">        visited.add(node)</span><br><span class="line">        <span class="keyword">for</span> neighbour <span class="keyword">in</span> graph[node]:</span><br><span class="line">            dfs(visited, graph, neighbour)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Driver Code</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Following is the Depth-First Search&quot;</span>)</span><br><span class="line">dfs(visited, graph, <span class="string">&#x27;5&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="dijkstras-algorithm"><a class="markdownIt-Anchor" href="#dijkstras-algorithm"></a> Dijkstra’s algorithm</h3>
+<ul>
+<li>Introduction
+<ul>
+<li>Given a graph and a source vertex in the graph, find the shortest paths from the source to all vertices in the given graph.</li>
+</ul>
+</li>
+<li>Implementation
+<ul>
+<li>Create a set sptSet (shortest path tree set) that keeps track of vertices included in the shortest-path tree, i.e., whose minimum distance from the source is calculated and finalized. Initially, this set is empty.</li>
+<li>Assign a distance value to all vertices in the input graph. Initialize all distance values as INFINITE. Assign distance value as 0 for the source vertex so that it is picked first.</li>
+<li>While sptSet doesn’t include all vertices
+<ul>
+<li>Pick a vertex u which is not there in sptSet and has a minimum distance value.</li>
+<li>Include u to sptSet.</li>
+<li>Update distance value of all adjacent vertices of u. To update the distance values, iterate through all adjacent vertices.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Graph</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, vertex</span>):</span></span><br><span class="line">        self.v = vertex</span><br><span class="line">        <span class="comment"># adj matrix</span></span><br><span class="line">        self.graph = [[<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(vertex)] </span><br><span class="line">                      <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(vertex)]</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">printSolution</span>(<span class="params">self, dist</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Vertex \tDistance from Source&quot;</span>)</span><br><span class="line">        <span class="keyword">for</span> node <span class="keyword">in</span> <span class="built_in">range</span>(self.v):</span><br><span class="line">            <span class="built_in">print</span>(node, <span class="string">&#x27;\t&#x27;</span>, dist[node])</span><br><span class="line">            </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minDistance</span>(<span class="params">self, dist, spt</span>):</span></span><br><span class="line">        minDis = sys.maxsize</span><br><span class="line">        index = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> node <span class="keyword">in</span> <span class="built_in">range</span>(self.v):</span><br><span class="line">            <span class="keyword">if</span> spt[node] == <span class="literal">False</span> <span class="keyword">and</span> dist[node] &lt; minDis:</span><br><span class="line">                minDis = dist[node]</span><br><span class="line">                index = node</span><br><span class="line">        <span class="keyword">return</span> index</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dijkstra</span>(<span class="params">self, node</span>):</span></span><br><span class="line">        spt = [<span class="literal">False</span>] * self.v</span><br><span class="line">        dist = [sys.maxsize] * self.v</span><br><span class="line">        dist[node] = <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> time <span class="keyword">in</span> <span class="built_in">range</span>(self.v):</span><br><span class="line">            minDisNode = self.minDistance(dist, spt)</span><br><span class="line">            spt[minDisNode] = <span class="literal">True</span></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span> column <span class="keyword">in</span> <span class="built_in">range</span>(self.v):</span><br><span class="line">                <span class="comment"># distance between i and j</span></span><br><span class="line">                <span class="keyword">if</span> self.graph[minDisNode][column] &gt; <span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">if</span> dist[column] &gt; dist[minDisNode] + self.graph[minDisNode][column]:</span><br><span class="line">                        dist[column] = dist[minDisNode] + self.graph[minDisNode][column]</span><br><span class="line">        </span><br><span class="line">        self.printSolution(dist)</span><br></pre></td></tr></table></figure>
+<h3 id="kmp-algorithm"><a class="markdownIt-Anchor" href="#kmp-algorithm"></a> KMP algorithm</h3>
+<ul>
+<li>this algorithm designed for pattern searching</li>
+<li>next matrix  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetNext</span><span class="params">(<span class="keyword">char</span>* p,<span class="keyword">int</span> next[])</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> pLen = strlen(p);  </span><br><span class="line">    next[<span class="number">0</span>] = -<span class="number">1</span>;  </span><br><span class="line">    <span class="keyword">int</span> k = -<span class="number">1</span>;  </span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">while</span> (j &lt; pLen - <span class="number">1</span>)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="comment">//p[k]表示前缀，p[j]表示后缀  </span></span><br><span class="line">        <span class="keyword">if</span> (k == -<span class="number">1</span> || p[j] == p[k])   </span><br><span class="line">        &#123;  </span><br><span class="line">            ++k;  </span><br><span class="line">            ++j;  </span><br><span class="line">            next[j] = k;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">else</span>   </span><br><span class="line">        &#123;  </span><br><span class="line">            k = next[k];  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+</li>
+<li>KMP  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">KmpSearch</span><span class="params">(<span class="keyword">char</span>* s, <span class="keyword">char</span>* p)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">int</span> sLen = strlen(s);  </span><br><span class="line">    <span class="keyword">int</span> pLen = strlen(p);  </span><br><span class="line">    <span class="keyword">while</span> (i &lt; sLen &amp;&amp; j &lt; pLen)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="comment">//①如果j = -1，或者当前字符匹配成功（即S[i] == P[j]），都令i++，j++      </span></span><br><span class="line">        <span class="keyword">if</span> (j == -<span class="number">1</span> || s[i] == p[j])  </span><br><span class="line">        &#123;  </span><br><span class="line">            i++;  </span><br><span class="line">            j++;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">else</span>  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="comment">//②如果j != -1，且当前字符匹配失败（即S[i] != P[j]），则令 i 不变，j = next[j]      </span></span><br><span class="line">            <span class="comment">//next[j]即为j所对应的next值        </span></span><br><span class="line">            j = next[j];  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">if</span> (j == pLen)  </span><br><span class="line">        <span class="keyword">return</span> i - j;  </span><br><span class="line">    <span class="keyword">else</span>  </span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/24/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tianqi Xie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tianqi's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/24/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-title-link" itemprop="url">java基础知识</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-24 10:45:06" itemprop="dateCreated datePublished" datetime="2022-02-24T10:45:06-08:00">2022-02-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-06 19:11:21" itemprop="dateModified" datetime="2022-03-06T19:11:21-08:00">2022-03-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="java语言的特点"><a class="markdownIt-Anchor" href="#java语言的特点"></a> java语言的特点</h3>
+<ul>
+<li>面向对象的(oop)</li>
+<li>强类型机制, 异常处理, 垃圾自动回收</li>
+<li>跨平台</li>
+<li>解释型</li>
+</ul>
+<h3 id="面向对象和面向过程的区别"><a class="markdownIt-Anchor" href="#面向对象和面向过程的区别"></a> 面向对象和面向过程的区别</h3>
+<h4 id="面向过程"><a class="markdownIt-Anchor" href="#面向过程"></a> 面向过程</h4>
+<ul>
+<li>面向过程是一种以事件为中心的编程思想，编程的时候把解决问题的步骤都分析出来，然后用函数将其解决</li>
+<li>例子
+<ul>
+<li>五子棋 如下，一步步调用函数:
+<ul>
+<li>
+<ol>
+<li>开始游戏</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>黑子先走</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>绘制图面</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>判断输赢</li>
+</ol>
+</li>
+<li>
+<ol start="5">
+<li>轮到白子</li>
+</ol>
+</li>
+<li>
+<ol start="6">
+<li>绘制图面</li>
+</ol>
+</li>
+<li>
+<ol start="7">
+<li>判断输赢</li>
+</ol>
+</li>
+<li>
+<ol start="8">
+<li>返回步骤2</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>优点:
+<ul>
+<li>流程化使得编程任务明确</li>
+<li>效率高</li>
+</ul>
+</li>
+<li>缺点:
+<ul>
+<li>需要深入思考</li>
+<li>代码复用性差</li>
+<li>后期维护难度大</li>
+</ul>
+</li>
+</ul>
+<h4 id="面向对象"><a class="markdownIt-Anchor" href="#面向对象"></a> 面向对象</h4>
+<ul>
+<li>将每个人和事物都看做对象，每个对象有自己的属性和行为。</li>
+<li>例子
+<ul>
+<li>五子棋:
+<ul>
+<li>
+<ol>
+<li>黑白双方</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>棋盘系统</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>规则系统</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>优点:
+<ul>
+<li>结构清晰, 程序是模块化和结构化，更加符合人类的思维方式；</li>
+<li>易拓展, 代码重用率高，可继承，可覆盖，可以设计出低耦合的系统</li>
+<li>易维护, 系统低耦合的特点有利于减少程序的后期维护工作量</li>
+</ul>
+</li>
+<li>缺点:
+<ul>
+<li>开销大，当要修改对象内部时，对象的属性不允许外部直接存取，所以要增加许多没有其他意义、只负责读或写的行为.</li>
+<li>性能低，由于面向更高的逻辑抽象层，使得面向对象在实现的时候，不得不做出性能上面的牺牲，计算时间和空间存储大小都开销很大</li>
+</ul>
+</li>
+</ul>
+<h3 id="jdk-jre-jvm"><a class="markdownIt-Anchor" href="#jdk-jre-jvm"></a> JDK, JRE, JVM</h3>
+<ul>
+<li>JDK: Java Development kit
+<ul>
+<li>用于开发</li>
+<li>JRE + JAVA开发工具(java, javac等)</li>
+</ul>
+</li>
+<li>JRE: Java Runtime Environment
+<ul>
+<li>用于运行java程序</li>
+<li>JVM + JAVA核心类库</li>
+</ul>
+</li>
+<li>JVM: Java Virtual Machine
+<ul>
+<li>将字节码转换为特定机器代码，并提供了内存管理/垃圾回收等安全机制</li>
+</ul>
+</li>
+<li>为什么要采用字节码呢?
+<ul>
+<li>运行顺序:
+<ul>
+<li>java源代码 -&gt; 编译器 -&gt; jvm可执行的java字节码 -&gt; jvm -&gt; jvm中的解释器 -&gt; 机器可执行的二进制机器码 -&gt; 程序执行</li>
+</ul>
+</li>
+<li>好处:
+<ul>
+<li>解决了解释性语言执行效率低的问题，又保留了解释型语言可以移植的特点。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="java面向对象编程的三大特性"><a class="markdownIt-Anchor" href="#java面向对象编程的三大特性"></a> java面向对象编程的三大特性</h3>
+<h4 id="修饰符"><a class="markdownIt-Anchor" href="#修饰符"></a> 修饰符</h4>
+<ul>
+<li>default: 默认访问修饰符，在同一包内可见</li>
+<li>private: 在同一类内可见，不能修饰类</li>
+<li>protected : 对同一包内的类和所有子类可见，不能修饰类</li>
+<li>public: 对所有类可见</li>
+</ul>
+<h4 id="封装"><a class="markdownIt-Anchor" href="#封装"></a> 封装</h4>
+<ul>
+<li>将一个对象的方法和属性私有化，同时可以提供一些给外界访问的方法</li>
+</ul>
+<h4 id="继承"><a class="markdownIt-Anchor" href="#继承"></a> 继承</h4>
+<ul>
+<li>使用已经存在的类的定义作为基础建立新类的技术, 新类的定义可以增加新的数据或者新的功能，也可以使用父类的功能</li>
+</ul>
+<h4 id="多态"><a class="markdownIt-Anchor" href="#多态"></a> 多态</h4>
+<ul>
+<li>多态就是指程序中定义的引用变量所指向的具体类型和通过该引用变量发出的方法调用在编程时并不确定，而是在程序运行期间才确定</li>
+</ul>
+<h3 id="接口interface和抽象类abstract"><a class="markdownIt-Anchor" href="#接口interface和抽象类abstract"></a> 接口(interface)和抽象类(abstract)</h3>
+<ul>
+<li>区别
+<ul>
+<li>抽象类可以提供成员方法的实现细节, 接口中只能存在public abstract方法</li>
+<li>抽象类中的成员变量可以是各种类型的, 接口中的成员变量只能是public static final类型的</li>
+<li>抽象类中可以有静态代码块和静态方法, 接口中不能有</li>
+<li>一个类只能继承一个抽象类, 一个类可以实现多个接口</li>
+</ul>
+</li>
+</ul>
+<h3 id="int-和-integer-的区别"><a class="markdownIt-Anchor" href="#int-和-integer-的区别"></a> int 和 integer 的区别</h3>
+<ul>
+<li>int是基础数据类型, integer是引用类型</li>
+<li>拆箱与装箱
+<ul>
+<li>装箱: 将基础数据类型保存成为对象</li>
+<li>拆箱: 将对象拆解成为基础数据类型</li>
+</ul>
+</li>
+</ul>
+<h3 id="equals-和-和-hashcode"><a class="markdownIt-Anchor" href="#equals-和-和-hashcode"></a> equals 和 == 和 hashcode</h3>
+<ul>
+<li>==
+<ul>
+<li>基本数据类型的比较, 是比较值</li>
+<li>若是引用类型, 则比较内存中存放的地址</li>
+</ul>
+</li>
+<li>equals
+<ul>
+<li>object类中的equals方法用于判断对象的内存地址是否是同一个地址</li>
+<li>一般类覆盖了equals方法是通过判断内容是否相等来判断对象是否相同</li>
+</ul>
+</li>
+<li>hashcode
+<ul>
+<li>计算对象实例的hashcode, 在对象散列的时候作为key存入。</li>
+</ul>
+</li>
+<li>equals和hashcode关系
+<ul>
+<li>equals相等的对象, hashcode也一定相同</li>
+<li>hashcode不同, equals也一定不同</li>
+<li>hashcode相同, equals不一定相同</li>
+</ul>
+</li>
+</ul>
+<h3 id="java的内存回收机制"><a class="markdownIt-Anchor" href="#java的内存回收机制"></a> java的内存回收机制</h3>
+<ul>
+<li>为什么要进行内存回收?
+<ul>
+<li>C、C++等语言中，内存的分配和释放由程序代码来完成，容易出现由于程序员漏写内存释放代码引起的内存泄露，最终导致系统内存耗尽。</li>
+<li>内存泄漏:
+<ul>
+<li>内存泄漏（Memory Leak）是指程序中已动态分配的堆内存由于某种原因程序未释放或无法释放，造成系统内存的浪费，导致程序运行速度减慢甚至系统崩溃等严重后果。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="内存标记方式"><a class="markdownIt-Anchor" href="#内存标记方式"></a> 内存标记方式</h4>
+<ul>
+<li>引用计数法
+<ul>
+<li>当对象被创建并赋值给变量的时候计数为1; 当有其他变量引用该对象的时候, 引用计数+1; 当引用对象的变量超出存活范围或释放对象引用的时候, 引用计数-1。对象引用计数为0的时候代表可以被垃圾收集器回收。</li>
+</ul>
+</li>
+<li>根搜索算法
+<ul>
+<li>从一些指定的根对象出发，遍历找到和这个根对象有引用关系的对象, 从这些对象开始继续寻找，从而形成一个个的引用链, 不在引用链上的对象标记成为不可达的对象, 也就是需要回收的对象。</li>
+</ul>
+</li>
+</ul>
+<h4 id="内存回收方式"><a class="markdownIt-Anchor" href="#内存回收方式"></a> 内存回收方式</h4>
+<ul>
+<li>标记-清理算法(mark and sweep)
+<ul>
+<li>方法: 采用跟踪算法标记内存对象后, 扫描堆内存中未被标记的对象, 进行回收。算法不移动对象, 对不存活对象进行回收。</li>
+<li>造成的问题: 会引起内存碎片</li>
+</ul>
+</li>
+<li>标记-整理算法(compacting)
+<ul>
+<li>方法: 和标记-清理方法相同, 但是会把存活的对象向内存前半部分空闲区域移动, 并更新对象的指针</li>
+<li>造成的问题: 执行成本较高, 但是可以解决内存碎片的问题</li>
+</ul>
+</li>
+<li>复制-清除算法(copying)
+<ul>
+<li>该算法把内存分为空闲区和对象区，新建对象存储到对象区中。当对象区满时，先采用跟踪算法对对象进行标记，再把存活对象拷贝到空闲区，清空原对象区，空闲区和对象区互换角色。在拷贝过车中，程序需要暂停，此算法适用于存活对象叫少的情况，可以解决内存碎片问题。</li>
+<li>造成的问题: 把内存分为两部分, 会有一部分没法使用</li>
+</ul>
+</li>
+<li>分代回收算法
+<ul>
+<li>会根据对象的存活周期将内存区域分为三大块: 年轻代(Eden区, S0, S1), 老年代, 永久代</li>
+<li>
+<ol>
+<li>对象首次创建进行内存分配的时候，首先会放置在 Eden 区，当 Eden 区放满了或者当该对象太大无法放进 Eden 区的时候，此时会对年轻代（Eden区 和 S0）进行一次 GC，将幸存下来的对象放置在 S1，然后清空掉 Eden区和 S0 区；（此时年轻代采用的是 复制算法）</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>在上面第一步中对年轻代进行垃圾回收的时候，同时会对幸存的对象进行标记，统计每个幸存对象经历的 GC 次数；</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>当 S1 区满了之后，或者年轻代的对象经历过指定次数的 GC 之后，这部分对象会被放置到老年代之中；</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>当老年代也满了之后，便会对老年代进行一次 GC；（老年代采用的是 标记-整理算法）</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="垃圾回收器"><a class="markdownIt-Anchor" href="#垃圾回收器"></a> 垃圾回收器</h4>
+<ul>
+<li>串行垃圾回收器（Serial Garbage Collector）；
+<ul>
+<li>串行垃圾回收器会暂停所有的应用程序线程，并采用单独的的线程进行 GC。</li>
+<li>适用于单 CPU、并且对应用程序的暂停时间要求不高的情况，所以不太适合当前的生产环境。</li>
+</ul>
+</li>
+<li>并行垃圾回收器（Parallel Garbage Collector）；
+<ul>
+<li>并行垃圾回收器是 JVM 默认的垃圾回收器，相较于串行垃圾回收器而言性能稍有提升，它也是需要暂停所有的应用程序线程的，但是区别是它会使用多线程进行 GC。</li>
+<li>所以并行垃圾回收器适用于多 CPU 的服务器、并且能接受短暂的应用暂停的程序</li>
+</ul>
+</li>
+<li>并发标记扫描垃圾回收器（CMS Garbage Collector）；
+<ul>
+<li>CMS 回收器也是一种并行的垃圾回收器，它会采用多线程来进行扫描堆内存，标记需要清理的对象并将这些对象清理掉。</li>
+<li>但是 CMS 它需要更多的 CPU 来保证程序的吞吐量，并且它保证了最短的回收停顿时间，所以，在服务器允许的情况下，为了达到更到的性能，我们应该使用 CMS 来代替默认的 并行垃圾回收器。</li>
+</ul>
+</li>
+<li>G1垃圾回收器（G1 Garbage Collector）
+<ul>
+<li>G1 垃圾回收器是在 JDK1.7 中才正式引入的一款垃圾回收器，“科技在进步，所以一般越是先进的技术一般会更好用并且会替代陈旧的技术”，好了，玩笑归玩笑，但是 G1 的引入，目的就是为了取代 CMS 的。</li>
+<li>不要被上面 G1 的示意图误导， G1 并没有将内存进行物理划分，它只是将堆内存划分为一个个的 Region，但是也是属于分代垃圾回收器，G1 仍然会区分年轻代和老年代，并且年轻代仍然会有 Eden 区和 Survivor 区。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/24/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tianqi Xie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tianqi's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/24/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-title-link" itemprop="url">python基础知识</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-02-24 10:44:57 / 修改时间：18:32:53" itemprop="dateCreated datePublished" datetime="2022-02-24T10:44:57-08:00">2022-02-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="解释语言与编译语言"><a class="markdownIt-Anchor" href="#解释语言与编译语言"></a> 解释语言与编译语言</h3>
+<ul>
+<li>区别: 解释器会对程序产生一个结果，编译器会对程序生成一段机器语言的代码</li>
+<li>编译语言
+<ul>
+<li>架构的汇编器将程序生成成为二进制代码，汇编语言因每台计算机而异，具体取决于其系统架构。因此编译后的程序只能再与其编译环境相同的计算机上运行。</li>
+<li>优点:
+<ul>
+<li>速度快</li>
+<li>当编译了之后源代码就没有用了，直接执行执行文件即可，解释性语言需要每次都运行程序</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>解释语言
+<ul>
+<li>解释器会直接的执行程序中的代码，不会将其转换成其他机器语言或目标代码</li>
+<li>优点:
+<ul>
+<li>便携, 任何安装了适当解释器的计算机都可以或多或少不改变地运行该程序</li>
+<li>更加容易修改与调试</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="python内存回收机制"><a class="markdownIt-Anchor" href="#python内存回收机制"></a> python内存回收机制</h3>
+<ul>
+<li>python中内存管理主要使用过 计数 + 清理 来完成的
+<ul>
+<li>计数  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef struct_object &#123;</span><br><span class="line"><span class="built_in">int</span> ob_refcnt;</span><br><span class="line">struct_typeobject *ob_type;</span><br><span class="line">&#125; PyObject;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>python中对象的核心是一个结构体，内部会有一个引用计数器(ob_refcnt), 反映当前对象的名称数量，当引用计数为0的时候内存就会被释放掉。</li>
+<li>计数加一
+<ul>
+<li>对象被创建</li>
+<li>对象被引用</li>
+<li>对象被作为参数，传入到一个函数中</li>
+<li>对象作为一个元素，存储在容器中</li>
+</ul>
+</li>
+<li>计数减一
+<ul>
+<li>对象别名被显示销毁 del</li>
+<li>对象别名被赋予新的对象</li>
+<li>一个对象离开他的作用域</li>
+<li>对象所在的容器被销毁或者是从容器中删除对象</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>引用计数的优缺点
+<ul>
+<li>优点:
+<ul>
+<li>高效</li>
+<li>实现逻辑简单</li>
+<li>具有实时性质</li>
+</ul>
+</li>
+<li>缺点:
+<ul>
+<li>逻辑简单但是实现较为麻烦，每个对象需要分配单独空间来引用计数并且维护。</li>
+<li>一些场景下会较慢。当需要释放一个比较大的对象时候，比如字典，可能会耗费比较长的事件</li>
+<li>循环引用。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>清理
+<ul>
+<li>1、标记清除算法
+<ul>
+<li>算法分为“标记”和“清除”两个阶段，首先标记所有需要回收的对象，在标记完成后统一回收所有被标记的对象。有两个不足：一是效率问题，标记和清除两个过程的效率都不高；另一个是空间问题，标记清除之后会产生大量不连续的内存碎片，空间碎片太多可能会导致以后在程序运行过程中需要分配较大对象时，无法找到足够的连续内存而不得不提前触发一次垃圾收集动作</li>
+</ul>
+</li>
+<li>2、复制算法
+<ul>
+<li>将内存分为两块，每次只使用其中的一块。当这一块内存用完了，就将还存活的对象复制到另一块上，然后再把已使用过的内存空间一次清理掉。这样使得每次都是对一整块内存回收，内存分配时候也不用考虑内存碎片等复杂情况，只要移动堆顶指针，按顺序分配即可，实现简单，运行高效。缺点是一次只能使用一部分内存，会有一些浪费。一般新生代会选择这种算法。</li>
+</ul>
+</li>
+<li>3、标记-整理算法
+<ul>
+<li>复制算法存在两个问题，1）会浪费50%的空间 2）如果被使用的内存中所有对象都100%存活的极端情况，就需要有额外的空间进行分配担保，因此老年代一般不能直接选用复制算法。有人提出了另外一种“标记-整理”（Mark-Compact）算法，标记过程仍然与“标记-清除”一样，后续步骤让所有存活的对象都向一端移动，然后直接清理掉端边界以外的内存。</li>
+</ul>
+</li>
+<li>4、分代回收算法
+<ul>
+<li>分代回收算法并没有什么新的思想，只是根据对象存活周期的不同将内存划分为几块。比如新生代和老年代，不同代使用不同的回收算法。比如新生代使用复制算法，而老年代使用标记-清除或标记-整理算法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>python程序结束时会释放所有的内存么
+<ul>
+<li>当 Python 退出时，从 Python 模块的全局命名空间引用的对象并不总是被释放。 如果存在循环引用，则可能会发生这种情况。 还有一些由 C 库分配的内存是不可能释放的(例如，像 Purify 这样的工具会抱怨这些)。然而，Python 在退出时会积极清理内存，并且确实会尝试销毁每个对象。</li>
+</ul>
+</li>
+</ul>
+<h3 id="python的深浅拷贝"><a class="markdownIt-Anchor" href="#python的深浅拷贝"></a> python的深浅拷贝</h3>
+<ul>
+<li>直接赋值：其实就是对象的引用（别名）。</li>
+<li>浅拷贝(copy)：拷贝父对象，不会拷贝对象的内部的子对象。</li>
+<li>深拷贝(deepcopy)： copy 模块的 deepcopy 方法，完全拷贝了父对象及其子对象。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*-coding:utf-8 -*-</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>]] <span class="comment">#原始对象</span></span><br><span class="line"> </span><br><span class="line">b = a                       <span class="comment">#赋值，传对象的引用</span></span><br><span class="line">c = copy.copy(a)            <span class="comment">#对象拷贝，浅拷贝</span></span><br><span class="line">d = copy.deepcopy(a)        <span class="comment">#对象拷贝，深拷贝</span></span><br><span class="line"> </span><br><span class="line">a.append(<span class="number">5</span>)                 <span class="comment">#修改对象a</span></span><br><span class="line">a[<span class="number">4</span>].append(<span class="string">&#x27;c&#x27;</span>)            <span class="comment">#修改对象a中的[&#x27;a&#x27;, &#x27;b&#x27;]数组对象</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># (&#x27;a = &#x27;, [1, 2, 3, 4, [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;], 5])</span></span><br><span class="line"><span class="comment"># (&#x27;b = &#x27;, [1, 2, 3, 4, [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;], 5])</span></span><br><span class="line"><span class="comment"># (&#x27;c = &#x27;, [1, 2, 3, 4, [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]])</span></span><br><span class="line"><span class="comment"># (&#x27;d = &#x27;, [1, 2, 3, 4, [&#x27;a&#x27;, &#x27;b&#x27;]])</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -207,7 +1477,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-02-21 20:00:51" itemprop="dateModified" datetime="2022-02-21T20:00:51-08:00">2022-02-21</time>
+      <time title="修改时间：2022-02-24 18:35:14" itemprop="dateModified" datetime="2022-02-24T18:35:14-08:00">2022-02-24</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -420,6 +1690,9 @@
 <li>对数据库表中一个或多个列的值进行排序的结构，是帮助MYSQL高效获取数据的数据结构</li>
 <li>作用: 避免全表扫描</li>
 </ul>
+</li>
+<li>
+<h2 id="索引的一般类型"><a class="markdownIt-Anchor" href="#索引的一般类型"></a> 索引的一般类型</h2>
 </li>
 <li>索引的数据结构
 <ul>
@@ -662,7 +1935,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-02-10 23:03:07" itemprop="dateModified" datetime="2022-02-10T23:03:07-08:00">2022-02-10</time>
+      <time title="修改时间：2022-03-01 22:21:48" itemprop="dateModified" datetime="2022-03-01T22:21:48-08:00">2022-03-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -738,7 +2011,8 @@
 <li>拥塞控制: 出现拥塞会出现丢包，如果继续重传拥塞会更加严重。慢开始 -&gt; 拥塞避免 -&gt; 快重传 -&gt; 快恢复</li>
 </ul>
 </li>
-<li>TCP三次握手，四次挥手
+</ul>
+<h4 id="tcp三次握手四次挥手"><a class="markdownIt-Anchor" href="#tcp三次握手四次挥手"></a> TCP三次握手，四次挥手</h4>
 <ul>
 <li>三次握手
 <ul>
@@ -764,11 +2038,78 @@
 </li>
 </ul>
 </li>
-</ul>
-</li>
 <li>TCP建立连接后，客户端故障怎么办
 <ul>
 <li>会有TCP保活机制，发送保活探测报文，如果发送固定次数没有回应则会关闭TCP连接</li>
+</ul>
+</li>
+</ul>
+<h4 id="tcp流量控制与拥塞控制"><a class="markdownIt-Anchor" href="#tcp流量控制与拥塞控制"></a> TCP流量控制与拥塞控制</h4>
+<ul>
+<li>流量控制(flow control)
+<ul>
+<li>receiver会告诉sender应该发送的最大速度
+<ul>
+<li>比如: 一个老师在教课，一个学生在学, 学生学不动了老师还在交, 这时候会就产生问题, 所以学生应该定期给老师反馈</li>
+</ul>
+</li>
+<li>滑动窗口机制
+<ul>
+<li>tcp会计算receiver最大能够接受的数据大小(without acknowledgement), 通过tcp头部发送给sender来调整sender的发送窗口大小</li>
+<li>三种过程
+<ul>
+<li>opening window
+<ul>
+<li>The opening window process allows more data to be in the buffer that can be sent</li>
+</ul>
+</li>
+<li>closing window
+<ul>
+<li>The closing window process indicates some sent data bytes have been acknowledged, and the sender needs not to worry about them anymore</li>
+</ul>
+</li>
+<li>shrinking window
+<ul>
+<li>The shrinking windows process denotes the decrement in the window size. It means some bytes are eligible to transmit</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>拥塞控制(congestion control)
+<ul>
+<li>慢开始(slow start)
+<ul>
+<li>发送方发送数据包并逐渐增加数据包的数量，直到到达阈值。(每次增加1 MSS{max segment size}的数据包大小)</li>
+</ul>
+</li>
+<li>拥塞避免(congestion avoidance)
+<ul>
+<li>如果到达了阈值还是线性的增长，会导致网络拥塞，所以定义了一套到阈值之后的增长模式用来增长窗口大小</li>
+</ul>
+</li>
+<li>拥塞检测(congestion detection)
+<ul>
+<li>如果网络中仍存在拥塞, 需要进行检测机制</li>
+<li>两种情况
+<ul>
+<li>估计时间内没有收到发送方发送的数据包确认</li>
+<li>接收方获得三个重复确认</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>区别
+<ul>
+<li>流量控制是针对sender和receiver的, 拥塞控制是针对网络堵塞的</li>
+<li>流量控制是传输层和数据链路层负责, 拥塞控制是传输层和网络层负责</li>
+<li>流量控制是为了receiver不会过载, 拥塞控制是为了网络不会过载</li>
+<li>流量控制是通过调整sender的发送速度来避免拥堵, 拥塞控制是通过传输层减少数据传输来避免拥堵</li>
 </ul>
 </li>
 </ul>
@@ -798,6 +2139,12 @@
 <li>缺点: 速度慢</li>
 </ul>
 </li>
+</ul>
+</li>
+<li>常见的加密算法
+<ul>
+<li>对称性加密算法: AES、DES、3DES</li>
+<li>非对称性加密算法: RSA、DSA、ECC</li>
 </ul>
 </li>
 <li>HTTPS加密过程
@@ -837,7 +2184,7 @@
 <li>浏览器输入URL到显示主页的过程
 <ul>
 <li>对输入的URL进行DNS解析(请求本机 -&gt; 本地域名服务器 …), 将域名转换为ip地址</li>
-<li>和目的服务器简历TCP连接</li>
+<li>和目的服务器建立TCP连接</li>
 <li>向目的服务器发送HTTP请求</li>
 <li>服务器处理请求并返回HTTP报文</li>
 <li>浏览器解析并渲染页面</li>
@@ -924,7 +2271,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-02-20 22:54:08" itemprop="dateModified" datetime="2022-02-20T22:54:08-08:00">2022-02-20</time>
+      <time title="修改时间：2022-03-07 17:21:47" itemprop="dateModified" datetime="2022-03-07T17:21:47-08:00">2022-03-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -949,8 +2296,10 @@
           <h3 id="进程-线程-协程"><a class="markdownIt-Anchor" href="#进程-线程-协程"></a> 进程, 线程, 协程</h3>
 <h4 id="进程与线程的区别"><a class="markdownIt-Anchor" href="#进程与线程的区别"></a> 进程与线程的区别</h4>
 <ul>
-<li>进程是资源调度的基本单位</li>
-<li>线程是程序执行的基本单位</li>
+<li>功能上: 进程是资源调度的基本单位, 线程是程序执行的基本单位</li>
+<li>内存上: 进程拥有独立内存, 线程共享内存</li>
+<li>开销上: 进程系统开销较大, 线程较小</li>
+<li>通信上: 进程间通信较为复杂, 线程因为有共享空间, 所以通信较为简单</li>
 </ul>
 <h4 id="协程与线程的区别"><a class="markdownIt-Anchor" href="#协程与线程的区别"></a> 协程与线程的区别</h4>
 <ul>
@@ -978,12 +2327,70 @@
 </ul>
 <h4 id="进程间的通讯"><a class="markdownIt-Anchor" href="#进程间的通讯"></a> 进程间的通讯</h4>
 <ul>
-<li>管道: 速度慢，容量有限</li>
-<li>信号:</li>
-<li>信号量: 不能传递复杂消息，只能用来同步</li>
-<li>消息队列: 容量收到系统限制</li>
-<li>共享内存: 能够容易控制容量，速度快，但需要保持同步</li>
-<li>socket: 任何进程间都能通讯，但是速度慢</li>
+<li>进程间通信: Inter Process Communication(IPC)
+<ul>
+<li>是一种允许进程间交流和同步动作的机制</li>
+</ul>
+</li>
+<li>一般进程有两种类型
+<ul>
+<li>独立进程</li>
+<li>合作进程</li>
+</ul>
+</li>
+<li>通讯方式
+<ul>
+<li>管道:
+<ul>
+<li>简介: 管道是一种半双工的通信方式，数据只能单向流动，而且只能在具有亲缘关系的进程间使用。通常是父子进程关系。</li>
+<li>限制: 速度慢，容量有限</li>
+<li>分类:
+<ul>
+<li>匿名管道
+<ul>
+<li>有固定的读端和写端</li>
+<li>只能用于具有亲缘关系进程之间的通信</li>
+</ul>
+</li>
+<li>命名管道
+<ul>
+<li>可以在无关进程之间交换数据</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>共享内存(shared memory)
+<ul>
+<li>概念:共享内存就是映射一段能被其他进程所访问的内存，这段共享内存由一个进程创建，但多个进程都可以访问。共享内存是最快的 IPC 方式，它是针对其他进程间通信方式运行效率低而专门设计的。它往往与其他通信机制，如信号两，配合使用，来实现进程间的同步和通信。</li>
+<li>优点: 能够容易控制容量，速度快</li>
+<li>限制: 需要保持同步</li>
+</ul>
+</li>
+<li>信号量:
+<ul>
+<li>信号量是一个计数器，可以用来控制多个进程对共享资源的访问。它常作为一种锁机制，防止某进程正在访问共享资源时，其他进程也访问该资源。因此，主要作为进程间以及同一进程内不同线程之间的同步手段。</li>
+<li>限制: 不能传递复杂消息，只能用来同步</li>
+</ul>
+</li>
+<li>信号:
+<ul>
+<li>信号是一种比较复杂的通信方式，用于通知接收进程某个事件已经发生。</li>
+</ul>
+</li>
+<li>消息队列: 容量收到系统限制
+<ul>
+<li>消息队列是由消息的链表，存放在内核中并由消息队列标识符标识。消息队列克服了信号传递信息少、管道只能承载无格式字节流以及缓冲区大小受限等缺点。</li>
+</ul>
+</li>
+<li>socket: 任何进程间都能通讯，但是速度慢
+<ul>
+<li>套解口也是一种进程间通信机制，与其他通信机制不同的是，它可用于不同及其间的进程通信。</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <h4 id="进程间的同步方式"><a class="markdownIt-Anchor" href="#进程间的同步方式"></a> 进程间的同步方式</h4>
 <ul>
@@ -997,7 +2404,16 @@
 <li>先来先服务: 谁先来谁先调度</li>
 <li>短作业优先: 按估计运行时间最短的顺序进行调度</li>
 <li>最短剩余时间: 按照剩余时间的顺序进行调度</li>
-<li>时间片轮转: 每个进程执行一个时间片，执行完成后放到就绪队列的末尾</li>
+<li>时间片轮转: 每个进程执行一个时间片，执行完成后放到就绪队列的末尾
+<ul>
+<li>时间长度设置过长或者过短会有什么问题呢？
+<ul>
+<li>过长会导致对于短的请求响应时间变长</li>
+<li>过短会导致进程切换次数过多，减低cpu效率</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>优先级调度: 为每一个进程设置优先级, 防止优先级低的进程永远等不到调度，可以随着时间的推移增加等待进程的优先级</li>
 </ul>
 <h4 id="进程状态"><a class="markdownIt-Anchor" href="#进程状态"></a> 进程状态</h4>
@@ -1040,6 +2456,24 @@
 </ul>
 </li>
 </ul>
+<h4 id="线程共享什么独占什么"><a class="markdownIt-Anchor" href="#线程共享什么独占什么"></a> 线程共享什么，独占什么</h4>
+<ul>
+<li>共享: 共享进程的地址空间
+<ul>
+<li>进程代码段</li>
+<li>进程的共有数据</li>
+<li>进程打开的文件描述符</li>
+</ul>
+</li>
+<li>独占: 每个线程有独立的堆和栈
+<ul>
+<li>线程id</li>
+<li>寄存器组的值</li>
+<li>堆栈</li>
+<li>优先级</li>
+</ul>
+</li>
+</ul>
 <h3 id="堆和栈"><a class="markdownIt-Anchor" href="#堆和栈"></a> 堆和栈</h3>
 <ul>
 <li>栈
@@ -1060,7 +2494,38 @@
 </ul>
 </li>
 </ul>
+<h3 id="内核态与用户态"><a class="markdownIt-Anchor" href="#内核态与用户态"></a> 内核态与用户态</h3>
+<ul>
+<li>内核态
+<ul>
+<li>在内核模式下，执行代码可以完全且不受限制地访问底层硬件。 它可以执行任何 CPU 指令并引用任何内存地址。 内核模式通常保留给操作系统的最低级别、最受信任的功能。 内核模式下的崩溃是灾难性的； 他们将停止整个 PC。</li>
+</ul>
+</li>
+<li>用户态
+<ul>
+<li>在用户模式下，执行代码无法直接访问硬件或参考内存。 在用户模式下运行的代码必须委托给系统 API 来访问硬件或内存。 由于这种隔离提供的保护，用户模式下的崩溃总是可以恢复的。 在您的计算机上运行的大部分代码都将在用户模式下执行。</li>
+</ul>
+</li>
+<li>内核态和用户态切换的开销大
+<ul>
+<li>保留用户态现场（上下文、寄存器、用户栈等）</li>
+<li>复制用户态参数，用户栈切到内核栈，进入内核态</li>
+<li>额外的检查（因为内核代码对用户不信任）</li>
+<li>执行内核态代码</li>
+<li>复制内核态代码执行结果，回到用户态</li>
+<li>恢复用户态现场（上下文、寄存器、用户栈等）</li>
+</ul>
+</li>
+<li>什么情况会导致用户态到内核态切换
+<ul>
+<li>系统调用：用户态进程主动切换到内核态的方式，用户态进程通过系统调用向操作系统申请资源完成工作，例如 fork() 就是一个创建新进程的系统调用，系统调用的机制核心使用了操作系统为用户特别开放的一个中断来实现，如Linux 的 int 80h 中断，也可以称为软中断</li>
+<li>异常：当 C P U 在执行用户态的进程时，发生了一些没有预知的异常，这时当前运行进程会切换到处理此异常的内核相关进程中，也就是切换到了内核态，如缺页异常</li>
+<li>中断：当 C P U 在执行用户态的进程时，外围设备完成用户请求的操作后，会向 C P U 发出相应的中断信号，这时 C P U 会暂停执行下一条即将要执行的指令，转到与中断信号对应的处理程序去执行，也就是切换到了内核态。如硬盘读写操作完成，系统会切换到硬盘读写的中断处理程序中执行后边的操作等</li>
+</ul>
+</li>
+</ul>
 <h3 id="锁"><a class="markdownIt-Anchor" href="#锁"></a> 锁</h3>
+<h4 id="编程-两个线程交替打印1-100"><a class="markdownIt-Anchor" href="#编程-两个线程交替打印1-100"></a> 编程: 两个线程交替打印1-100</h4>
 <h3 id="死锁"><a class="markdownIt-Anchor" href="#死锁"></a> 死锁</h3>
 <h4 id="死锁的概念以及产生的条件"><a class="markdownIt-Anchor" href="#死锁的概念以及产生的条件"></a> 死锁的概念以及产生的条件</h4>
 <ul>
@@ -1106,7 +2571,8 @@
 </li>
 </ul>
 <h4 id="页面替换算法"><a class="markdownIt-Anchor" href="#页面替换算法"></a> 页面替换算法</h4>
-<p>运行过程中要访问的页面不在内存中，需要将其调入内存中</p>
+<ul>
+<li>运行过程中要访问的页面不在内存中，需要将其调入内存中
 <ul>
 <li>最佳算法
 <ul>
@@ -1124,6 +2590,8 @@
 </ul>
 </li>
 <li>时钟算法</li>
+</ul>
+</li>
 </ul>
 
       
@@ -1567,342 +3035,9 @@ NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署�
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/23/%E2%80%9C%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E2%80%9D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tianqi Xie">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tianqi's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/23/%E2%80%9C%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E2%80%9D/" class="post-title-link" itemprop="url">排序算法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-01-23 15:45:08" itemprop="dateCreated datePublished" datetime="2022-01-23T15:45:08-08:00">2022-01-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-01-27 11:04:03" itemprop="dateModified" datetime="2022-01-27T11:04:03-08:00">2022-01-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<h3 id="冒泡排序"><a class="markdownIt-Anchor" href="#冒泡排序"></a> 冒泡排序</h3>
-<p>算法步骤</p>
-<ul>
-<li>
-<ol>
-<li>从第一个元素从前向后依次比较相邻两个元素，如果后者比前者大(小)则将其二者交换顺序 - 将最大元素置于数组末尾</li>
-</ol>
-</li>
-<li>
-<ol start="2">
-<li>重复1，对除已排序过元素进行类似方法排序</li>
-</ol>
-</li>
-</ul>
-<p>平均时间复杂度: O(n^2)<br />
-算法实现</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubbleSort</span>(<span class="params">nums</span>):</span></span><br><span class="line">    <span class="comment"># 外层循环决定循环次数</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">        <span class="comment"># 内层循环决定比较次数</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(nums) - i):</span><br><span class="line">            <span class="keyword">if</span> nums[j] &gt;= nums[j-<span class="number">1</span>]:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                nums[j-<span class="number">1</span>], nums[j] = nums[j], nums[j-<span class="number">1</span>]</span><br><span class="line">    <span class="comment"># 返回传入的数组(或不返回)</span></span><br><span class="line">    <span class="keyword">return</span> nums</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># 测试用例</span></span><br><span class="line">    test_list = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序前的数组为: &quot;</span>, test_list)</span><br><span class="line">    <span class="comment"># 调用函数</span></span><br><span class="line">    bubbleSort(test_list)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序后的数组为: &quot;</span>, test_list)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 排序前的数组为:  [1, 5, 6, 8, 2]</span></span><br><span class="line">    <span class="comment"># 排序后的数组为:  [1, 2, 5, 6, 8]</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="选择排序"><a class="markdownIt-Anchor" href="#选择排序"></a> 选择排序</h3>
-<p>算法步骤</p>
-<ul>
-<li>
-<ol>
-<li>找到未排序数组最小(大)的元素，将其放于数组的起始位置</li>
-</ol>
-</li>
-<li>
-<ol start="2">
-<li>从剩余未排序的元素中重复步骤一<br />
-平均时间复杂度: O(n^2)</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">selectionSort</span>(<span class="params">nums</span>):</span></span><br><span class="line">	<span class="comment"># 外层决定插入次数</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums) - <span class="number">1</span>):</span><br><span class="line">		<span class="comment"># 初始化最小数值和索引</span></span><br><span class="line">		min_value = nums[i]</span><br><span class="line">		index = i</span><br><span class="line">		<span class="comment"># 内层找到每次循环的最小索引和数值</span></span><br><span class="line">		<span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i+<span class="number">1</span>, <span class="built_in">len</span>(nums)):</span><br><span class="line">			<span class="keyword">if</span> nums[j] &lt; min_value:</span><br><span class="line">				index = j</span><br><span class="line">				min_value = nums[j]</span><br><span class="line">		<span class="comment"># 将最小数置于对应位置</span></span><br><span class="line">		nums[i], nums[index] = nums[index], nums[i]</span><br><span class="line">	<span class="comment"># 返回传入的数组(或不返回)</span></span><br><span class="line">	<span class="keyword">return</span> nums</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># 测试用例</span></span><br><span class="line">    test_list = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序前的数组为: &quot;</span>, test_list)</span><br><span class="line">    <span class="comment"># 调用函数</span></span><br><span class="line">    selectionSort(test_list)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序后的数组为: &quot;</span>, test_list)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 排序前的数组为:  [1, 5, 6, 8, 2]</span></span><br><span class="line">    <span class="comment"># 排序后的数组为:  [1, 2, 5, 6, 8]</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="插入排序"><a class="markdownIt-Anchor" href="#插入排序"></a> 插入排序</h3>
-<p>算法步骤</p>
-<ul>
-<li>
-<ol>
-<li>将第一个元素视为有序数组，将第二个到最后一个元素视为待插入元素</li>
-</ol>
-</li>
-<li>
-<ol start="2">
-<li>从前往后依次进行插入</li>
-</ol>
-</li>
-</ul>
-<p>平均时间复杂度: O(n^2)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insertionSort</span>(<span class="params">nums</span>):</span></span><br><span class="line">	<span class="comment"># 外层循环决定插入的次数</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">		<span class="comment"># 从当前元素的前一个元素开始排查</span></span><br><span class="line">		index = i - <span class="number">1</span></span><br><span class="line">		cur_value = nums[i]</span><br><span class="line">		<span class="comment"># 如果前一个元素比当前元素大，则向前查找，直到找到插入位置</span></span><br><span class="line">		<span class="keyword">while</span>(index &gt;= <span class="number">0</span> <span class="keyword">and</span> nums[index] &gt; cur_value):</span><br><span class="line">			nums[index+<span class="number">1</span>] = nums[index]</span><br><span class="line">			index = index - <span class="number">1</span></span><br><span class="line">		nums[index+<span class="number">1</span>] = cur_value</span><br><span class="line">	<span class="comment"># 返回传入的数组(或不返回)</span></span><br><span class="line">	<span class="keyword">return</span> nums</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># 测试用例</span></span><br><span class="line">    test_list = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序前的数组为: &quot;</span>, test_list)</span><br><span class="line">    <span class="comment"># 调用函数</span></span><br><span class="line">    insertionSort(test_list)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序后的数组为: &quot;</span>, test_list)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 排序前的数组为:  [1, 5, 6, 8, 2]</span></span><br><span class="line">    <span class="comment"># 排序后的数组为:  [1, 2, 5, 6, 8]</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="希尔排序"><a class="markdownIt-Anchor" href="#希尔排序"></a> 希尔排序</h3>
-<p>算法简介</p>
-<ul>
-<li>希尔排序也是一种插入排序，它是简单插入排序经过改进之后的一个更高效的版本。</li>
-<li>希尔排序是按照不同步长对元素进行插入排序，当刚开始元素很无序的时候，步长最大，所以插入排序的元素个数很少，速度很快；当元素基本有序了，步长很小，插入排序对于有序的序列效率很高。</li>
-</ul>
-<p>算法步骤</p>
-<ul>
-<li>
-<ol>
-<li>首先选定增量数值(步长)</li>
-</ol>
-</li>
-<li>
-<ol start="2">
-<li>对数组进行k次排序(例如: 1, 3, 4, 2, 5 步长为2则将 1, 4, 5 | 3, 2分别插入 -&gt; 1, 2, 4, 3, 5)</li>
-</ol>
-</li>
-<li>
-<ol start="3">
-<li>将增量数值减半重复第二步</li>
-</ol>
-</li>
-</ul>
-<p>平均时间复杂度: O(nlogn)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shellSort</span>(<span class="params">nums</span>):</span></span><br><span class="line">	<span class="comment"># 定义增量值</span></span><br><span class="line">	gap = <span class="built_in">len</span>(nums) // <span class="number">2</span> + <span class="number">1</span></span><br><span class="line">	<span class="comment"># 增量值不得小于1</span></span><br><span class="line">	<span class="keyword">while</span>(gap &gt;= <span class="number">1</span>):</span><br><span class="line">		<span class="comment"># 对数组进行多次排序，保证趋势趋近递增</span></span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(gap, <span class="built_in">len</span>(nums)):</span><br><span class="line">			<span class="comment"># 插入排序</span></span><br><span class="line">			index = i - gap</span><br><span class="line">			cur_value = nums[i]</span><br><span class="line">			<span class="keyword">while</span>(index &gt;= <span class="number">0</span> <span class="keyword">and</span> nums[index] &gt; cur_value):</span><br><span class="line">				nums[index + gap] = nums[index]</span><br><span class="line">				index = index - gap</span><br><span class="line">			nums[index+gap] = cur_value</span><br><span class="line">		<span class="comment"># 修改增量值</span></span><br><span class="line">		gap = gap // <span class="number">2</span></span><br><span class="line">	<span class="comment"># 返回传入的数组(或不返回)</span></span><br><span class="line">	<span class="keyword">return</span> nums</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># 测试用例</span></span><br><span class="line">    test_list = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序前的数组为: &quot;</span>, test_list)</span><br><span class="line">    <span class="comment"># 调用函数</span></span><br><span class="line">    shellSort(test_list)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序后的数组为: &quot;</span>, test_list)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 排序前的数组为:  [1, 5, 6, 8, 2]</span></span><br><span class="line">    <span class="comment"># 排序后的数组为:  [1, 2, 5, 6, 8]</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="归并排序"><a class="markdownIt-Anchor" href="#归并排序"></a> 归并排序</h3>
-<p>算法步骤</p>
-<ul>
-<li>
-<ol>
-<li>将数组对半拆分，直到不能再拆</li>
-</ol>
-</li>
-<li>
-<ol start="2">
-<li>将拆分后的数组两两进行合并排序，返回排序后的数组</li>
-</ol>
-</li>
-<li>
-<ol start="3">
-<li>递归完成所有的排序</li>
-</ol>
-</li>
-</ul>
-<p>平均时间复杂度: O(nlogn)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mergeSort</span>(<span class="params">nums</span>):</span></span><br><span class="line">	<span class="comment"># 拆分到剩下一个元素直接参与排序</span></span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(nums) &lt; <span class="number">2</span>:</span><br><span class="line">		<span class="keyword">return</span> nums</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="comment"># 向下拆分</span></span><br><span class="line">		middle = <span class="built_in">len</span>(nums) // <span class="number">2</span></span><br><span class="line">		left, right = nums[<span class="number">0</span>:middle], nums[middle:]</span><br><span class="line">		<span class="comment"># 返回的结果应该是两个有序数组的组合排序</span></span><br><span class="line">		<span class="keyword">return</span> merge(mergeSort(left), mergeSort(right))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span>(<span class="params">arr1, arr2</span>):</span></span><br><span class="line">	<span class="comment"># 定义一个空间</span></span><br><span class="line">	result = []</span><br><span class="line">	<span class="comment"># 双指针法</span></span><br><span class="line">	point1, point2 = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">	<span class="comment"># 指针向前推进</span></span><br><span class="line">	<span class="keyword">while</span>(point1 &lt; <span class="built_in">len</span>(arr1) <span class="keyword">and</span> point2 &lt; <span class="built_in">len</span>(arr2)):</span><br><span class="line">		<span class="keyword">if</span> arr1[point1] &gt; arr2[point2]:</span><br><span class="line">			result.append(arr2[point2])</span><br><span class="line">			point2 = point2 + <span class="number">1</span></span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			result.append(arr1[point1])</span><br><span class="line">			point1 = point1 + <span class="number">1</span></span><br><span class="line">	<span class="comment"># 将剩余的元素加入其中</span></span><br><span class="line">	<span class="keyword">if</span> point1 &lt; <span class="built_in">len</span>(arr1):</span><br><span class="line">		result += arr1[point1:]</span><br><span class="line">	<span class="keyword">if</span> point2 &lt; <span class="built_in">len</span>(arr2):</span><br><span class="line">		result += arr2[point2:]</span><br><span class="line">	<span class="comment"># 返回两个数组合并排序后的数组</span></span><br><span class="line">	<span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># 测试用例</span></span><br><span class="line">    test_list = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序前的数组为: &quot;</span>, test_list)</span><br><span class="line">    <span class="comment"># 调用函数</span></span><br><span class="line">    result = mergeSort(test_list)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序后的数组为: &quot;</span>, result)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 排序前的数组为:  [1, 5, 6, 8, 2]</span></span><br><span class="line">    <span class="comment"># 排序后的数组为:  [1, 2, 5, 6, 8]</span></span><br></pre></td></tr></table></figure>
-<h3 id="快速排序"><a class="markdownIt-Anchor" href="#快速排序"></a> 快速排序</h3>
-<p>算法步骤</p>
-<ul>
-<li>
-<ol>
-<li>从数列中挑出一个元素作为基准(pivot)</li>
-</ol>
-</li>
-<li>
-<ol start="2">
-<li>重新排序数列, 比基准小的放在前面, 比基准大的放在后面, 排序完成后基准应该在数组中间(不排除所有数比其小或比其大的情况出现)</li>
-</ol>
-</li>
-<li>
-<ol start="3">
-<li>递归的将小于其的数字和大于其的数字进行排序</li>
-</ol>
-</li>
-</ul>
-<p>平均时间复杂度: O(nlogn)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">swap</span>(<span class="params">arr, i, j</span>):</span></span><br><span class="line">	<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">	数组对应位置</span></span><br><span class="line"><span class="string">	&quot;&quot;&quot;</span></span><br><span class="line">	arr[i], arr[j] = arr[j], arr[i]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">partition</span>(<span class="params">arr, left, right</span>):</span></span><br><span class="line">	<span class="comment"># 初始化基准，将第一个元素设置成为基准</span></span><br><span class="line">	pivot = left</span><br><span class="line">	index = pivot + <span class="number">1</span></span><br><span class="line">	i = index</span><br><span class="line">	<span class="comment"># 对比每一个元素，如果小于第一个元素将其放在index之前，反之放到后面</span></span><br><span class="line">	<span class="keyword">while</span>(i &lt;= right):</span><br><span class="line">		<span class="keyword">if</span> arr[i] &lt;= arr[pivot]:</span><br><span class="line">			swap(arr, i, index)</span><br><span class="line">			index = index + <span class="number">1</span></span><br><span class="line">		i = i + <span class="number">1</span></span><br><span class="line">	swap(arr, index-<span class="number">1</span>, pivot)</span><br><span class="line">	<span class="comment"># 返回排序好的index位置</span></span><br><span class="line">	<span class="keyword">return</span> index - <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quickSort</span>(<span class="params">arr, left=<span class="literal">None</span>, right=<span class="literal">None</span></span>):</span></span><br><span class="line">	left = <span class="number">0</span> <span class="keyword">if</span> <span class="keyword">not</span> left <span class="keyword">else</span> left</span><br><span class="line">	right = <span class="built_in">len</span>(arr)-<span class="number">1</span> <span class="keyword">if</span> <span class="keyword">not</span> right <span class="keyword">else</span> right</span><br><span class="line">	<span class="keyword">if</span> left &lt; right:</span><br><span class="line">		<span class="comment"># 找到基准位置</span></span><br><span class="line">		index = partition(arr, left, right)</span><br><span class="line">		<span class="comment"># 递归进行快排</span></span><br><span class="line">		quickSort(arr, left, index-<span class="number">1</span>)</span><br><span class="line">		quickSort(arr, index+<span class="number">1</span>, right)</span><br><span class="line">	<span class="comment"># 返回数组</span></span><br><span class="line">	<span class="keyword">return</span> arr</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># 测试用例</span></span><br><span class="line">    test_list = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序前的数组为: &quot;</span>, test_list)</span><br><span class="line">    <span class="comment"># 调用函数</span></span><br><span class="line">    arr = quickSort(test_list)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序后的数组为: &quot;</span>, test_list)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 排序前的数组为:  [1, 5, 6, 8, 2]</span></span><br><span class="line">    <span class="comment"># 排序后的数组为:  [1, 2, 5, 6, 8]</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="堆排序"><a class="markdownIt-Anchor" href="#堆排序"></a> 堆排序</h3>
-<p>简介</p>
-<ul>
-<li>堆是一棵树，其每个节点都有一个键值，且每个节点的键值都大于等于/小于等于其父亲的键值。每个节点的键值都大于等于其父亲键值的堆叫做小顶堆，否则叫大顶堆。</li>
-<li>堆通常是一个可以被看做一棵完全二叉树的数组对象。</li>
-</ul>
-<p>算法步骤</p>
-<ul>
-<li>
-<ol>
-<li>构建堆(大顶堆或者小顶堆)</li>
-</ol>
-</li>
-<li>
-<ol start="2">
-<li>将堆顶和堆尾互换位置</li>
-</ol>
-</li>
-<li>
-<ol start="3">
-<li>将堆的尺寸缩小一，重新对堆进行排序</li>
-</ol>
-</li>
-<li>
-<ol start="4">
-<li>重复2, 3</li>
-</ol>
-</li>
-</ul>
-<p>平均时间复杂度: O(nlogn)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">buildMaxHeap</span>(<span class="params">arr</span>):</span></span><br><span class="line">	<span class="comment"># 构建堆, 堆是用数组存储的二叉树型结构</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(arr)//<span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">		heapify(arr, i)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">swap</span>(<span class="params">arr, i, j</span>):</span></span><br><span class="line">	<span class="comment"># 将数组中的两个元素调换位置</span></span><br><span class="line">	arr[i], arr[j] = arr[j], arr[i]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">heapify</span>(<span class="params">arr, i</span>):</span></span><br><span class="line">	<span class="comment"># 对数组节点进行最大堆构建</span></span><br><span class="line">	left = <span class="number">2</span> * i + <span class="number">1</span></span><br><span class="line">	right = <span class="number">2</span> * i + <span class="number">2</span></span><br><span class="line">	index = i</span><br><span class="line">	<span class="keyword">if</span> left &lt; arrLen <span class="keyword">and</span> arr[left] &gt; arr[index]:</span><br><span class="line">		index = left</span><br><span class="line">	<span class="keyword">if</span> right &lt; arrLen <span class="keyword">and</span> arr[right] &gt; arr[index]:</span><br><span class="line">		index = right</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> index != i:</span><br><span class="line">		swap(arr, index, i)</span><br><span class="line">		heapify(arr, index)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">heapSort</span>(<span class="params">arr</span>):</span></span><br><span class="line">	<span class="comment"># 进行堆排序</span></span><br><span class="line">	<span class="keyword">global</span> arrLen</span><br><span class="line">	arrLen = <span class="built_in">len</span>(arr)</span><br><span class="line">	buildMaxHeap(arr)</span><br><span class="line">	<span class="comment"># 将顶部元素置于末尾后将顶部重新排序</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(arr)-<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>):</span><br><span class="line">		swap(arr, <span class="number">0</span>, i)</span><br><span class="line">		arrLen -= <span class="number">1</span></span><br><span class="line">		heapify(arr, <span class="number">0</span>)</span><br><span class="line">	<span class="keyword">return</span> arr</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># 测试用例</span></span><br><span class="line">    test_list = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序前的数组为: &quot;</span>, test_list)</span><br><span class="line">    <span class="comment"># 调用函数</span></span><br><span class="line">    heapSort(test_list)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序后的数组为: &quot;</span>, test_list)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 排序前的数组为:  [1, 5, 6, 8, 2]</span></span><br><span class="line">    <span class="comment"># 排序后的数组为:  [1, 2, 5, 6, 8]</span></span><br></pre></td></tr></table></figure>
-<h3 id="计数排序"><a class="markdownIt-Anchor" href="#计数排序"></a> 计数排序</h3>
-<p>简介</p>
-<ul>
-<li>核心在于将输入的数据转化为键存储在额外开辟的空间中</li>
-<li>适合用来排序有固定大小之间的数字，例如: 排序0到100之前的数字</li>
-</ul>
-<p>算法步骤</p>
-<ul>
-<li>
-<ol>
-<li>找出待排序数组中最大和最小的元素</li>
-</ol>
-</li>
-<li>
-<ol start="2">
-<li>统计数组中每个值为i的元素出现的次数, 存入新数组的第i项</li>
-</ol>
-</li>
-<li>
-<ol start="3">
-<li>对新数组进行遍历，将每个数依次填充到原数组之中</li>
-</ol>
-</li>
-</ul>
-<p>平均时间复杂度: O(n+k) k为数组中的跨度(最大最小数之间的差距)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">countingSort</span>(<span class="params">arr</span>):</span></span><br><span class="line">	<span class="comment"># 定义需要额外空间数组的大小范围</span></span><br><span class="line">	max_value, min_value = <span class="built_in">max</span>(arr), <span class="built_in">min</span>(arr)</span><br><span class="line">	length = max_value - min_value + <span class="number">1</span></span><br><span class="line">	bucket = [<span class="number">0</span>] * length</span><br><span class="line">	<span class="comment"># 对原数组重新填充数据</span></span><br><span class="line">	index = <span class="number">0</span></span><br><span class="line">	<span class="comment"># 统计原数组中每个数据出现的次数</span></span><br><span class="line">	<span class="keyword">for</span> value <span class="keyword">in</span> arr:</span><br><span class="line">		bucket[value-min_value] += <span class="number">1</span></span><br><span class="line">	<span class="comment"># 填充目标数组</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(bucket)):</span><br><span class="line">		<span class="keyword">while</span>(bucket[i]&gt;<span class="number">0</span>):</span><br><span class="line">			arr[index] = i + min_value</span><br><span class="line">			index = index + <span class="number">1</span></span><br><span class="line">			bucket[i] -= <span class="number">1</span></span><br><span class="line">	<span class="comment"># 返回原数组</span></span><br><span class="line">	<span class="keyword">return</span> arr</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># 测试用例</span></span><br><span class="line">    test_list = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序前的数组为: &quot;</span>, test_list)</span><br><span class="line">    <span class="comment"># 调用函数</span></span><br><span class="line">    test_list = countingSort(test_list)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;排序后的数组为: &quot;</span>, test_list)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 排序前的数组为:  [1, 5, 6, 8, 2]</span></span><br><span class="line">    <span class="comment"># 排序后的数组为:  [1, 2, 5, 6, 8]</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/23/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tianqi Xie">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tianqi's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/23/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-01-23 11:41:58" itemprop="dateCreated datePublished" datetime="2022-01-23T11:41:58-08:00">2022-01-23</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2>
-<h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 </div>
   </main>

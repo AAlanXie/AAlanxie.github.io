@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="解释语言与编译语言  区别: 解释器会对程序产生一个结果，编译器会对程序生成一段机器语言的代码 编译语言  架构的汇编器将程序生成成为二进制代码，汇编语言因每台计算机而异，具体取决于其系统架构。因此编译后的程序只能再与其编译环境相同的计算机上运行。 优点:  速度快 当编译了之后源代码就没有用了，直接执行执行文件即可，解释性语言需要每次都运行程序     解释语言  解释器会直接的执行程序中的代">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python基础知识">
+<meta property="og:url" content="http://example.com/2022/02/24/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="Tianqi&#39;s blog">
+<meta property="og:description" content="解释语言与编译语言  区别: 解释器会对程序产生一个结果，编译器会对程序生成一段机器语言的代码 编译语言  架构的汇编器将程序生成成为二进制代码，汇编语言因每台计算机而异，具体取决于其系统架构。因此编译后的程序只能再与其编译环境相同的计算机上运行。 优点:  速度快 当编译了之后源代码就没有用了，直接执行执行文件即可，解释性语言需要每次都运行程序     解释语言  解释器会直接的执行程序中的代">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-24T18:44:57.000Z">
+<meta property="article:modified_time" content="2022-02-25T02:32:53.094Z">
+<meta property="article:author" content="Tianqi Xie">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/02/24/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/02/24/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/","path":"2022/02/24/python基础知识/","title":"python基础知识"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>python基础知识 | Tianqi's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Tianqi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%87%8A%E8%AF%AD%E8%A8%80%E4%B8%8E%E7%BC%96%E8%AF%91%E8%AF%AD%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text"> 解释语言与编译语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="nav-number">2.</span> <span class="nav-text"> python内存回收机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python%E7%9A%84%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="nav-number">3.</span> <span class="nav-text"> python的深浅拷贝</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tianqi Xie</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/24/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tianqi Xie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tianqi's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python基础知识
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-02-24 10:44:57 / 修改时间：18:32:53" itemprop="dateCreated datePublished" datetime="2022-02-24T10:44:57-08:00">2022-02-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="解释语言与编译语言"><a class="markdownIt-Anchor" href="#解释语言与编译语言"></a> 解释语言与编译语言</h3>
+<ul>
+<li>区别: 解释器会对程序产生一个结果，编译器会对程序生成一段机器语言的代码</li>
+<li>编译语言
+<ul>
+<li>架构的汇编器将程序生成成为二进制代码，汇编语言因每台计算机而异，具体取决于其系统架构。因此编译后的程序只能再与其编译环境相同的计算机上运行。</li>
+<li>优点:
+<ul>
+<li>速度快</li>
+<li>当编译了之后源代码就没有用了，直接执行执行文件即可，解释性语言需要每次都运行程序</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>解释语言
+<ul>
+<li>解释器会直接的执行程序中的代码，不会将其转换成其他机器语言或目标代码</li>
+<li>优点:
+<ul>
+<li>便携, 任何安装了适当解释器的计算机都可以或多或少不改变地运行该程序</li>
+<li>更加容易修改与调试</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="python内存回收机制"><a class="markdownIt-Anchor" href="#python内存回收机制"></a> python内存回收机制</h3>
+<ul>
+<li>python中内存管理主要使用过 计数 + 清理 来完成的
+<ul>
+<li>计数  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef struct_object &#123;</span><br><span class="line"><span class="built_in">int</span> ob_refcnt;</span><br><span class="line">struct_typeobject *ob_type;</span><br><span class="line">&#125; PyObject;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>python中对象的核心是一个结构体，内部会有一个引用计数器(ob_refcnt), 反映当前对象的名称数量，当引用计数为0的时候内存就会被释放掉。</li>
+<li>计数加一
+<ul>
+<li>对象被创建</li>
+<li>对象被引用</li>
+<li>对象被作为参数，传入到一个函数中</li>
+<li>对象作为一个元素，存储在容器中</li>
+</ul>
+</li>
+<li>计数减一
+<ul>
+<li>对象别名被显示销毁 del</li>
+<li>对象别名被赋予新的对象</li>
+<li>一个对象离开他的作用域</li>
+<li>对象所在的容器被销毁或者是从容器中删除对象</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>引用计数的优缺点
+<ul>
+<li>优点:
+<ul>
+<li>高效</li>
+<li>实现逻辑简单</li>
+<li>具有实时性质</li>
+</ul>
+</li>
+<li>缺点:
+<ul>
+<li>逻辑简单但是实现较为麻烦，每个对象需要分配单独空间来引用计数并且维护。</li>
+<li>一些场景下会较慢。当需要释放一个比较大的对象时候，比如字典，可能会耗费比较长的事件</li>
+<li>循环引用。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>清理
+<ul>
+<li>1、标记清除算法
+<ul>
+<li>算法分为“标记”和“清除”两个阶段，首先标记所有需要回收的对象，在标记完成后统一回收所有被标记的对象。有两个不足：一是效率问题，标记和清除两个过程的效率都不高；另一个是空间问题，标记清除之后会产生大量不连续的内存碎片，空间碎片太多可能会导致以后在程序运行过程中需要分配较大对象时，无法找到足够的连续内存而不得不提前触发一次垃圾收集动作</li>
+</ul>
+</li>
+<li>2、复制算法
+<ul>
+<li>将内存分为两块，每次只使用其中的一块。当这一块内存用完了，就将还存活的对象复制到另一块上，然后再把已使用过的内存空间一次清理掉。这样使得每次都是对一整块内存回收，内存分配时候也不用考虑内存碎片等复杂情况，只要移动堆顶指针，按顺序分配即可，实现简单，运行高效。缺点是一次只能使用一部分内存，会有一些浪费。一般新生代会选择这种算法。</li>
+</ul>
+</li>
+<li>3、标记-整理算法
+<ul>
+<li>复制算法存在两个问题，1）会浪费50%的空间 2）如果被使用的内存中所有对象都100%存活的极端情况，就需要有额外的空间进行分配担保，因此老年代一般不能直接选用复制算法。有人提出了另外一种“标记-整理”（Mark-Compact）算法，标记过程仍然与“标记-清除”一样，后续步骤让所有存活的对象都向一端移动，然后直接清理掉端边界以外的内存。</li>
+</ul>
+</li>
+<li>4、分代回收算法
+<ul>
+<li>分代回收算法并没有什么新的思想，只是根据对象存活周期的不同将内存划分为几块。比如新生代和老年代，不同代使用不同的回收算法。比如新生代使用复制算法，而老年代使用标记-清除或标记-整理算法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>python程序结束时会释放所有的内存么
+<ul>
+<li>当 Python 退出时，从 Python 模块的全局命名空间引用的对象并不总是被释放。 如果存在循环引用，则可能会发生这种情况。 还有一些由 C 库分配的内存是不可能释放的(例如，像 Purify 这样的工具会抱怨这些)。然而，Python 在退出时会积极清理内存，并且确实会尝试销毁每个对象。</li>
+</ul>
+</li>
+</ul>
+<h3 id="python的深浅拷贝"><a class="markdownIt-Anchor" href="#python的深浅拷贝"></a> python的深浅拷贝</h3>
+<ul>
+<li>直接赋值：其实就是对象的引用（别名）。</li>
+<li>浅拷贝(copy)：拷贝父对象，不会拷贝对象的内部的子对象。</li>
+<li>深拷贝(deepcopy)： copy 模块的 deepcopy 方法，完全拷贝了父对象及其子对象。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*-coding:utf-8 -*-</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>]] <span class="comment">#原始对象</span></span><br><span class="line"> </span><br><span class="line">b = a                       <span class="comment">#赋值，传对象的引用</span></span><br><span class="line">c = copy.copy(a)            <span class="comment">#对象拷贝，浅拷贝</span></span><br><span class="line">d = copy.deepcopy(a)        <span class="comment">#对象拷贝，深拷贝</span></span><br><span class="line"> </span><br><span class="line">a.append(<span class="number">5</span>)                 <span class="comment">#修改对象a</span></span><br><span class="line">a[<span class="number">4</span>].append(<span class="string">&#x27;c&#x27;</span>)            <span class="comment">#修改对象a中的[&#x27;a&#x27;, &#x27;b&#x27;]数组对象</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># (&#x27;a = &#x27;, [1, 2, 3, 4, [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;], 5])</span></span><br><span class="line"><span class="comment"># (&#x27;b = &#x27;, [1, 2, 3, 4, [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;], 5])</span></span><br><span class="line"><span class="comment"># (&#x27;c = &#x27;, [1, 2, 3, 4, [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]])</span></span><br><span class="line"><span class="comment"># (&#x27;d = &#x27;, [1, 2, 3, 4, [&#x27;a&#x27;, &#x27;b&#x27;]])</span></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/02/18/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="prev" title="数据库经典面试题">
+                  <i class="fa fa-chevron-left"></i> 数据库经典面试题
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/02/24/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="next" title="java基础知识">
+                  java基础知识 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tianqi Xie</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

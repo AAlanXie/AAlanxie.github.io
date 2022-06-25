@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="java语言的特点  面向对象的(oop) 强类型机制, 异常处理, 垃圾自动回收 跨平台 解释型   面向对象和面向过程的区别  面向过程  面向过程是一种以事件为中心的编程思想，编程的时候把解决问题的步骤都分析出来，然后用函数将其解决 例子  五子棋 如下，一步步调用函数:    开始游戏     黑子先走     绘制图面     判断输赢     轮到白子     绘制图面     判断">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java基础知识">
+<meta property="og:url" content="http://example.com/2022/02/24/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="Tianqi&#39;s blog">
+<meta property="og:description" content="java语言的特点  面向对象的(oop) 强类型机制, 异常处理, 垃圾自动回收 跨平台 解释型   面向对象和面向过程的区别  面向过程  面向过程是一种以事件为中心的编程思想，编程的时候把解决问题的步骤都分析出来，然后用函数将其解决 例子  五子棋 如下，一步步调用函数:    开始游戏     黑子先走     绘制图面     判断输赢     轮到白子     绘制图面     判断">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-24T18:45:06.000Z">
+<meta property="article:modified_time" content="2022-03-07T03:11:21.410Z">
+<meta property="article:author" content="Tianqi Xie">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/02/24/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/02/24/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/","path":"2022/02/24/java基础知识/","title":"java基础知识"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>java基础知识 | Tianqi's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Tianqi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#java%E8%AF%AD%E8%A8%80%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text"> java语言的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text"> 面向对象和面向过程的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text"> 面向过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.2.</span> <span class="nav-text"> 面向对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jdk-jre-jvm"><span class="nav-number">3.</span> <span class="nav-text"> JDK, JRE, JVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="nav-number">4.</span> <span class="nav-text"> java面向对象编程的三大特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-number">4.1.</span> <span class="nav-text"> 修饰符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%81%E8%A3%85"><span class="nav-number">4.2.</span> <span class="nav-text"> 封装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">4.3.</span> <span class="nav-text"> 继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E6%80%81"><span class="nav-number">4.4.</span> <span class="nav-text"> 多态</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3interface%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BBabstract"><span class="nav-number">5.</span> <span class="nav-text"> 接口(interface)和抽象类(abstract)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#int-%E5%92%8C-integer-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">6.</span> <span class="nav-text"> int 和 integer 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#equals-%E5%92%8C-%E5%92%8C-hashcode"><span class="nav-number">7.</span> <span class="nav-text"> equals 和 &#x3D;&#x3D; 和 hashcode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java%E7%9A%84%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="nav-number">8.</span> <span class="nav-text"> java的内存回收机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E6%A0%87%E8%AE%B0%E6%96%B9%E5%BC%8F"><span class="nav-number">8.1.</span> <span class="nav-text"> 内存标记方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6%E6%96%B9%E5%BC%8F"><span class="nav-number">8.2.</span> <span class="nav-text"> 内存回收方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8"><span class="nav-number">8.3.</span> <span class="nav-text"> 垃圾回收器</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tianqi Xie</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/24/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tianqi Xie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tianqi's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          java基础知识
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-24 10:45:06" itemprop="dateCreated datePublished" datetime="2022-02-24T10:45:06-08:00">2022-02-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-06 19:11:21" itemprop="dateModified" datetime="2022-03-06T19:11:21-08:00">2022-03-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="java语言的特点"><a class="markdownIt-Anchor" href="#java语言的特点"></a> java语言的特点</h3>
+<ul>
+<li>面向对象的(oop)</li>
+<li>强类型机制, 异常处理, 垃圾自动回收</li>
+<li>跨平台</li>
+<li>解释型</li>
+</ul>
+<h3 id="面向对象和面向过程的区别"><a class="markdownIt-Anchor" href="#面向对象和面向过程的区别"></a> 面向对象和面向过程的区别</h3>
+<h4 id="面向过程"><a class="markdownIt-Anchor" href="#面向过程"></a> 面向过程</h4>
+<ul>
+<li>面向过程是一种以事件为中心的编程思想，编程的时候把解决问题的步骤都分析出来，然后用函数将其解决</li>
+<li>例子
+<ul>
+<li>五子棋 如下，一步步调用函数:
+<ul>
+<li>
+<ol>
+<li>开始游戏</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>黑子先走</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>绘制图面</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>判断输赢</li>
+</ol>
+</li>
+<li>
+<ol start="5">
+<li>轮到白子</li>
+</ol>
+</li>
+<li>
+<ol start="6">
+<li>绘制图面</li>
+</ol>
+</li>
+<li>
+<ol start="7">
+<li>判断输赢</li>
+</ol>
+</li>
+<li>
+<ol start="8">
+<li>返回步骤2</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>优点:
+<ul>
+<li>流程化使得编程任务明确</li>
+<li>效率高</li>
+</ul>
+</li>
+<li>缺点:
+<ul>
+<li>需要深入思考</li>
+<li>代码复用性差</li>
+<li>后期维护难度大</li>
+</ul>
+</li>
+</ul>
+<h4 id="面向对象"><a class="markdownIt-Anchor" href="#面向对象"></a> 面向对象</h4>
+<ul>
+<li>将每个人和事物都看做对象，每个对象有自己的属性和行为。</li>
+<li>例子
+<ul>
+<li>五子棋:
+<ul>
+<li>
+<ol>
+<li>黑白双方</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>棋盘系统</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>规则系统</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>优点:
+<ul>
+<li>结构清晰, 程序是模块化和结构化，更加符合人类的思维方式；</li>
+<li>易拓展, 代码重用率高，可继承，可覆盖，可以设计出低耦合的系统</li>
+<li>易维护, 系统低耦合的特点有利于减少程序的后期维护工作量</li>
+</ul>
+</li>
+<li>缺点:
+<ul>
+<li>开销大，当要修改对象内部时，对象的属性不允许外部直接存取，所以要增加许多没有其他意义、只负责读或写的行为.</li>
+<li>性能低，由于面向更高的逻辑抽象层，使得面向对象在实现的时候，不得不做出性能上面的牺牲，计算时间和空间存储大小都开销很大</li>
+</ul>
+</li>
+</ul>
+<h3 id="jdk-jre-jvm"><a class="markdownIt-Anchor" href="#jdk-jre-jvm"></a> JDK, JRE, JVM</h3>
+<ul>
+<li>JDK: Java Development kit
+<ul>
+<li>用于开发</li>
+<li>JRE + JAVA开发工具(java, javac等)</li>
+</ul>
+</li>
+<li>JRE: Java Runtime Environment
+<ul>
+<li>用于运行java程序</li>
+<li>JVM + JAVA核心类库</li>
+</ul>
+</li>
+<li>JVM: Java Virtual Machine
+<ul>
+<li>将字节码转换为特定机器代码，并提供了内存管理/垃圾回收等安全机制</li>
+</ul>
+</li>
+<li>为什么要采用字节码呢?
+<ul>
+<li>运行顺序:
+<ul>
+<li>java源代码 -&gt; 编译器 -&gt; jvm可执行的java字节码 -&gt; jvm -&gt; jvm中的解释器 -&gt; 机器可执行的二进制机器码 -&gt; 程序执行</li>
+</ul>
+</li>
+<li>好处:
+<ul>
+<li>解决了解释性语言执行效率低的问题，又保留了解释型语言可以移植的特点。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="java面向对象编程的三大特性"><a class="markdownIt-Anchor" href="#java面向对象编程的三大特性"></a> java面向对象编程的三大特性</h3>
+<h4 id="修饰符"><a class="markdownIt-Anchor" href="#修饰符"></a> 修饰符</h4>
+<ul>
+<li>default: 默认访问修饰符，在同一包内可见</li>
+<li>private: 在同一类内可见，不能修饰类</li>
+<li>protected : 对同一包内的类和所有子类可见，不能修饰类</li>
+<li>public: 对所有类可见</li>
+</ul>
+<h4 id="封装"><a class="markdownIt-Anchor" href="#封装"></a> 封装</h4>
+<ul>
+<li>将一个对象的方法和属性私有化，同时可以提供一些给外界访问的方法</li>
+</ul>
+<h4 id="继承"><a class="markdownIt-Anchor" href="#继承"></a> 继承</h4>
+<ul>
+<li>使用已经存在的类的定义作为基础建立新类的技术, 新类的定义可以增加新的数据或者新的功能，也可以使用父类的功能</li>
+</ul>
+<h4 id="多态"><a class="markdownIt-Anchor" href="#多态"></a> 多态</h4>
+<ul>
+<li>多态就是指程序中定义的引用变量所指向的具体类型和通过该引用变量发出的方法调用在编程时并不确定，而是在程序运行期间才确定</li>
+</ul>
+<h3 id="接口interface和抽象类abstract"><a class="markdownIt-Anchor" href="#接口interface和抽象类abstract"></a> 接口(interface)和抽象类(abstract)</h3>
+<ul>
+<li>区别
+<ul>
+<li>抽象类可以提供成员方法的实现细节, 接口中只能存在public abstract方法</li>
+<li>抽象类中的成员变量可以是各种类型的, 接口中的成员变量只能是public static final类型的</li>
+<li>抽象类中可以有静态代码块和静态方法, 接口中不能有</li>
+<li>一个类只能继承一个抽象类, 一个类可以实现多个接口</li>
+</ul>
+</li>
+</ul>
+<h3 id="int-和-integer-的区别"><a class="markdownIt-Anchor" href="#int-和-integer-的区别"></a> int 和 integer 的区别</h3>
+<ul>
+<li>int是基础数据类型, integer是引用类型</li>
+<li>拆箱与装箱
+<ul>
+<li>装箱: 将基础数据类型保存成为对象</li>
+<li>拆箱: 将对象拆解成为基础数据类型</li>
+</ul>
+</li>
+</ul>
+<h3 id="equals-和-和-hashcode"><a class="markdownIt-Anchor" href="#equals-和-和-hashcode"></a> equals 和 == 和 hashcode</h3>
+<ul>
+<li>==
+<ul>
+<li>基本数据类型的比较, 是比较值</li>
+<li>若是引用类型, 则比较内存中存放的地址</li>
+</ul>
+</li>
+<li>equals
+<ul>
+<li>object类中的equals方法用于判断对象的内存地址是否是同一个地址</li>
+<li>一般类覆盖了equals方法是通过判断内容是否相等来判断对象是否相同</li>
+</ul>
+</li>
+<li>hashcode
+<ul>
+<li>计算对象实例的hashcode, 在对象散列的时候作为key存入。</li>
+</ul>
+</li>
+<li>equals和hashcode关系
+<ul>
+<li>equals相等的对象, hashcode也一定相同</li>
+<li>hashcode不同, equals也一定不同</li>
+<li>hashcode相同, equals不一定相同</li>
+</ul>
+</li>
+</ul>
+<h3 id="java的内存回收机制"><a class="markdownIt-Anchor" href="#java的内存回收机制"></a> java的内存回收机制</h3>
+<ul>
+<li>为什么要进行内存回收?
+<ul>
+<li>C、C++等语言中，内存的分配和释放由程序代码来完成，容易出现由于程序员漏写内存释放代码引起的内存泄露，最终导致系统内存耗尽。</li>
+<li>内存泄漏:
+<ul>
+<li>内存泄漏（Memory Leak）是指程序中已动态分配的堆内存由于某种原因程序未释放或无法释放，造成系统内存的浪费，导致程序运行速度减慢甚至系统崩溃等严重后果。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="内存标记方式"><a class="markdownIt-Anchor" href="#内存标记方式"></a> 内存标记方式</h4>
+<ul>
+<li>引用计数法
+<ul>
+<li>当对象被创建并赋值给变量的时候计数为1; 当有其他变量引用该对象的时候, 引用计数+1; 当引用对象的变量超出存活范围或释放对象引用的时候, 引用计数-1。对象引用计数为0的时候代表可以被垃圾收集器回收。</li>
+</ul>
+</li>
+<li>根搜索算法
+<ul>
+<li>从一些指定的根对象出发，遍历找到和这个根对象有引用关系的对象, 从这些对象开始继续寻找，从而形成一个个的引用链, 不在引用链上的对象标记成为不可达的对象, 也就是需要回收的对象。</li>
+</ul>
+</li>
+</ul>
+<h4 id="内存回收方式"><a class="markdownIt-Anchor" href="#内存回收方式"></a> 内存回收方式</h4>
+<ul>
+<li>标记-清理算法(mark and sweep)
+<ul>
+<li>方法: 采用跟踪算法标记内存对象后, 扫描堆内存中未被标记的对象, 进行回收。算法不移动对象, 对不存活对象进行回收。</li>
+<li>造成的问题: 会引起内存碎片</li>
+</ul>
+</li>
+<li>标记-整理算法(compacting)
+<ul>
+<li>方法: 和标记-清理方法相同, 但是会把存活的对象向内存前半部分空闲区域移动, 并更新对象的指针</li>
+<li>造成的问题: 执行成本较高, 但是可以解决内存碎片的问题</li>
+</ul>
+</li>
+<li>复制-清除算法(copying)
+<ul>
+<li>该算法把内存分为空闲区和对象区，新建对象存储到对象区中。当对象区满时，先采用跟踪算法对对象进行标记，再把存活对象拷贝到空闲区，清空原对象区，空闲区和对象区互换角色。在拷贝过车中，程序需要暂停，此算法适用于存活对象叫少的情况，可以解决内存碎片问题。</li>
+<li>造成的问题: 把内存分为两部分, 会有一部分没法使用</li>
+</ul>
+</li>
+<li>分代回收算法
+<ul>
+<li>会根据对象的存活周期将内存区域分为三大块: 年轻代(Eden区, S0, S1), 老年代, 永久代</li>
+<li>
+<ol>
+<li>对象首次创建进行内存分配的时候，首先会放置在 Eden 区，当 Eden 区放满了或者当该对象太大无法放进 Eden 区的时候，此时会对年轻代（Eden区 和 S0）进行一次 GC，将幸存下来的对象放置在 S1，然后清空掉 Eden区和 S0 区；（此时年轻代采用的是 复制算法）</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>在上面第一步中对年轻代进行垃圾回收的时候，同时会对幸存的对象进行标记，统计每个幸存对象经历的 GC 次数；</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>当 S1 区满了之后，或者年轻代的对象经历过指定次数的 GC 之后，这部分对象会被放置到老年代之中；</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>当老年代也满了之后，便会对老年代进行一次 GC；（老年代采用的是 标记-整理算法）</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="垃圾回收器"><a class="markdownIt-Anchor" href="#垃圾回收器"></a> 垃圾回收器</h4>
+<ul>
+<li>串行垃圾回收器（Serial Garbage Collector）；
+<ul>
+<li>串行垃圾回收器会暂停所有的应用程序线程，并采用单独的的线程进行 GC。</li>
+<li>适用于单 CPU、并且对应用程序的暂停时间要求不高的情况，所以不太适合当前的生产环境。</li>
+</ul>
+</li>
+<li>并行垃圾回收器（Parallel Garbage Collector）；
+<ul>
+<li>并行垃圾回收器是 JVM 默认的垃圾回收器，相较于串行垃圾回收器而言性能稍有提升，它也是需要暂停所有的应用程序线程的，但是区别是它会使用多线程进行 GC。</li>
+<li>所以并行垃圾回收器适用于多 CPU 的服务器、并且能接受短暂的应用暂停的程序</li>
+</ul>
+</li>
+<li>并发标记扫描垃圾回收器（CMS Garbage Collector）；
+<ul>
+<li>CMS 回收器也是一种并行的垃圾回收器，它会采用多线程来进行扫描堆内存，标记需要清理的对象并将这些对象清理掉。</li>
+<li>但是 CMS 它需要更多的 CPU 来保证程序的吞吐量，并且它保证了最短的回收停顿时间，所以，在服务器允许的情况下，为了达到更到的性能，我们应该使用 CMS 来代替默认的 并行垃圾回收器。</li>
+</ul>
+</li>
+<li>G1垃圾回收器（G1 Garbage Collector）
+<ul>
+<li>G1 垃圾回收器是在 JDK1.7 中才正式引入的一款垃圾回收器，“科技在进步，所以一般越是先进的技术一般会更好用并且会替代陈旧的技术”，好了，玩笑归玩笑，但是 G1 的引入，目的就是为了取代 CMS 的。</li>
+<li>不要被上面 G1 的示意图误导， G1 并没有将内存进行物理划分，它只是将堆内存划分为一个个的 Region，但是也是属于分代垃圾回收器，G1 仍然会区分年轻代和老年代，并且年轻代仍然会有 Eden 区和 Survivor 区。</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/02/24/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="prev" title="python基础知识">
+                  <i class="fa fa-chevron-left"></i> python基础知识
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/05/13/leetcode/" rel="next" title="leetcode">
+                  leetcode <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tianqi Xie</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -28,7 +28,7 @@
 <meta property="og:description" content="OSI模型以及TCP&#x2F;IP模型  OIS模型: 物理层 - 数据链路层 - 网络层 - 传输层 - 会话层 - 表示层 - 应用层 TCP&#x2F;IP模型: 网络访问层 - 网络层 - 传输层 - 应用层   DNS  定义: 域名系统， 域名和IP相互映射的一个分布式数据库（集群式的） 分类: 根服务器 顶级域名服务器 权限域名服务器 本地域名服务器 工作流程  主机向本地域名服务器的查询一般是递归">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-02-09T20:36:04.000Z">
-<meta property="article:modified_time" content="2022-02-11T07:03:07.992Z">
+<meta property="article:modified_time" content="2022-03-02T06:21:48.232Z">
 <meta property="article:author" content="Tianqi Xie">
 <meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
@@ -120,7 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#osi%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8Atcpip%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text"> OSI模型以及TCP&#x2F;IP模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dns"><span class="nav-number">2.</span> <span class="nav-text"> DNS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tcp%E4%B8%8Eudp"><span class="nav-number">3.</span> <span class="nav-text"> TCP与UDP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http%E4%B8%8Ehttps"><span class="nav-number">4.</span> <span class="nav-text"> HTTP与HTTPS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#session-cookie-token%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB"><span class="nav-number">5.</span> <span class="nav-text"> Session, Cookie, Token的主要区别</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#osi%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8Atcpip%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text"> OSI模型以及TCP&#x2F;IP模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dns"><span class="nav-number">2.</span> <span class="nav-text"> DNS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tcp%E4%B8%8Eudp"><span class="nav-number">3.</span> <span class="nav-text"> TCP与UDP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="nav-number">3.1.</span> <span class="nav-text"> TCP三次握手，四次挥手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tcp%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E4%B8%8E%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="nav-number">3.2.</span> <span class="nav-text"> TCP流量控制与拥塞控制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http%E4%B8%8Ehttps"><span class="nav-number">4.</span> <span class="nav-text"> HTTP与HTTPS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#session-cookie-token%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB"><span class="nav-number">5.</span> <span class="nav-text"> Session, Cookie, Token的主要区别</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -133,18 +133,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -214,7 +214,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-02-10 23:03:07" itemprop="dateModified" datetime="2022-02-10T23:03:07-08:00">2022-02-10</time>
+      <time title="修改时间：2022-03-01 22:21:48" itemprop="dateModified" datetime="2022-03-01T22:21:48-08:00">2022-03-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -290,7 +290,8 @@
 <li>拥塞控制: 出现拥塞会出现丢包，如果继续重传拥塞会更加严重。慢开始 -&gt; 拥塞避免 -&gt; 快重传 -&gt; 快恢复</li>
 </ul>
 </li>
-<li>TCP三次握手，四次挥手
+</ul>
+<h4 id="tcp三次握手四次挥手"><a class="markdownIt-Anchor" href="#tcp三次握手四次挥手"></a> TCP三次握手，四次挥手</h4>
 <ul>
 <li>三次握手
 <ul>
@@ -316,11 +317,78 @@
 </li>
 </ul>
 </li>
-</ul>
-</li>
 <li>TCP建立连接后，客户端故障怎么办
 <ul>
 <li>会有TCP保活机制，发送保活探测报文，如果发送固定次数没有回应则会关闭TCP连接</li>
+</ul>
+</li>
+</ul>
+<h4 id="tcp流量控制与拥塞控制"><a class="markdownIt-Anchor" href="#tcp流量控制与拥塞控制"></a> TCP流量控制与拥塞控制</h4>
+<ul>
+<li>流量控制(flow control)
+<ul>
+<li>receiver会告诉sender应该发送的最大速度
+<ul>
+<li>比如: 一个老师在教课，一个学生在学, 学生学不动了老师还在交, 这时候会就产生问题, 所以学生应该定期给老师反馈</li>
+</ul>
+</li>
+<li>滑动窗口机制
+<ul>
+<li>tcp会计算receiver最大能够接受的数据大小(without acknowledgement), 通过tcp头部发送给sender来调整sender的发送窗口大小</li>
+<li>三种过程
+<ul>
+<li>opening window
+<ul>
+<li>The opening window process allows more data to be in the buffer that can be sent</li>
+</ul>
+</li>
+<li>closing window
+<ul>
+<li>The closing window process indicates some sent data bytes have been acknowledged, and the sender needs not to worry about them anymore</li>
+</ul>
+</li>
+<li>shrinking window
+<ul>
+<li>The shrinking windows process denotes the decrement in the window size. It means some bytes are eligible to transmit</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>拥塞控制(congestion control)
+<ul>
+<li>慢开始(slow start)
+<ul>
+<li>发送方发送数据包并逐渐增加数据包的数量，直到到达阈值。(每次增加1 MSS{max segment size}的数据包大小)</li>
+</ul>
+</li>
+<li>拥塞避免(congestion avoidance)
+<ul>
+<li>如果到达了阈值还是线性的增长，会导致网络拥塞，所以定义了一套到阈值之后的增长模式用来增长窗口大小</li>
+</ul>
+</li>
+<li>拥塞检测(congestion detection)
+<ul>
+<li>如果网络中仍存在拥塞, 需要进行检测机制</li>
+<li>两种情况
+<ul>
+<li>估计时间内没有收到发送方发送的数据包确认</li>
+<li>接收方获得三个重复确认</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>区别
+<ul>
+<li>流量控制是针对sender和receiver的, 拥塞控制是针对网络堵塞的</li>
+<li>流量控制是传输层和数据链路层负责, 拥塞控制是传输层和网络层负责</li>
+<li>流量控制是为了receiver不会过载, 拥塞控制是为了网络不会过载</li>
+<li>流量控制是通过调整sender的发送速度来避免拥堵, 拥塞控制是通过传输层减少数据传输来避免拥堵</li>
 </ul>
 </li>
 </ul>
@@ -350,6 +418,12 @@
 <li>缺点: 速度慢</li>
 </ul>
 </li>
+</ul>
+</li>
+<li>常见的加密算法
+<ul>
+<li>对称性加密算法: AES、DES、3DES</li>
+<li>非对称性加密算法: RSA、DSA、ECC</li>
 </ul>
 </li>
 <li>HTTPS加密过程
@@ -389,7 +463,7 @@
 <li>浏览器输入URL到显示主页的过程
 <ul>
 <li>对输入的URL进行DNS解析(请求本机 -&gt; 本地域名服务器 …), 将域名转换为ip地址</li>
-<li>和目的服务器简历TCP连接</li>
+<li>和目的服务器建立TCP连接</li>
 <li>向目的服务器发送HTTP请求</li>
 <li>服务器处理请求并返回HTTP报文</li>
 <li>浏览器解析并渲染页面</li>

@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="1 - 100  1. two sum  Description:  Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.   Solutions  one: brute search -&gt; O(n^2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode题目总结">
+<meta property="og:url" content="http://example.com/2022/06/02/leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="Tianqi&#39;s blog">
+<meta property="og:description" content="1 - 100  1. two sum  Description:  Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.   Solutions  one: brute search -&gt; O(n^2">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-02T17:53:28.000Z">
+<meta property="article:modified_time" content="2022-06-10T17:12:16.908Z">
+<meta property="article:author" content="Tianqi Xie">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/06/02/leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/06/02/leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93/","path":"2022/06/02/leetcode题目总结/","title":"leetcode题目总结"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>leetcode题目总结 | Tianqi's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Tianqi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-100"><span class="nav-number">1.</span> <span class="nav-text"> 1 - 100</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-two-sum"><span class="nav-number">1.1.</span> <span class="nav-text"> 1. two sum</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-add-two-numbers"><span class="nav-number">1.2.</span> <span class="nav-text"> 2. Add two numbers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-longest-substring-without-repeating-characters"><span class="nav-number">1.3.</span> <span class="nav-text"> 3. Longest Substring Without Repeating Characters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-given-two-sorted-arrays-nums1-and-nums2-of-size-m-and-n-respectively-return-the-median-of-the-two-sorted-arrays"><span class="nav-number">1.4.</span> <span class="nav-text"> 4. Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-longest-palindromic-substring"><span class="nav-number">1.5.</span> <span class="nav-text"> 5. Longest Palindromic Substring</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-zigzag-conversion"><span class="nav-number">1.6.</span> <span class="nav-text"> 6. Zigzag Conversion</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-reverse-integer"><span class="nav-number">1.7.</span> <span class="nav-text"> 7. Reverse Integer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-string-to-integer"><span class="nav-number">1.8.</span> <span class="nav-text"> 8. String to integer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-palindrome-number"><span class="nav-number">1.9.</span> <span class="nav-text"> 9. Palindrome Number</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-regular-expression-matching"><span class="nav-number">1.10.</span> <span class="nav-text"> 10. Regular Expression Matching</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-container-with-most-water"><span class="nav-number">1.11.</span> <span class="nav-text"> 11. Container With Most Water</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-integer-to-roman"><span class="nav-number">1.12.</span> <span class="nav-text"> 12. Integer to Roman</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-roman-to-integer"><span class="nav-number">1.13.</span> <span class="nav-text"> 13. Roman to Integer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-longest-common-prefix"><span class="nav-number">1.14.</span> <span class="nav-text"> 14. Longest Common Prefix</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-3sum"><span class="nav-number">1.15.</span> <span class="nav-text"> 15. 3Sum</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16-3sum-closest"><span class="nav-number">1.16.</span> <span class="nav-text"> 16. 3Sum Closest</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#18-4sum"><span class="nav-number">1.17.</span> <span class="nav-text"> 18. 4Sum</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#17-letter-combinations-of-a-phone-number"><span class="nav-number">1.18.</span> <span class="nav-text"> 17. Letter Combinations of a Phone Number</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#19-remove-nth-node-from-end-of-list"><span class="nav-number">1.19.</span> <span class="nav-text"> 19. Remove Nth Node From End of List</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#20-valid-parentheses"><span class="nav-number">1.20.</span> <span class="nav-text"> 20. Valid Parentheses</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#21-merge-two-sorted-lists"><span class="nav-number">1.21.</span> <span class="nav-text"> 21. Merge Two Sorted Lists</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#22-generate-parentheses"><span class="nav-number">1.22.</span> <span class="nav-text"> 22. Generate Parentheses</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#23-merge-k-sorted-lists"><span class="nav-number">1.23.</span> <span class="nav-text"> 23. Merge k Sorted Lists</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#24-swap-nodes-in-pairs"><span class="nav-number">1.24.</span> <span class="nav-text"> 24. Swap Nodes in Pairs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#25-reverse-nodes-in-k-group"><span class="nav-number">1.25.</span> <span class="nav-text"> 25. Reverse Nodes in k-Group</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#26-remove-duplicates-from-sorted-array"><span class="nav-number">1.26.</span> <span class="nav-text"> 26. Remove Duplicates from Sorted Array</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#27-remove-element"><span class="nav-number">1.27.</span> <span class="nav-text"> 27. Remove Element</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#28-28-implement-strstr"><span class="nav-number">1.28.</span> <span class="nav-text"> 28. 28. Implement strStr()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#29-divide-two-integers"><span class="nav-number">1.29.</span> <span class="nav-text"> 29. Divide Two Integers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#30-substring-with-concatenation-of-all-words"><span class="nav-number">1.30.</span> <span class="nav-text"> 30. Substring with Concatenation of All Words</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#31-next-permutation"><span class="nav-number">1.31.</span> <span class="nav-text"> 31. Next Permutation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#32-longest-valid-parentheses"><span class="nav-number">1.32.</span> <span class="nav-text"> 32. Longest Valid Parentheses</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#33-search-in-rotated-sorted-array"><span class="nav-number">1.33.</span> <span class="nav-text"> 33. Search in Rotated Sorted Array</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#34-find-first-and-last-position-of-element-in-sorted-array"><span class="nav-number">1.34.</span> <span class="nav-text"> 34. Find First and Last Position of Element in Sorted Array</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#35-search-insert-position"><span class="nav-number">1.35.</span> <span class="nav-text"> 35. Search Insert Position</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#36-valid-sudoku"><span class="nav-number">1.36.</span> <span class="nav-text"> 36. Valid Sudoku</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#37-sudoku-solver"><span class="nav-number">1.37.</span> <span class="nav-text"> 37. Sudoku Solver</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#38-count-and-say"><span class="nav-number">1.38.</span> <span class="nav-text"> 38. Count and Say</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#39-combination-sum"><span class="nav-number">1.39.</span> <span class="nav-text"> 39. Combination Sum</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#40-combination-sum-ii"><span class="nav-number">1.40.</span> <span class="nav-text"> 40. Combination Sum II</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#41-first-missing-positive"><span class="nav-number">1.41.</span> <span class="nav-text"> 41. First Missing Positive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#42-trapping-rain-water"><span class="nav-number">1.42.</span> <span class="nav-text"> 42. Trapping Rain Water</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#43-multiply-strings"><span class="nav-number">1.43.</span> <span class="nav-text"> 43. Multiply Strings</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#45-jump-game-ii"><span class="nav-number">1.44.</span> <span class="nav-text"> 45. Jump Game II</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#46-permutations"><span class="nav-number">1.45.</span> <span class="nav-text"> 46. Permutations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#47-permutations-ii"><span class="nav-number">1.46.</span> <span class="nav-text"> 47. Permutations II</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#48-rotate-image"><span class="nav-number">1.47.</span> <span class="nav-text"> 48. Rotate Image</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#49-group-anagrams"><span class="nav-number">1.48.</span> <span class="nav-text"> 49. Group Anagrams</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#50-powx-n"><span class="nav-number">1.49.</span> <span class="nav-text"> 50. Pow(x, n)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#51-n-queens"><span class="nav-number">1.50.</span> <span class="nav-text"> 51. N-Queens</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tianqi Xie</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/02/leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tianqi Xie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tianqi's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          leetcode题目总结
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-06-02 10:53:28" itemprop="dateCreated datePublished" datetime="2022-06-02T10:53:28-07:00">2022-06-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-06-10 10:12:16" itemprop="dateModified" datetime="2022-06-10T10:12:16-07:00">2022-06-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="1-100"><a class="markdownIt-Anchor" href="#1-100"></a> 1 - 100</h3>
+<h4 id="1-two-sum"><a class="markdownIt-Anchor" href="#1-two-sum"></a> 1. two sum</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.</li>
+</ul>
+</li>
+<li>Solutions
+<ul>
+<li>one: brute search -&gt; O(n^2)</li>
+<li>two: sort -&gt; two pointers -&gt; O(nlogn)</li>
+<li>three: hashmap -&gt; O(n) space O(n)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="2-add-two-numbers"><a class="markdownIt-Anchor" href="#2-add-two-numbers"></a> 2. Add two numbers</h4>
+<ul>
+<li>Description:
+<ul>
+<li>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit.</li>
+</ul>
+</li>
+<li>Solutions
+<ul>
+<li>one: two pointers</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="3-longest-substring-without-repeating-characters"><a class="markdownIt-Anchor" href="#3-longest-substring-without-repeating-characters"></a> 3. Longest Substring Without Repeating Characters</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given a string s, find the length of the longest substring without repeating characters.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: slide window -&gt; could use hashmap to store the prefix strings</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="4-given-two-sorted-arrays-nums1-and-nums2-of-size-m-and-n-respectively-return-the-median-of-the-two-sorted-arrays"><a class="markdownIt-Anchor" href="#4-given-two-sorted-arrays-nums1-and-nums2-of-size-m-and-n-respectively-return-the-median-of-the-two-sorted-arrays"></a> 4. Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: merge sort these two sorted arrays and find the median number -&gt; O(m + n) not satisfiy the requirement</li>
+<li>two: use binary search to find the kth element in two sorted arrays -&gt; consider the parity of total length of these two arrays</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="5-longest-palindromic-substring"><a class="markdownIt-Anchor" href="#5-longest-palindromic-substring"></a> 5. Longest Palindromic Substring</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given a string s, return the longest palindromic substring in s</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: dynamic algorithm
+<ul>
+<li>F(i, j) -&gt; F(i+1, j-1) + compare(a[i], a[j]) and j &gt; i.</li>
+<li>i -&gt; i + 1: bottom to top</li>
+<li>j -&gt; j - 1: left to right</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="6-zigzag-conversion"><a class="markdownIt-Anchor" href="#6-zigzag-conversion"></a> 6. Zigzag Conversion</h4>
+<ul>
+<li>Description:
+<ul>
+<li>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: define a res 2D Array to receive the result, what we can do is decide the direction we should move and add the element into res Array</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="7-reverse-integer"><a class="markdownIt-Anchor" href="#7-reverse-integer"></a> 7. Reverse Integer</h4>
+<h4 id="8-string-to-integer"><a class="markdownIt-Anchor" href="#8-string-to-integer"></a> 8. String to integer</h4>
+<h4 id="9-palindrome-number"><a class="markdownIt-Anchor" href="#9-palindrome-number"></a> 9. Palindrome Number</h4>
+<hr>
+<h4 id="10-regular-expression-matching"><a class="markdownIt-Anchor" href="#10-regular-expression-matching"></a> 10. Regular Expression Matching</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given an input string s and a pattern p, implement regular expression matching with support for ‘.’ and ‘*’ where:
+<ul>
+<li>‘.’ Matches any single character.​​​​</li>
+<li>‘*’ Matches zero or more of the preceding element.</li>
+</ul>
+</li>
+<li>The matching should cover the entire input string (not partial)</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: Dynamic Algorithm
+<ul>
+<li>dp(i, j) means if s[0:i] and p[0:j] could match or not</li>
+<li>if j == ‘.’ =&gt; we need to know if dp[i-1][j-1] is True or not</li>
+<li>if j == letter =&gt; we need to know dp[i-1][j-1] and compare s[i] and p[j]</li>
+<li>if j == ‘*’
+<ul>
+<li>dp[i-1][j] and (s[i] == p[j-1] or p[j-1] == ‘.’)</li>
+<li>dp[i][j-2] or dp[i][j-1]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="11-container-with-most-water"><a class="markdownIt-Anchor" href="#11-container-with-most-water"></a> 11. Container With Most Water</h4>
+<ul>
+<li>Description:
+<ul>
+<li>You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).</li>
+<li>Find two lines that together with the x-axis form a container, such that the container contains the most water.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: two pointers
+<ul>
+<li>left, right = 0, len(height) - 1</li>
+<li>if height[left] &lt; height[right] =&gt; we can move the left pointer until we find another height which is higher(lower wall has no chance to exceed the area of the container) than height[left]</li>
+<li>if height[left] &gt; height[right] =&gt; the same, move the right pointer</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="12-integer-to-roman"><a class="markdownIt-Anchor" href="#12-integer-to-roman"></a> 12. Integer to Roman</h4>
+<h4 id="13-roman-to-integer"><a class="markdownIt-Anchor" href="#13-roman-to-integer"></a> 13. Roman to Integer</h4>
+<h4 id="14-longest-common-prefix"><a class="markdownIt-Anchor" href="#14-longest-common-prefix"></a> 14. Longest Common Prefix</h4>
+<hr>
+<h4 id="15-3sum"><a class="markdownIt-Anchor" href="#15-3sum"></a> 15. 3Sum</h4>
+<h4 id="16-3sum-closest"><a class="markdownIt-Anchor" href="#16-3sum-closest"></a> 16. 3Sum Closest</h4>
+<h4 id="18-4sum"><a class="markdownIt-Anchor" href="#18-4sum"></a> 18. 4Sum</h4>
+<ul>
+<li>for this kind of sum questions =&gt; we use two pointers to solve this</li>
+</ul>
+<hr>
+<h4 id="17-letter-combinations-of-a-phone-number"><a class="markdownIt-Anchor" href="#17-letter-combinations-of-a-phone-number"></a> 17. Letter Combinations of a Phone Number</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. Return the answer in any order.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: we can define a hashmap to reocrd the corresponding letters for each button and use simple backtrack algorithm to solve this question</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="19-remove-nth-node-from-end-of-list"><a class="markdownIt-Anchor" href="#19-remove-nth-node-from-end-of-list"></a> 19. Remove Nth Node From End of List</h4>
+<ul>
+<li>linked list operation =&gt; simple</li>
+</ul>
+<h4 id="20-valid-parentheses"><a class="markdownIt-Anchor" href="#20-valid-parentheses"></a> 20. Valid Parentheses</h4>
+<ul>
+<li>use stack to solve</li>
+</ul>
+<h4 id="21-merge-two-sorted-lists"><a class="markdownIt-Anchor" href="#21-merge-two-sorted-lists"></a> 21. Merge Two Sorted Lists</h4>
+<hr>
+<h4 id="22-generate-parentheses"><a class="markdownIt-Anchor" href="#22-generate-parentheses"></a> 22. Generate Parentheses</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>use recursion to solve this kind of quesiton(find all combinations of something)
+<ul>
+<li>use leftParentheseNumber to record the number of (</li>
+<li>n - leftParentheseNumber means the number of ( could be used</li>
+<li>string represent the current string</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="23-merge-k-sorted-lists"><a class="markdownIt-Anchor" href="#23-merge-k-sorted-lists"></a> 23. Merge k Sorted Lists</h4>
+<ul>
+<li>Description:
+<ul>
+<li>You are given an array of k linked-lists lists, each linked-list is sorted in ascending order, Merge all the linked-lists into one sorted linked-list and return it.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: there are k linked listed -&gt; we have to find the smallest one each time we move the pointer
+<ul>
+<li>use heap to find the minimum number and index, then move the pointer of kth list</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="24-swap-nodes-in-pairs"><a class="markdownIt-Anchor" href="#24-swap-nodes-in-pairs"></a> 24. Swap Nodes in Pairs</h4>
+<h4 id="25-reverse-nodes-in-k-group"><a class="markdownIt-Anchor" href="#25-reverse-nodes-in-k-group"></a> 25. Reverse Nodes in k-Group</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given the head of a linked list, reverse the nodes of the list k at a time, and return the modified list. k is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of k then left-out nodes, in the end, should remain as it is.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: write all these nodes into an array, change postion in array is way better than change postion in linked list</li>
+<li>two: for k numbers of nodes, follow the change rules(for the loop)
+<ul>
+<li>cur.next = nex.next</li>
+<li>nex.next = pre.next</li>
+<li>pre.next = nex</li>
+<li>nex = cur.next</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="26-remove-duplicates-from-sorted-array"><a class="markdownIt-Anchor" href="#26-remove-duplicates-from-sorted-array"></a> 26. Remove Duplicates from Sorted Array</h4>
+<h4 id="27-remove-element"><a class="markdownIt-Anchor" href="#27-remove-element"></a> 27. Remove Element</h4>
+<h4 id="28-28-implement-strstr"><a class="markdownIt-Anchor" href="#28-28-implement-strstr"></a> 28. 28. Implement strStr()</h4>
+<h4 id="29-divide-two-integers"><a class="markdownIt-Anchor" href="#29-divide-two-integers"></a> 29. Divide Two Integers</h4>
+<hr>
+<h4 id="30-substring-with-concatenation-of-all-words"><a class="markdownIt-Anchor" href="#30-substring-with-concatenation-of-all-words"></a> 30. Substring with Concatenation of All Words</h4>
+<ul>
+<li>Description:
+<ul>
+<li>You are given a string s and an array of strings words of the same length. Return all starting indices of substring(s) in s that is a concatenation of each word in words exactly once, in any order, and without any intervening characters.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: just use hashmap to store the words information and match them in string(simple)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="31-next-permutation"><a class="markdownIt-Anchor" href="#31-next-permutation"></a> 31. Next Permutation</h4>
+<ul>
+<li>Description:
+<ul>
+<li>A permutation of an array of integers is an arrangement of its members into a sequence or linear order.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one:
+<ul>
+<li>check from the end of the array while increasing, mark the pivot point while the left number is lower than right</li>
+<li>start checking from the end of the array again, find the “smallest number” which is greater than pivot number</li>
+<li>exchange the smallest number and pivot number and resort the array from pivot point</li>
+<li>if not find the pivot number, reverse the whole array</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="32-longest-valid-parentheses"><a class="markdownIt-Anchor" href="#32-longest-valid-parentheses"></a> 32. Longest Valid Parentheses</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given a string containing just the characters ‘(’ and ‘)’, find the length of the longest valid (well-formed) parentheses substring.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>step one: use stack to record all the valid parenthese pairs and put the length of it into stack (use ‘(’ and ‘)’ to sepreate these valid substrings)</li>
+<li>step two: traverse the whole stack and combine adjacent numbers into one -&gt; find the biggest length</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="33-search-in-rotated-sorted-array"><a class="markdownIt-Anchor" href="#33-search-in-rotated-sorted-array"></a> 33. Search in Rotated Sorted Array</h4>
+<ul>
+<li>Description:
+<ul>
+<li>There is an integer array nums sorted in ascending order (with distinct values).</li>
+<li>Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k (1 &lt;= k &lt; nums.length) such that the resulting array is [nums[k], nums[k+1], …, nums[n-1], nums[0], nums[1], …, nums[k-1]] (0-indexed). For example, [0,1,2,4,5,6,7] might be rotated at pivot index 3 and become [4,5,6,7,0,1,2].</li>
+<li>Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.</li>
+<li>You must write an algorithm with O(log n) runtime complexity.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>the runtime complexity should be limited at O(logn), so we have to use binary search to solve this question, there are following situations
+<ul>
+<li>move right
+<ul>
+<li>[1, 2, 3, 4, 0] -&gt; target &gt; mid &gt; left</li>
+<li>[4, 0, 1, 2, 3] -&gt; mid &lt; target &lt; right</li>
+<li>[2, 3, 4, 0, 1] -&gt; target &lt; left &lt; mid</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="34-find-first-and-last-position-of-element-in-sorted-array"><a class="markdownIt-Anchor" href="#34-find-first-and-last-position-of-element-in-sorted-array"></a> 34. Find First and Last Position of Element in Sorted Array</h4>
+<h4 id="35-search-insert-position"><a class="markdownIt-Anchor" href="#35-search-insert-position"></a> 35. Search Insert Position</h4>
+<h4 id="36-valid-sudoku"><a class="markdownIt-Anchor" href="#36-valid-sudoku"></a> 36. Valid Sudoku</h4>
+<hr>
+<h4 id="37-sudoku-solver"><a class="markdownIt-Anchor" href="#37-sudoku-solver"></a> 37. Sudoku Solver</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Write a program to solve a Sudoku puzzle by filling the empty cells</li>
+<li>A sudoku solution must satisfy all of the following rules:
+<ul>
+<li>Each of the digits 1-9 must occur exactly once in each row.</li>
+<li>Each of the digits 1-9 must occur exactly once in each column.</li>
+<li>Each of the digits 1-9 must occur exactly once in each of the 9 3x3 sub-boxes of the grid.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Solutions
+<ul>
+<li>this is a hard question, when we first saw it, we could be stucked by the complicated situations, but through carefully consideration on this subject, we can definatelly solve this by using recursion</li>
+<li>one:
+<ul>
+<li>for each position, we should define a set to record available numbers</li>
+<li>define a addElement function</li>
+<li>define a deleteElement function</li>
+<li>define a validNumber function</li>
+<li>write recursion to traverse all the possible solutions for the given Sudoku</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="38-count-and-say"><a class="markdownIt-Anchor" href="#38-count-and-say"></a> 38. Count and Say</h4>
+<h4 id="39-combination-sum"><a class="markdownIt-Anchor" href="#39-combination-sum"></a> 39. Combination Sum</h4>
+<h4 id="40-combination-sum-ii"><a class="markdownIt-Anchor" href="#40-combination-sum-ii"></a> 40. Combination Sum II</h4>
+<hr>
+<h4 id="41-first-missing-positive"><a class="markdownIt-Anchor" href="#41-first-missing-positive"></a> 41. First Missing Positive</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given an unsorted integer array nums, return the smallest missing positive integer.</li>
+<li>You must implement an algorithm that runs in O(n) time and uses constant extra space.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: the solution of this question is really interesting
+<ul>
+<li>because we have limited to constant extra space, so we have to figure out a way without hashset and hashmap</li>
+<li>use index to record the smallest unshowed number !!!(there are only n numbers in the array, so the maxium return should be n + 1) -&gt; turn all 0 and &lt;= 0 to n + 1, and marked the ranged numbers to -1 by setting up the corresponed index position</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="42-trapping-rain-water"><a class="markdownIt-Anchor" href="#42-trapping-rain-water"></a> 42. Trapping Rain Water</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: use two pointers, if left &gt; right means you can move right to left until find a higher height(cause left &gt; right, we can make sure that the higher height could be found)</li>
+</ul>
+</li>
+</ul>
+<br>
+<h4 id="43-multiply-strings"><a class="markdownIt-Anchor" href="#43-multiply-strings"></a> 43. Multiply Strings</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given an input string (s) and a pattern §, implement wildcard pattern matching with support for ‘?’ and ‘*’ where:
+<ul>
+<li>‘?’ Matches any single character.</li>
+<li>‘*’ Matches any sequence of characters (including the empty sequence).</li>
+</ul>
+</li>
+<li>The matching should cover the entire input string (not partial).</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: for this kind of match problems, we definately use dynamic algorithms to solve it</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="45-jump-game-ii"><a class="markdownIt-Anchor" href="#45-jump-game-ii"></a> 45. Jump Game II</h4>
+<ul>
+<li>Description:
+<ul>
+<li>Given an array of non-negative integers nums, you are initially positioned at the first index of the array.</li>
+<li>Each element in the array represents your maximum jump length at that position.</li>
+<li>Your goal is to reach the last index in the minimum number of jumps.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>one: O(n) -&gt; we can define
+<ul>
+<li>cur: the range of this loop</li>
+<li>nex: the range of next loop</li>
+<li>step: the step we will use</li>
+<li>index: current position</li>
+<li>if index &lt;= cur: nothing else: cur = nex, step + 1</li>
+</ul>
+</li>
+<li>two: dynamic algorithm
+<ul>
+<li>dp[i+j] = min(dp[i]+1, dp[i+j])</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="46-permutations"><a class="markdownIt-Anchor" href="#46-permutations"></a> 46. Permutations</h4>
+<h4 id="47-permutations-ii"><a class="markdownIt-Anchor" href="#47-permutations-ii"></a> 47. Permutations II</h4>
+<ul>
+<li>Descirption
+<ul>
+<li>Given an array nums of distinct integers, return all the permutations. You can return the answer in any order</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>Recursion</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="48-rotate-image"><a class="markdownIt-Anchor" href="#48-rotate-image"></a> 48. Rotate Image</h4>
+<ul>
+<li>Description
+<ul>
+<li>You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).</li>
+<li>You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.</li>
+</ul>
+</li>
+<li>Solutions:
+<ul>
+<li>use variable to record the number of each positon and change them</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="49-group-anagrams"><a class="markdownIt-Anchor" href="#49-group-anagrams"></a> 49. Group Anagrams</h4>
+<h4 id="50-powx-n"><a class="markdownIt-Anchor" href="#50-powx-n"></a> 50. Pow(x, n)</h4>
+<hr>
+<h4 id="51-n-queens"><a class="markdownIt-Anchor" href="#51-n-queens"></a> 51. N-Queens</h4>
+<ul>
+<li>Description:
+<ul>
+<li>The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.</li>
+<li>Given an integer n, return all distinct solutions to the n-queens puzzle. You may return the answer in any order.</li>
+<li>Each solution contains a distinct board configuration of the n-queens’ placement, where ‘Q’ and ‘.’ both indicate a queen and an empty space, respectively.</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/13/leetcode/" rel="prev" title="leetcode">
+                  <i class="fa fa-chevron-left"></i> leetcode
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tianqi Xie</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
