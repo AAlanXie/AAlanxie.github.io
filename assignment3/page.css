@@ -5,17 +5,17 @@ html, body {
 
 .left{
     float: left;
-    width: 30%;
+    width: 20%;
     height: 100%;
-    background-color: black;
+    background-color: white;
     position: fixed;
     left: 0%;
 }
 
 .right {
-    width: 30%;
+    width: 20%;
     height: 100%;
-    background-color: black;
+    background-color: white;
     position: fixed;
     right: 0%;
 }
@@ -23,12 +23,11 @@ html, body {
 .center {
     box-sizing: border-box;
     /* float: left; */
-    left: 30%;
-    width: 40%;
+    width: 60%;
     height: 100%;
     padding: 10px;
     position: absolute;
-    left: 30%;
+    left: 20%;
 }
 
 .center #header {
