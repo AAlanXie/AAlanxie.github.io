@@ -1,0 +1,70 @@
+/* Create three equal columns that floats next to each other */
+html, body {
+    height: 100%;
+}
+
+.left{
+    float: left;
+    width: 30%;
+    height: 100%;
+    background-color: black;
+    position: fixed;
+    left: 0%;
+}
+
+.right {
+    width: 30%;
+    height: 100%;
+    background-color: black;
+    position: fixed;
+    right: 0%;
+}
+
+.center {
+    box-sizing: border-box;
+    /* float: left; */
+    left: 30%;
+    width: 40%;
+    height: 100%;
+    padding: 10px;
+    position: absolute;
+    left: 30%;
+}
+
+.center #header {
+    border: 10px; 
+    text-align: center;
+}
+
+.center #infoBox {
+    box-sizing: border-box;
+    border-style: solid; 
+    border-width: 2px; 
+    width: 80%; 
+    margin-left: 10%; 
+    margin-bottom: 20px; 
+    padding: 20px; 
+}
+
+.center .view img{
+    width: 100%;
+}
+
+.center #navbar a {
+    text-decoration: none; 
+    font-style: italic; 
+    font-size: small;
+    margin: 2px;
+    color: darkgray;
+}
+
+
+#footer {
+    text-align: center; 
+    font-style: italic;
+    font-size: small;
+}
+
+#footer img {
+    margin: 10px;
+}
