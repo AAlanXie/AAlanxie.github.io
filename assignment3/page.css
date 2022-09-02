@@ -3,7 +3,7 @@ html, body {
     height: 100%;
 }
 
-.left{
+/* .left{
     float: left;
     width: 20%;
     height: 100%;
@@ -18,7 +18,7 @@ html, body {
     background-color: white;
     position: fixed;
     right: 0%;
-}
+} */
 
 .center {
     box-sizing: border-box;
@@ -30,34 +30,61 @@ html, body {
     left: 20%;
 }
 
+/* header */
 .center #header {
     border: 10px; 
     text-align: center;
+    margin-bottom: 100px;
 }
 
 .center #infoBox {
     box-sizing: border-box;
     border-style: solid; 
     border-width: 2px; 
-    width: 80%; 
-    margin-left: 10%; 
-    margin-bottom: 20px; 
+    width: 86%; 
+    margin-left: 7%; 
+    margin-bottom: 10px; 
     padding: 20px; 
 }
 
-.center .view img{
-    width: 100%;
-}
-
+/* navbar */
 .center #navbar a {
     text-decoration: none; 
     font-style: italic; 
-    font-size: small;
-    margin: 2px;
+    font-size: 18px;
+    margin-right: 10px;
     color: darkgray;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* .center .view img{
+    width: 100%;
+} */
+
+/* picture */
+.imgbox{
+    width:100%;
+    height:1000px;
+    object-fit:cover;
+    overflow: hidden;
+    margin-top: 10px;
+}
+    
+.imgbox img{ 
+    /* position: absolute; */
+    height: 1000px;
+}
+
+#pier, #road {
+    transform: translate(-370px, 0px);
+}
+
+#lake {
+    transform: translate(-170px, 0px);
 }
 
 
+/* footer */
 #footer {
     text-align: center; 
     font-style: italic;
