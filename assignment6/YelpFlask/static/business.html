@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="business.css">
+    <script src="jquery-3.6.0.min.js"></script>
+    <title>CSCI571 HW6</title>
+</head>
+
+<body>
+    <!-- first part -->
+    <div id="formPart">
+        <div id="header" style="align-items:center; display:-webkit-flex;">
+            <div id="title">
+                <h1 style="font-size: 33px; margin-bottom: 20px;">Business Search</h1>
+                <p style="font-size: 26px; margin-top: 15px;">Fill out the form to get business near you!</p>
+            </div>
+        </div>
+
+
+        <form id="content" style="padding: 20px">
+            <!-- keyword-->
+            <div id="keyword">
+                <p>Keyword<b style="color: red">*</b></p>
+                <input id="word" name="keyword" type="text" required>
+            </div>
+
+            <!-- distance-->
+            <div id="distance">
+                <p>Distance(miles)</p>
+                <input id="dis" name="distance" type="text" value="10">
+            </div>
+
+            <!-- category-->
+            <div id="category">
+                <p>Category<b style="color: red">*</b></p>
+                <select name="categories" id="categories" style="width: 50%;" required>
+                    <option value="default" selected>Default</option>
+                    <option value="default">Arts & Entertainment</option>
+                    <option value="default">Health & Medical</option>
+                    <option value="default">Hotels & Travel</option>
+                    <option value="default">Food</option>
+                    <option value="default">Professional Services</option>
+                </select>
+            </div>
+
+            <!-- clear the style-->
+            <div id="clear" style="clear: both"></div>
+
+            <!-- location-->
+            <div id="location">
+                <p>Location<b style="color: red">*</b></p>
+                <input id="loc" name="location" type="text" required>
+            </div>
+
+            <br>
+
+            <hr style="background-color: darkblue; height: 1px; border: none">
+
+            <p>
+                <span style="vertical-align: middle">Want us to auto-detect your location? Check here</span>
+                <input type="checkbox" name="curLocation" id="detection" style="vertical-align: middle">
+            </p>
+
+            <button type="submit" id="submitForm">SUBMIT</button>
+            <button type="reset" id="clearForm">CLEAR</button>
+        </form>
+
+    </div>
+
+    <!-- business show -->
+    <div id="restaurant" style="margin-top: 50px; display: none">
+        <table>
+            <thead>
+                <tr id="tableHead">
+                    <th>No.</th>
+                    <th id="image">Image</th>
+                    <th>Business Name</th>
+                    <th>Rating</th>
+                    <th>Distance(miles)</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- restaurant details -->
+    <div id="restaurant_details" style="display: none">
+
+    </div>
+
+
+<script src="business.js"></script>
+</body>
+</html>

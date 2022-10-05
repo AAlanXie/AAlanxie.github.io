@@ -1,0 +1,196 @@
+body {
+    width: 100%;
+    padding-top: 10px;
+    background-color: #e6e6e6;
+}
+
+#formPart {
+    width: 60%;
+    margin: auto;
+    border-width: 5px;
+    border-style:solid;
+    border-color: #DDDDDD;
+}
+
+#header {
+    background-image: url("./banner.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 94%;
+    box-sizing: border-box;
+    height: 150px;
+    padding-top: 25px;
+}
+
+
+#content, #title {
+    margin-left: 10%;
+    width: 80%;
+    color: darkblue;
+}
+
+#title {
+    color: white;
+}
+
+#keyword, #distance, #category, #location {
+    margin-top: 10px;
+}
+
+#distance, #category {
+    width: 50%;
+    float: left;
+}
+
+input, select {
+    height: 30px;
+}
+
+
+#keyword input, #location input{
+    width: 100%;
+}
+
+/* submit button and clear button */
+#submitForm {
+    width: 138px;
+    height: 60px;
+    font-size: 15px;
+    font-weight: 100;
+    color: white;
+    border: none;
+    background-color: #546da7;
+    border-bottom: 6px solid #3c4974;
+}
+
+#submitForm:hover {
+    background-color: #657cb3;
+}
+
+#clearForm {
+    width: 138px;
+    height: 60px;
+    font-size: 15px;
+    color: white;
+    border: none;
+    font-weight: lighter;
+    background-color: #f4ba41;
+    border-bottom: 6px solid #e78732;
+}
+
+#clearForm:hover {
+    background-color: #dca939;
+}
+
+/*---------------------------------*/
+table {
+    width: 100vw;
+    text-align: center;
+}
+
+table, th, td {
+    border-style: solid;
+    border-color: #dbdbdb;
+    border-width: 1px;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #556ea8;
+    height: 43px;
+    line-height: 43px;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+td {
+    background-color: white;
+}
+
+td p:hover {
+    color: gray;
+}
+
+#image {
+    width: 200px;
+}
+
+img {
+    height: 200px;
+    width: 200px;
+}
+
+/*---------------------------*/
+#restaurant_details {
+    padding: 18px;
+    width: 55%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 38px;
+    background: white;
+    border: 5px solid rgb(193, 190, 190);
+}
+
+#restaurant_details h1 {
+    text-align: center;
+    border-bottom: 2px solid #dbdbdb;
+    font-size: 15px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    padding-top: 20px;
+}
+
+#restaurant_details .row
+{
+    display: inline-block;
+    margin-top: 35px;
+}
+
+#restaurant_details span {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#restaurant_details .firstItem,
+#restaurant_details .secondItem
+{
+    width: 50%;
+}
+
+#restaurant_details .picture {
+    display: inline-block;
+    width: 31%;
+    height: 300px;
+    border: 2px solid rgb(225, 222, 222);
+    margin-left: 8px;
+}
+
+#restaurant_details .picture p {
+    font-size: 12px;
+    text-align: center;
+}
+
+#restaurant_details .image {
+    height: 270px;
+}
+
+#restaurant_details img {
+    width: 100%;
+    object-fit: cover;
+    overflow:hidden;
+}
+
+#restaurant_details span {
+    margin-bottom: 2px;
+}
+
+#restaurant_details .subtitle {
+    font-size: 12px;
+    font-weight: lighter;
+}
+
+#restaurant_details #status {
+    background-color: green;
+    border-radius: 30%;
+    padding: 5px 10px;
+}
