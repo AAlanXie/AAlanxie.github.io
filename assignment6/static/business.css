@@ -4,6 +4,26 @@ body {
     background-color: #e6e6e6;
 }
 
+.cursor {
+    width: 0px;
+    height: 0px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    opacity: 1;
+    transition: all 0s;
+}
+
+.cursor.click {
+    width: 50px;
+    height: 50px;
+    left: -25px;
+    top: -25px;
+    border: 2px solid black;
+    border-radius: 50%;
+}
+
 #formPart {
     width: 40%;
     margin: auto;
@@ -26,7 +46,8 @@ body {
 #content, #title {
     margin-left: 10%;
     width: 80%;
-    color: darkblue;
+    color: #4e67a3;
+    font-size: large;
 }
 
 #title {
@@ -44,6 +65,7 @@ body {
 
 input, select {
     height: 30px;
+    outline-color: black;
 }
 
 
@@ -61,10 +83,11 @@ input, select {
     border: none;
     background-color: #546da7;
     border-bottom: 6px solid #3c4974;
+    margin-top: 10px;
 }
 
 #submitForm:hover {
-    background-color: #657cb3;
+    background-color: #5873b4;
 }
 
 #clearForm {
@@ -76,6 +99,7 @@ input, select {
     font-weight: lighter;
     background-color: #f4ba41;
     border-bottom: 6px solid #e78732;
+    margin-top: 10px;
 }
 
 #clearForm:hover {
@@ -102,6 +126,10 @@ th {
     line-height: 43px;
     font-weight: bold;
     font-size: 17px;
+}
+
+th span:hover {
+    cursor: pointer;
 }
 
 td {
