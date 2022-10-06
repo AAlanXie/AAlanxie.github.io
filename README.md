@@ -5,7 +5,7 @@
 
 ### Assignment2
 - index.html
-- 571hw2Table001.html
+- https://aalanxie.github.io/571hw2Table001.html
 
 # Assignment3
 - assignemnt3
