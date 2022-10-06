@@ -32,6 +32,11 @@ def business():
     # call the yelp api to get the answer of specific features
     data = yelpAPI.search(term=keyword, latitude=lat, longitude=lng, categories=category, radius=distance)
 
+    if data['total'] == 0:
+        data['code'] = 2000
+    else:
+        data['code'] = 1000
+
     # change the response to the json format and return it
     response = jsonify(data)
     response.headers.add('Access-Control-Allow-Origin', '*')

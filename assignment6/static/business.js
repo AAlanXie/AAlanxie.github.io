@@ -6,18 +6,14 @@ $(document).ready(function () {
     // clearForm
     let clearForm = document.getElementById("clearForm");
 
+    // error
+    let error = document.getElementById("error");
+
     // restaurants part
     let restaurants = document.getElementById("restaurant");
 
     // get the element of restaurant detail
     let restaurant_detail = document.getElementById("restaurant_details");
-
-    clearForm.onclick = function () {
-
-        // set the display to none
-        restaurants.style.display = "none";
-        restaurant_detail.style.display = "none";
-    }
 
     // check box
     // get the element of checkbox
@@ -28,6 +24,24 @@ $(document).ready(function () {
 
     // define the restaurant information
     let restaurant_info;
+
+    clearForm.onclick = function () {
+
+        document.getElementById("content").reset();
+        // set the attribute to disabled
+        if(checkbox.checked) {
+            loc.value = ''
+            loc.setAttribute("disabled", "disabled");
+        } else {
+            loc.removeAttribute("disabled");
+            loc.required = true;
+        }
+
+        // set the display to none
+        error.style.display = "none";
+        restaurants.style.display = "none";
+        restaurant_detail.style.display = "none";
+    }
 
     // add click listener
     checkbox.addEventListener('click', function () {
@@ -49,10 +63,19 @@ $(document).ready(function () {
             async: false,
             data: data,
             success: function (args) {
-                restaurant_info = args.businesses;
-                restaurants.style.display = "block";
-                displayTable(restaurant_info);
-                sortTable();
+                if(args.code == '1000') {
+                    error.style.display = "none";
+                    restaurant_info = args.businesses;
+                    restaurants.style.display = "block";
+                    displayTable(restaurant_info);
+                    sortTable();
+                } else {
+                    restaurants.style.display = "none";
+                    restaurant_detail.style.display = "none";
+                    error.innerHTML = "<div style='background-color: white; width: 80%; margin: auto;'><p style='text-align: center;'>No record has been found</p></div>"
+                    error.style.display = "block";
+                    return false;
+                }
             }
         })
     }
@@ -115,8 +138,14 @@ $(document).ready(function () {
                 const geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${myAPIKey}`;
                 fetch(geocodingUrl).then(result => result.json())
                     .then(featureCollection => {
-                        lat = featureCollection.results[0].geometry.location.lat;
-                        lng = featureCollection.results[0].geometry.location.lng;
+                        try {
+                            lat = featureCollection.results[0].geometry.location.lat;
+                            lng = featureCollection.results[0].geometry.location.lng;
+                        } catch (e) {
+                            error.innerHTML = "<div style='background-color: white; width: 80%; margin: auto;'><p style='text-align: center;'>No record has been found</p></div>"
+                            error.style.display = "block";
+                            return false;
+                        }
 
                         data = {
                             keyword: keyword,
@@ -130,9 +159,12 @@ $(document).ready(function () {
                     });
             }
         } catch (e) {
-            restaurants.innerHTML = "<div style='background-color: white; width: 80%; margin: auto;'><p style='text-align: center;'>No record has been found</p></div>"
-            console.log(e);
+            error.innerHTML = "<div style='background-color: white; width: 80%; margin: auto;'><p style='text-align: center;'>No record has been found</p></div>"
+            error.style.display = "none";
+            // console.log(e);
+            return false;
         }
+
 
         //
         return false;
@@ -158,7 +190,7 @@ $(document).ready(function () {
             // image
             innerHtml += "<td>" + "<img src=" + restaurant_info[i].image_url + ">" + "</td>"
             // restaurant name
-            innerHtml += "<td>" + "<p id=" + restaurant_info[i].id + ">" + restaurant_info[i].name + "</p>" + "</td>"
+            innerHtml += "<td>" + "<span id=" + restaurant_info[i].id + ">" + restaurant_info[i].name + "</span>" + "</td>"
             // rating
             innerHtml += "<td>" + restaurant_info[i].rating + "</td>"
             // radius
@@ -182,6 +214,7 @@ $(document).ready(function () {
             nameEle.onclick = function () {
                 restaurant_detail.style.display = "block";
                 restaurant_detail.innerHTML = showDetails(restaurant_info[i].id);
+                window.location.href = "#restaurant_details";
             }
         }
     }
@@ -201,14 +234,35 @@ $(document).ready(function () {
         // set the onclick function
         for(let i = 0; i < th.length; i++) {
             th[i].onclick = function () {
+                sortedArray = [];
+
                 for(let j = 0; j < contentTr.length; j++) {
                     sortedArray[j] = [];
                     sortedArray[j][0] = contentTr[j].getElementsByTagName('td')[i].innerText;
                     sortedArray[j][1] = j;
                 }
 
-                // sort the array based on the first innerText
-                sortedArray.sort();
+                if(th[i].getAttribute("class") == "reverse"){
+                    if(i == 0) {
+                        sortedArray.sort(function (a, b) {
+                            return Number(a[0]) - Number(b[0]);
+                        });
+                    } else {
+                        sortedArray.sort();
+                    }
+                    th[i].setAttribute("class", "reversed");
+                } else {
+                    // sort the array based on the first innerText
+                    if(i == 0) {
+                        sortedArray.sort(function (a, b) {
+                            return Number(b[0]) - Number(a[0]);
+                        });
+                    } else {
+                        sortedArray.sort();
+                        sortedArray.reverse();
+                    }
+                    th[i].setAttribute("class", "reverse");
+                }
 
                 newNode = "";
                 // update the innerHtml
