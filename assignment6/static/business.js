@@ -88,6 +88,7 @@ $(document).ready(function () {
                     restaurant_info = args.businesses;
                     restaurants.style.display = "block";
                     displayTable(restaurant_info);
+                    window.location.href = "#restaurant";
                     sortTable();
                 } else {
                     restaurants.style.display = "none";
@@ -323,6 +324,9 @@ $(document).ready(function () {
                 let phoneNumber = "";
                 let price = "";
 
+
+                details = "<h1>" + businessDetails.name + "</h1>"
+
                 // status
                 // console.log(businessDetails);
                 try {
@@ -333,6 +337,7 @@ $(document).ready(function () {
                         status = "Closed";
                         background = "red";
                     }
+                    details += "<div class='firstItem row' id='d_status'><span>Status</span><br/><span id='status' class='subtitle' style='background-color:" + background + "'>" + status + "</span></div>"
                 } catch (e) {
                     status = "&nbsp";
                     background = "&nbsp";
@@ -346,16 +351,7 @@ $(document).ready(function () {
                         }
                         rest_categories += businessDetails.categories[i].alias;
                     }
-                } else {
-                    rest_categories = "&nbsp";
-                }
-                // console.log(rest_categories);
-
-
-                if(businessDetails.display_phone) {
-                    phoneNumber = businessDetails.display_phone;
-                } else {
-                    phoneNumber = "&nbsp";
+                    details += "<div class='secondItem row' id='d_category'><span>Category</span><br/><span class='subtitle'>" + rest_categories + "</span></div>";
                 }
 
                 // address
@@ -366,8 +362,14 @@ $(document).ready(function () {
                         }
                         address += businessDetails.location.display_address[i];
                     }
+                    details += "<div class='firstItem row' id='d_address'><span>Address</span><br/><span class='subtitle'>" + address + "</span></div>";
                 }
-                // console.log(address);
+
+
+                if(businessDetails.display_phone) {
+                    phoneNumber = businessDetails.display_phone;
+                    details += "<div class='secondItem row' id='d_phone'><span>Phone Number</span><br/><span class='subtitle'>" + phoneNumber + "</span></div>";
+                }
 
                 // transactions
                 if(businessDetails.transactions.length > 0) {
@@ -377,33 +379,23 @@ $(document).ready(function () {
                         }
                         transactions += businessDetails.transactions[i];
                     }
-                } else {
-                    transactions = "&nbsp";
+                    details += "<div class='firstItem row' id='d_transaction'><span>Transactions Supported</span><br/><span class='subtitle'>" + transactions + "</span></div>"
                 }
 
                 // price
                 if(businessDetails.price) {
                     price = businessDetails.price;
-                } else {
-                    price = "&nbsp";
+                    details += "<div class='secondItem row' id='d_price'><span>Price</span><br/><span class='subtitle'>" + price + "<span/></div>"
                 }
 
                 let moreInfo = "";
                 if(businessDetails.url) {
                     moreInfo = businessDetails.url;
-                } else {
-                    moreInfo = "&nbsp";
+                    details += "<div class='firstItem' style='margin-top: 35px' id='d_info'><span>More info</span><br/><span class='subtitle'><a href=" + moreInfo + " target=\"_blank\">Yelp</a></span></div>"
                 }
 
-                details = "<h1>" + businessDetails.name + "</h1>" +
-                "<div class='firstItem row'><span>Status</span><br/><span id='status' class='subtitle' style='background-color:" + background + "'>" + status + "</span></div>" +
-                "<div class='secondItem row'><span>Category</span><br/><span class='subtitle'>" + rest_categories + "</span></div>" +
-                "<div class='firstItem row'><span>Address</span><br/><span class='subtitle'>" + address + "</span></div>" +
-                "<div class='secondItem row'><span>Phone Number</span><br/><span class='subtitle'>" + phoneNumber + "</span></div>" +
-                "<div class='firstItem row'><span>Transactions Supported</span><br/><span class='subtitle'>" + transactions + "</span></div>" +
-                "<div class='secondItem row'><span>Price</span><br/><span class='subtitle'>" + price + "<span/></div>" +
-                "<div class='firstItem' style='margin-top: 35px'><span>More info</span><br/><span class='subtitle'><a href=" + businessDetails.url + " target=\"_blank\">Yelp</a></span></div>" +
-                "<div class='row'>" +
+                details +=
+                "<div class='row' id='d_picture'>" +
                 "<div class='picture'><div class='image'><img src=" + businessDetails.photos[0] + "></div><p>Photo 1</p></div>" +
                 "<div class='picture'><div class='image'><img src=" + businessDetails.photos[1] + "></div><p>Photo 2</p></div>" +
                 "<div class='picture'><div class='image'><img src=" + businessDetails.photos[2] + "></div><p>Photo 3</p></div>" +
