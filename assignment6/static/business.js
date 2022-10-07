@@ -107,8 +107,9 @@ $(document).ready(function () {
         const valid1 = document.getElementById("word").checkValidity();
         const valid2 = document.getElementById("categories").checkValidity();
         const valid3 = document.getElementById("loc").checkValidity();
+        const valid4 = document.getElementById("dis").checkValidity();
 
-        if(valid1 && valid2 && valid3) {
+        if(valid1 && valid2 && valid3 && valid4) {
             event.preventDefault();
         } else {
             // console.log(1);
