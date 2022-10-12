@@ -8,6 +8,13 @@
 - https://aalanxie.github.io/571hw2Table001.html
 
 # Assignment3
-- assignemnt3
+- assignment3
 - https://aalanxie.github.io/assignment3/page.html
+
+# Assignment6
+- assignment6
+	- https://cs571hw6-364617.wl.r.appspot.com/
+- assignment6 endpoint
+	- https://cs571hw6-364617.wl.r.appspot.com/business?keyword=dinner&distance=10&category=default&lat=34.0223519&lng=-118.285117
+
 
