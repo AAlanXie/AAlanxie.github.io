@@ -15,6 +15,9 @@
 - assignment6
 	- https://cs571hw6-364617.wl.r.appspot.com/
 - assignment6 endpoint
-	- https://cs571hw6-364617.wl.r.appspot.com/business?keyword=dinner&distance=10&category=default&lat=34.0223519&lng=-118.285117
+	- business  
+		- https://cs571hw6-364617.wl.r.appspot.com/business?keyword=dinner&distance=10&category=default&lat=34.0223519&lng=-118.285117
+	- detail   
+		- https://cs571hw6-364617.wl.r.appspot.com/details?business_id=VndWkH3-0P1c23BZiuuAbg
 
 
