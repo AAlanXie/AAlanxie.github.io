@@ -1,0 +1,14 @@
+.fixed-bg {
+  background: linear-gradient(to top, #C2D7FF , white), url("../assets/city.jpg") no-repeat center center fixed;
+  /*background-size: cover;*/
+  /*background-position: 40% 50%;*/
+  /*background-position-x: 40%;*/
+  /*background-position-y: 30%;*/
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-blend-mode: multiply;
+  min-height: 100vh;
+}
+
+

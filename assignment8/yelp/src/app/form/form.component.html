@@ -1,0 +1,80 @@
+<!--  form part-->
+<div class="container mt-5">
+
+<!--  <mat-form-field>-->
+<!--    <mat-label>-->
+<!--      Keyword-->
+<!--    </mat-label>-->
+<!--    <input matInput type="text" [matAutocomplete]="auto" [formControl]="test"/>-->
+<!--  </mat-form-field>-->
+
+  <div class="row justify-content-md-center">
+    <div class="col col-sm-12 col-md-7 border border-3 border-light rounded bg-white p-5">
+      <!--      define a formGroup  -->
+        <p class="text-center mt-4 fs-4 fw-bold">Business Search</p>
+
+        <form ngNativeValidate>
+
+          <!-- keyword-->
+          <div class="col-12 mb-3">
+              <label for="keyword" class="form-label">Keyword&nbsp;<span style="color: red">*</span></label>
+              <input matInput type="text" id="keyword" class="form-control"
+                     [formControl]="keyword"
+                     [matAutocomplete]="auto"
+                     required
+              >
+              <mat-autocomplete #auto="matAutocomplete" >
+                <mat-option *ngFor="let item of options" [value]="item">
+                  {{ item }}
+                </mat-option>
+              </mat-autocomplete>
+          </div>
+
+          <!-- distance and category -->
+          <div class="row">
+            <!-- distance -->
+            <div class="col-md-6 col-sm-12 col-12">
+              <label for="distance" class="form-label">Distance</label>
+              <input type="text" class="form-control" id="distance" [formControl]="distance" placeholder="10">
+            </div>
+            <!-- category -->
+            <div class="col-md-6 col-sm-8 col-8">
+              <label for="category" class="form-label">Category&nbsp;<span style="color: red">*</span></label>
+              <select id="category" class="form-select" [formControl]="category" required>
+                <option value="default" selected>Default</option>
+                <option value="arts">Arts & Entertainment</option>
+                <option value="health">Health & Medical</option>
+                <option value="hotelstravel">Hotels & Travel</option>
+                <option value="food">Food</option>
+                <option value="professional">Professional Services</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- location-->
+          <div class="col-12 mt-3">
+            <label for="location" class="form-label">Location&nbsp;<span style="color: red">*</span></label>
+            <input type="text" id="location" class="form-control" [formControl]="location" required>
+          </div>
+
+          <!-- auto detection-->
+          <div class="col-12 mt-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck" (click)="setCurLocation($event)" [formControl]="autoCheck">
+              <label class="form-check-label" for="gridCheck">
+                Auto-detect my location
+              </label>
+            </div>
+          </div>
+
+          <!-- submit and clear-->
+          <div class="col-12 text-center mt-3 mb-3">
+            <button type="submit" class="btn btn-danger mx-3" (click)="submitForm($event)">Submit</button>
+            <button type="button" class="btn btn-primary mx-3" (click)="clearForm()">Clear</button>
+          </div>
+
+        </form>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<head>
+  <title>CSCI571 HW8</title>
+</head>
+<body>
+  <div class="fixed-bg pb-5 px-2">
+    <!--  navbar-->
+    <div id="navbar" class="col-12 mt-3">
+      <div class="d-flex justify-content-end">
+        <ul class="nav nav-pills nav-fill flex-row-reverse">
+          <li class="nav-item">
+            <a class="nav-link text-black" aria-current="page"
+               [routerLink]="['/bookings']"
+            >My bookings</a>
+          </li>
+          <li class="nav-item border border-2 border-dark rounded-4">
+            <a class="nav-link text-black"
+               [routerLink]="['/search']"
+            >Search</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <router-outlet></router-outlet>
+
+  </div>
+
+</body>

@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <div id="business">
+    <div class="row justify-content-center">
+      <div class="col-12 bg-white rounded-4 p-0">
+        <table class="table table-striped table-hover text-center">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Image</th>
+            <th scope="col">Business Name</th>
+            <th scope="col">Rating</th>
+            <th scope="col">Distance (miles)</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let business of businesses; index as i;" (click)="showDetail(business.id)">
+            <th scope="row">{{ i + 1 }}</th>
+            <td style="width: 20%"><img src="{{ business.image_url }}"></td>
+            <td style="width: 30%"><span>{{ business.name }}</span></td>
+            <td style="width: 20%">{{ business.rating }}</td>
+            <td style="width: 20%">{{ (business.distance / 1600).toFixed(2) }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="text-center" id="noResult">
+    <span class="bg-white px-5 text-danger fw-semibold fs-5 rounded-4">No results available</span>
+  </div>
+</div>

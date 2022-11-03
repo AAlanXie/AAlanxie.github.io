@@ -1,0 +1,3 @@
+.navbar-light .navbar-nav .active::after {
+  border-bottom: 5px solid #5BC0EB;
+}

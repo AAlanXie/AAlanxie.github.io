@@ -20,4 +20,15 @@
 	- detail   
 		- https://cs571hw6-364617.wl.r.appspot.com/details?business_id=VndWkH3-0P1c23BZiuuAbg
 
+# Assignment8
+- assignment8
+	- https://csci571hw8-367423.wl.r.appspot.com/
+- assignment8 endpoint
+	- business
+		- https://csci571hw8-367423.wl.r.appspot.com/business?term=dinner&latitude=34.0223519&longitude=-118.285117&categories=default&radius=1600
+	- business detail
+		- https://csci571hw8-367423.wl.r.appspot.com/businessDetail?businessId=VndWkH3-0P1c23BZiuuAbg
+	- autocomplete
+		- https://csci571hw8-367423.wl.r.appspot.com/autoComplete?text=d
+
 

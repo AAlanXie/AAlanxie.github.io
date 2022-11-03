@@ -1,0 +1,20 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+.carousel-control-next,
+.carousel-control-prev /*, .carousel-indicators */ {
+  filter: invert(100%);
+}
+
+.map-container {
+  width: 100%;
+}
+
+.mat-tab-labels {
+  background-color: #ffd73f;
+}
+
+.form-control.is-valid, .was-validated .form-control:valid {
+  background-image: none !important;
+  border-color: #ced4da;
+  padding-right: 0.75em;
+}

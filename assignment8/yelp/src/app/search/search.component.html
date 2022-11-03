@@ -1,0 +1,18 @@
+<app-form
+  (businessShow)="changeParams($event)"
+  (resetPage)="rcvReset($event)"
+></app-form>
+
+<app-business
+  (sendBusinessId)="rcvBusinessId($event)"
+  [params]="params"
+  [isBusinessShow]="ifBusinessShow"
+>
+</app-business>
+
+<app-business-detail
+  (sendStatus)="rcvStatus($event)"
+  [businessId]="businessId"
+  [isShow]="status"
+>
+</app-business-detail>
