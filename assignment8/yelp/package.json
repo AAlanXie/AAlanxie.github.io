@@ -25,6 +25,7 @@
     "bootstrap": "^5.2.2",
     "bootstrap-icons": "^1.9.1",
     "jquery": "^3.6.1",
+    "request": "^2.88.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "yelp-fusion": "^3.0.0",

@@ -160,6 +160,7 @@ export class BusinessDetailComponent implements OnInit {
     this.date.setValue('');
     this.hour.setValue('');
     this.minute.setValue('');
+    (document.getElementById('reserveForm') as HTMLElement).classList.remove('was-validated');
   }
 
   // cancel
