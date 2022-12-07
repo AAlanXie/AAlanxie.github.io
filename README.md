@@ -32,3 +32,15 @@
 		- https://csci571hw8-367423.wl.r.appspot.com/autoComplete?text=d
 
 
+# Assignment9 backend
+- assignment9 backend
+	- business
+		- https://csci571hw8-367423.wl.r.appspot.com/business?term=dinner&latitude=34.0223519&longitude=-118.285117&categories=default&radius=1600
+	- business detail
+		- https://csci571hw8-367423.wl.r.appspot.com/businessDetail?businessId=VndWkH3-0P1c23BZiuuAbg
+	- business reviews
+		- https://csci571hw8-367423.wl.r.appspot.com/businessReviews?businessId=VndWkH3-0P1c23BZiuuAbg
+	- autocomplete
+		- https://csci571hw8-367423.wl.r.appspot.com/autoComplete?text=d
+
+
